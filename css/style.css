@@ -133,11 +133,13 @@ body
 .repo-item-field-name
 {
     float: left;
+    padding-top: 2px;
 }
 
 .repo-item-field-value
 {
     padding-left: 80px;
+    padding-top: 2px;
 }
 
 .repo-item-anchor:link, .repo-item-anchor:visited, .repo-item-anchor:active

@@ -7,6 +7,7 @@
     <title>Netflix Open Source</title>
 
     <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.dateFormat-1.0.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -38,6 +39,9 @@
                             repoContent += '</div>';
                             repoContent += '<div class="repo-item-field-name">Watchers:</div><div class="repo-item-field-value">' + thisRepo.watchers + '</div>';
                             repoContent += '<div class="repo-item-field-name">Forks:</div><div class="repo-item-field-value">' + thisRepo.forks + '</div>';
+                            repoContent += '<div class="repo-item-field-name">Language:</div><div class="repo-item-field-value">' + thisRepo.language + '</div>';
+                            repoContent += '<div class="repo-item-field-name">Updated:</div><div class="repo-item-field-value">' + $.format.date(new Date(thisRepo.updated_at), "MM/dd/yy") + '</div>';
+                            repoContent += '<div class="repo-item-field-name">&nbsp;</div><div class="repo-item-field-value">' + $.format.date(new Date(thisRepo.updated_at), "@HH:mm:ss") + '</div>';
                         repoContent += '</div>';
                     repoContent += '</div></a>';
                 }
