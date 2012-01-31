@@ -11,10 +11,45 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script type="text/javascript">
-        $(function(){
-            $.getJSON('https://api.github.com/orgs/netflix/repos', function(data) {
+        var reposTab = {};
+        function repos(json)
+        {
+            reposTab = json.data;
+        }
+    </script>
+    <script type="text/javascript" src="https://api.github.com/orgs/netflix/repos?callback=repos"></script>
 
-            });
+    <script type="text/javascript">
+        $(function(){
+            var repoContent = "";
+            for ( var i = 0; i < reposTab.length; ++i )
+            {
+                var thisRepo = reposTab[i];
+                if ( !thisRepo.private && (thisRepo.name != 'netflix.github.com') )
+                {
+                    repoContent += '<a href="' + thisRepo.html_url + '">';
+                    repoContent += '<div id="repo-id-' + i + '" class="repo-item">';
+                    repoContent += '<div class="repo-item-heading">';
+                    repoContent += '<div class="repo-item-name">' + thisRepo.name + '</div>';
+                    repoContent += '<div class="repo-item-description">' + thisRepo.description + '</div>';
+                    repoContent += '</div>';
+                    repoContent += '<div class="repo-item-field-name">Watchers:</div><div class="repo-item-field-value">' + thisRepo.watchers + '</div>';
+                    repoContent += '<div class="repo-item-field-name">Forks:</div><div class="repo-item-field-value">' + thisRepo.forks + '</div>';
+                    repoContent += '</div></a>';
+                }
+            }
+            $('#repo-content').html(repoContent);
+
+            for ( i = 0; i < reposTab.length; ++i )
+            {
+                $('#repo-id-' + i).hover(function(){
+                    $(this).css("background-image", "url(assets/player-add.png)");
+                    $(this).css("background-repeat", "no-repeat");
+                    $(this).css("background-position", "center");
+                }, function(){
+                    $(this).css("background-image", "");
+                });
+            }
         });
     </script>
 </head>
@@ -26,6 +61,10 @@
         <img src="assets/Netflix_Web_Logo.png" width="101" height="37" align="middle" alt="Netflix">
         <div class="header-text">Netflix Open Source Center</div>
     </div>
+</div>
+
+<div id="repo-content">
+
 </div>
 
 <div class="footer">

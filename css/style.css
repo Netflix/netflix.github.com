@@ -39,3 +39,53 @@ body
     font-weight: bold;
     text-shadow: 0.1em 0.1em #000;
 }
+
+.repo-item
+{
+    border: 1px solid #555;
+    padding: 5px;
+    width: 166px;
+    height: 236px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: #faebd7;
+}
+
+.repo-item-heading
+{
+    height: 110px;
+}
+
+.repo-item-name
+{
+    text-align: center;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 125%;
+    margin-bottom: 20px;
+}
+
+.repo-item-description
+{
+    font-weight: normal;
+    text-align: left;
+}
+
+.repo-item-field-name
+{
+    float: left;
+}
+
+.repo-item-field-value
+{
+    padding-left: 80px;
+}
+
+#repo-content a:link, #repo-content a:hover, #repo-content a:visited, #repo-content a:active
+{
+    text-decoration: none;
+    color: black;
+}
