@@ -27,14 +27,18 @@
                 var thisRepo = reposTab[i];
                 if ( !thisRepo.private && (thisRepo.name != 'netflix.github.com') )
                 {
-                    repoContent += '<a href="' + thisRepo.html_url + '">';
+                    repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
                     repoContent += '<div id="repo-id-' + i + '" class="repo-item">';
-                    repoContent += '<div class="repo-item-heading">';
-                    repoContent += '<div class="repo-item-name">' + thisRepo.name + '</div>';
-                    repoContent += '<div class="repo-item-description">' + thisRepo.description + '</div>';
-                    repoContent += '</div>';
-                    repoContent += '<div class="repo-item-field-name">Watchers:</div><div class="repo-item-field-value">' + thisRepo.watchers + '</div>';
-                    repoContent += '<div class="repo-item-field-name">Forks:</div><div class="repo-item-field-value">' + thisRepo.forks + '</div>';
+                        repoContent += '<div id="repo-cover-id-' + i + '" class="repo-item-cover"></div>';
+                        repoContent += '<div id="repo-button-id-' + i + '" class="repo-item-button"></div>';
+                        repoContent += '<div class="repo-item-container">';
+                            repoContent += '<div class="repo-item-heading">';
+                            repoContent += '<div class="repo-item-name">' + thisRepo.name + '</div>';
+                            repoContent += '<div class="repo-item-description">' + thisRepo.description + '</div>';
+                            repoContent += '</div>';
+                            repoContent += '<div class="repo-item-field-name">Watchers:</div><div class="repo-item-field-value">' + thisRepo.watchers + '</div>';
+                            repoContent += '<div class="repo-item-field-name">Forks:</div><div class="repo-item-field-value">' + thisRepo.forks + '</div>';
+                        repoContent += '</div>';
                     repoContent += '</div></a>';
                 }
             }
@@ -42,12 +46,20 @@
 
             for ( i = 0; i < reposTab.length; ++i )
             {
+                var coverId = '#repo-cover-id-' + i;
+                var buttonId = '#repo-button-id-' + i;
+                $('#repo-id-' + i).data('cover-id', coverId);
+                $('#repo-id-' + i).data('button-id', buttonId);
                 $('#repo-id-' + i).hover(function(){
-                    $(this).css("background-image", "url(assets/player-add.png)");
-                    $(this).css("background-repeat", "no-repeat");
-                    $(this).css("background-position", "center");
+                    var coverId = $(this).data('cover-id');
+                    var buttonId = $(this).data('button-id');
+                    $(coverId).show();
+                    $(buttonId).show();
                 }, function(){
-                    $(this).css("background-image", "");
+                    var coverId = $(this).data('cover-id');
+                    var buttonId = $(this).data('button-id');
+                    $(coverId).hide();
+                    $(buttonId).hide();
                 });
             }
         });
@@ -68,7 +80,7 @@
 </div>
 
 <div class="footer">
-    Copyright goes here
+    &copy; 2012 Netflix, Inc.
 </div>
 
 </body>
