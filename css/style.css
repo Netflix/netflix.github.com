@@ -194,20 +194,24 @@ body
 
 .info-box-content-item
 {
-    margin-top: 5px;
+}
+
+.info-box-content-item-line
+{
+    margin-top: 6px;
 }
 
 .info-box-content-item-header
 {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
-.info-box-content-item a:link, .info-box-content-item a:visited, .info-box-content-item a:active, .info-box-content-item a:hover
+.info-box-content-item-line a:link, .info-box-content-item-line a:visited, .info-box-content-item-line a:active, .info-box-content-item-line a:hover
 {
     text-decoration: underline;
     color: white;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .info-box-content-item-clear
