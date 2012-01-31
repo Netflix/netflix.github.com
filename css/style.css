@@ -3,6 +3,8 @@ body
     font-family: sans-serif;
     font-size: 16px;
     background-color: #E1E1E1;
+    margin: 0;
+    padding: 10px;
 }
 
 .footer
@@ -79,7 +81,32 @@ body
     margin-left: 10px;
     margin-right: 20px;
     cursor: pointer;
+    background-color: #AAA;
+}
+
+#repo-id-0
+{
+    background-color: #e6e6fa;
+}
+
+#repo-id-1
+{
     background-color: #faebd7;
+}
+
+#repo-id-2
+{
+    background-color: #f0e68c;
+}
+
+#repo-id-3
+{
+    background-color: #deb887;
+}
+
+#repo-id-4
+{
+    background-color: #fff8dc;
 }
 
 .repo-item-heading
@@ -115,5 +142,17 @@ body
 .repo-item-anchor:link, .repo-item-anchor:visited, .repo-item-anchor:active
 {
     text-decoration: none;
-    color: black;
+    color: #222;
+}
+
+#info-box
+{
+    background-color: #b9090b;
+    width: 100%;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
 }
