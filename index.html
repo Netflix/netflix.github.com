@@ -28,8 +28,9 @@
                 var thisRepo = reposTab[i];
                 if ( !thisRepo.private && (thisRepo.name != 'netflix.github.com') )
                 {
+                    var className = 'repo-color-' + (i % 8);
                     repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
-                    repoContent += '<div id="repo-id-' + i + '" class="repo-item">';
+                    repoContent += '<div id="repo-id-' + i + '" class="repo-item ' + className + '">';
                         repoContent += '<div id="repo-cover-id-' + i + '" class="repo-item-cover"></div>';
                         repoContent += '<div id="repo-button-id-' + i + '" class="repo-item-button"></div>';
                         repoContent += '<div class="repo-item-container">';

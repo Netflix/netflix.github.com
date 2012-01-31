@@ -91,29 +91,44 @@ body
     height: 62%;
 }
 
-#repo-id-0
+.repo-color-0
 {
     background-color: #e6e6fa;
 }
 
-#repo-id-1
+.repo-color-1
 {
     background-color: #faebd7;
 }
 
-#repo-id-2
+.repo-color-2
 {
     background-color: #f0e68c;
 }
 
-#repo-id-3
+.repo-color-3
 {
     background-color: #deb887;
 }
 
-#repo-id-4
+.repo-color-4
 {
-    background-color: #fff8dc;
+    background-color: #fff0f5;
+}
+
+.repo-color-5
+{
+    background-color: #8fbc8f;
+}
+
+.repo-color-6
+{
+    background-color: #f0f8ff;
+}
+
+.repo-color-7
+{
+    background-color: #7fffd4;
 }
 
 .repo-item-heading
