@@ -1,1 +1,39 @@
-COMING SOON
+<html xmlns="http://www.w3.org/1999/xhtml" class="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="http://cdn-0.nflximg.com/en_US/icons/nficon.ico">
+    <meta name="description" content="Netflix Open Source">
+    <meta name="title" content="Netflix Open Source">
+    <title>Netflix Open Source</title>
+
+    <script type="text/javascript">
+        document.domain = "github.com";
+    </script>
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script type="text/javascript">
+        $(function(){
+            $.getJSON('https://api.github.com/orgs/netflix/repos', function(data) {
+
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="header-logo">
+        <img src="assets/Netflix_Web_Logo.png" width="101" height="37" align="middle" alt="Netflix">
+        <div class="header-text">Netflix Open Source Center</div>
+    </div>
+</div>
+
+<div class="footer">
+    Copyright goes here
+</div>
+
+</body>
+</html>
