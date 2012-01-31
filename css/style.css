@@ -85,6 +85,12 @@ body
     color: #444;
 }
 
+#repo-content
+{
+    overflow: scroll;
+    height: 62%;
+}
+
 #repo-id-0
 {
     background-color: #e6e6fa;
