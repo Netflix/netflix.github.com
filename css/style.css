@@ -5,6 +5,7 @@ body
     background-color: #E1E1E1;
     margin: 0;
     padding: 10px;
+    overflow: hidden;
 }
 
 .footer
@@ -67,6 +68,7 @@ body
     margin-top: -5px;
     background-color: #000;
     opacity: .3;
+    filter:alpha(opacity=30); /* For IE8 and earlier */
     display: none;
 }
 
@@ -87,7 +89,7 @@ body
 
 #repo-content
 {
-    overflow: scroll;
+    overflow: auto;
     height: 62%;
 }
 
