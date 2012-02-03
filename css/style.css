@@ -71,8 +71,8 @@ body
 
 .repo-item-shadow
 {
-    width: 100%;
-    height: 100%;
+    width: 176px;
+    height: 246px;
     background-color: #000;
     opacity: .3;
     filter:alpha(opacity=30); /* For IE8 and earlier */
