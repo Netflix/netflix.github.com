@@ -56,6 +56,7 @@ body
     background-repeat: no-repeat;
     background-position: center;
     display: none;
+    overflow: hidden;
 }
 
 .repo-item-cover
@@ -70,6 +71,7 @@ body
     opacity: .3;
     filter:alpha(opacity=30); /* For IE8 and earlier */
     display: none;
+    overflow: hidden;
 }
 
 .repo-item
