@@ -21,6 +21,20 @@
     <script type="text/javascript" src="https://api.github.com/orgs/netflix/repos?callback=repos"></script>
 
     <script type="text/javascript">
+        function parseISO8601(value) {
+            a = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/.exec(value);
+            if (a)
+                 return new Date(Date.UTC(+a[1], +a[2] - 1, +a[3], +a[4], +a[5], +a[6]));
+
+            if (value.slice(0, 5) === 'Date(' && value.slice(-1) === ')') {
+               var d = new Date(value.slice(5, -1));
+
+               if (d)
+                  return d;
+            }
+            return new Date();
+          }
+
         $(function(){
             var repoContent = "";
             for ( var i = 0; i < reposTab.length; ++i )
@@ -28,6 +42,7 @@
                 var thisRepo = reposTab[i];
                 if ( !thisRepo.private && (thisRepo.name != 'netflix.github.com') )
                 {
+                    var updatedAt = parseISO8601(thisRepo.updated_at);
                     var className = 'repo-color-' + (i % 8);
                     repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
                     repoContent += '<div id="repo-id-' + i + '" class="repo-item ' + className + '">';
@@ -41,8 +56,8 @@
                             repoContent += '<div class="repo-item-field-name">Watchers:</div><div class="repo-item-field-value">' + thisRepo.watchers + '</div>';
                             repoContent += '<div class="repo-item-field-name">Forks:</div><div class="repo-item-field-value">' + thisRepo.forks + '</div>';
                             repoContent += '<div class="repo-item-field-name">Language:</div><div class="repo-item-field-value">' + thisRepo.language + '</div>';
-                            repoContent += '<div class="repo-item-field-name">Updated:</div><div class="repo-item-field-value">' + $.format.date(new Date(thisRepo.updated_at), "MM/dd/yy") + '</div>';
-                            repoContent += '<div class="repo-item-field-name">&nbsp;</div><div class="repo-item-field-value">' + $.format.date(new Date(thisRepo.updated_at), "@HH:mm:ss") + '</div>';
+                            repoContent += '<div class="repo-item-field-name">Updated:</div><div class="repo-item-field-value">' + $.format.date(updatedAt, "MM/dd/yy") + '</div>';
+                            repoContent += '<div class="repo-item-field-name">&nbsp;</div><div class="repo-item-field-value">' + $.format.date(updatedAt, "@HH:mm:ss") + '</div>';
                         repoContent += '</div>';
                     repoContent += '</div></a>';
                 }
