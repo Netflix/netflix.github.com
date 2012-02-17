@@ -83,7 +83,7 @@ body
     float: left;
     border: 1px solid #555;
     padding: 5px;
-    width: 166px;
+    width: 176px;
     height: 236px;
     margin-top: 20px;
     margin-left: 10px;
@@ -167,7 +167,7 @@ body
 
 .repo-item-field-value
 {
-    padding-left: 80px;
+    padding-left: 95px;
     padding-top: 2px;
 }
 
