@@ -48,7 +48,7 @@ body
 {
     z-index: 20;
     position: absolute;
-    width: 176px;
+    width: 186px;
     height: 246px;
     margin-left: -5px;
     margin-top: -5px;
@@ -62,7 +62,7 @@ body
 {
     z-index: 10;
     position: absolute;
-    width: 176px;
+    width: 186px;
     height: 246px;
     margin-left: -5px;
     margin-top: -5px;
@@ -71,7 +71,7 @@ body
 
 .repo-item-shadow
 {
-    width: 176px;
+    width: 186px;
     height: 246px;
     background-color: #000;
     opacity: .3;
