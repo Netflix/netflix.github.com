@@ -15,7 +15,6 @@
 		.repo-item-cover, .repo-item-shadow, .repo-item-button
 		{
 		    width: 176px;
-			height: 236px;
 		}
 	</style>
 	<![endif]-->
@@ -66,8 +65,7 @@
                             repoContent += '<div class="repo-item-field-name">Forks:</div><div class="repo-item-field-value">' + thisRepo.forks + '</div>';
                             repoContent += '<div class="repo-item-field-name">Language:</div><div class="repo-item-field-value">' + thisRepo.language + '</div>';
                             repoContent += '<div class="repo-item-field-name">Open Issues:</div><div class="repo-item-field-value">' + thisRepo.open_issues + '</div>';
-                            repoContent += '<div class="repo-item-field-name">Updated:</div><div class="repo-item-field-value">' + $.format.date(updatedAt, "MM/dd/yy") + '</div>';
-                            repoContent += '<div class="repo-item-field-name">&nbsp;</div><div class="repo-item-field-value">' + $.format.date(updatedAt, "@HH:mm:ss") + '</div>';
+                            repoContent += '<div class="repo-item-field-name">Updated:</div><div class="repo-item-field-value">' + $.format.date(updatedAt, "MM/dd/yy") + '<br>' + $.format.date(updatedAt, "@HH:mm:ss") + '</div>';
                         repoContent += '</div>';
                     repoContent += '</div></a>';
                 }
