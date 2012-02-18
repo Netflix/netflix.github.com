@@ -48,8 +48,6 @@ body
 {
     z-index: 20;
     position: absolute;
-    width: 186px;
-    height: 246px;
     margin-left: -5px;
     margin-top: -5px;
     background-image: url(../assets/player-add.png);
@@ -62,8 +60,6 @@ body
 {
     z-index: 10;
     position: absolute;
-    width: 186px;
-    height: 246px;
     margin-left: -5px;
     margin-top: -5px;
     display: none;
@@ -71,11 +67,15 @@ body
 
 .repo-item-shadow
 {
-    width: 186px;
-    height: 246px;
     background-color: #000;
     opacity: .3;
     filter:alpha(opacity=30); /* For IE8 and earlier */
+}
+
+.repo-item-cover, .repo-item-shadow, .repo-item-button
+{
+    width: 186px;
+	height: 246px;
 }
 
 .repo-item
@@ -254,5 +254,5 @@ body
     margin-top: 0;
     margin-bottom: 0;
     padding: 0;
-    background-color: #D3423E;
+    border-top: 1px solid #D3423E;
 }
