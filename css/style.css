@@ -95,6 +95,7 @@ body
 
 #repo-content
 {
+	position: relative;
     overflow: auto;
     height: 62%;
 }
@@ -200,6 +201,7 @@ body
 
 #info-box
 {
+    z-index: 100;
     width: 100%;
     position: absolute;
     left: 0;
