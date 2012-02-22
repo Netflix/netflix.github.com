@@ -14,8 +14,8 @@
 	<style>
 		.repo-item-cover, .repo-item-shadow, .repo-item-button
 		{
-		    width: 176px;
-			height: 236px;
+		    width: 186px;
+			height: 256px;
 		}
 	</style>
 	<![endif]-->
@@ -43,6 +43,11 @@
             }
             return new Date();
           }
+
+		function resizeRepoContent()
+		{
+			$('#repo-content').css({'height':(($(window).height())-345)+'px'});
+		}
 
         $(function(){
             var repoContent = "";
@@ -91,6 +96,11 @@
                     $(buttonId).hide();
                 });
             }
+
+			$(window).resize(function(){
+			              resizeRepoContent();
+					});
+			resizeRepoContent();
         });
     </script>
 </head>

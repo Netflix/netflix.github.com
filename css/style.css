@@ -25,6 +25,31 @@ body
     height: 60px;
 }
 
+#repo-heading
+{
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 20px;
+    font-weight: bold;
+    font-size: 150%;
+}
+
+#repo-content
+{
+	position: relative;
+    overflow: auto;
+}
+
+#info-box
+{
+    z-index: 100;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 100%;
+	margin-top: -230px;
+}
+
 .header-logo
 {
     padding-top: 12px;
@@ -74,8 +99,8 @@ body
 
 .repo-item-cover, .repo-item-shadow, .repo-item-button
 {
-    width: 186px;
-	height: 246px;
+    width: 196px;
+	height: 266px;
 }
 
 .repo-item
@@ -83,21 +108,14 @@ body
     float: left;
     border: 1px solid #555;
     padding: 5px;
-    width: 176px;
-    height: 236px;
+    width: 186px;
+    height: 256px;
     margin-top: 20px;
     margin-left: 10px;
     margin-right: 20px;
     cursor: pointer;
     background-color: #AAA;
     color: #444;
-}
-
-#repo-content
-{
-	position: relative;
-    overflow: auto;
-    height: 62%;
 }
 
 .repo-color-0
@@ -142,7 +160,7 @@ body
 
 .repo-item-heading
 {
-    height: 110px;
+    height: 140px;
 }
 
 .repo-item-name
@@ -178,15 +196,6 @@ body
     color: #222;
 }
 
-#repo-heading
-{
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 20px;
-    font-weight: bold;
-    font-size: 150%;
-}
-
 #repo-heading a:link, #repo-heading a:visited, #repo-heading a:active
 {
     text-decoration: none;
@@ -199,15 +208,6 @@ body
     text-decoration: underline;
 }
 
-#info-box
-{
-    z-index: 100;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 75%;
-}
-
 #info-box-content
 {
     background-color: #b9090b;
@@ -215,7 +215,7 @@ body
     padding-right: 10px;
     padding-top: 10px;
     color: white;
-    height: 175px;
+    height: 195px;
     margin: 10px;
 }
 
