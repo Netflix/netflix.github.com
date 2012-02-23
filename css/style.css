@@ -47,7 +47,7 @@ body
     position: absolute;
     left: 0;
     top: 100%;
-	margin-top: -230px;
+	margin-top: -180px;
 }
 
 .header-logo
@@ -215,7 +215,7 @@ body
     padding-right: 10px;
     padding-top: 10px;
     color: white;
-    height: 195px;
+    height: 145px;
     margin: 10px;
 }
 
