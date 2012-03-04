@@ -30,6 +30,11 @@
     <script type="text/javascript" src="https://api.github.com/orgs/netflix/repos?callback=repos"></script>
 
     <script type="text/javascript">
+		var ignoreRepos = {
+			'netflix.github.com': true,
+			'exhibitor': true
+		};
+
         function parseISO8601(value) {
             a = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/.exec(value);
             if (a)
@@ -54,7 +59,7 @@
             for ( var i = 0; i < reposTab.length; ++i )
             {
                 var thisRepo = reposTab[i];
-                if ( !thisRepo.private && (thisRepo.name != 'netflix.github.com') )
+                if ( !thisRepo.private && !ignoreRepos[thisRepo.name] )
                 {
                     var updatedAt = parseISO8601(thisRepo.updated_at);
                     var className = 'repo-color-' + (i % 8);
