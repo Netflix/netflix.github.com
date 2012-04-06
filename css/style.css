@@ -258,3 +258,81 @@ body
     padding: 0;
     border-top: 1px solid #D3423E;
 }
+
+#sub-header
+{
+	background-color: #6B6765;
+	border-top: 1px solid #E1E1E1;
+	height: 28px;
+}
+
+.sub-header-item
+{
+	float: left;
+	border-right: 1px solid #E1E1E1;
+	border-left: 1px solid #6B6765;
+	border-bottom: 1px solid #6B6765;
+	color: white;
+	height: 16px;
+	padding: 5px 20px 5px 20px;
+}
+
+#sub-header a:hover .sub-header-item
+{
+	background-color: #E1E1E1;
+	border-top: 1px solid #6B6765;
+	color: #b9090b;
+}
+
+#tab-content-lists
+{
+	display: none;
+}
+
+#lists-content
+{
+	width: 600px;
+	position: absolute;
+	left: 50%;
+	top: 150px;
+	height: 400px;
+	margin-left: -300px;
+	background-image: url(https://netflix.hs.llnwd.net/e1/en_us/layout/page_titles/bgvignette/950w/YourAccountBackGround.jpg);
+	background-position: top left;
+	background-repeat: no-repeat;
+    background-color: #FFF;
+    box-shadow: 2px 2px 2px #888;
+	padding: 10px;
+}
+
+#lists-content-heading
+{
+	color: #3B3B3B;
+	font: bold 18pt/1em arial, helvetica, sans-serif;
+	margin-bottom: 20px;
+}
+
+.lists-content-item
+{
+	background-color: #EFECE8;
+	font-size: 15px;
+	color: black;
+	padding: 10px;
+	height: 75%;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.lists-content-item a:link, .lists-content-item a:visited
+{
+	text-decoration: none;
+	color: #00458B;
+	font-size: 125%;
+}
+
+.lists-content-item a:hover, .lists-content-item a:active
+{
+	text-decoration: underline;
+	color: #b9090b;
+	font-size: 125%;
+}

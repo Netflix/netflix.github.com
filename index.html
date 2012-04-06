@@ -34,6 +34,19 @@
 			'netflix.github.com': true,
 			'exhibitor': true
 		};
+		
+		function showListContent()
+		{
+			$('#tab-content-repo').hide(); 
+			$('#tab-content-lists').show();
+		}
+		
+		function showRepoContent()
+		{
+			$('#tab-content-lists').hide(); 
+			$('#tab-content-repo').show(); 
+			resizeRepoContent();
+		}
 
         function parseISO8601(value) {
             a = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/.exec(value);
@@ -119,11 +132,46 @@
     </div>
 </div>
 
-<div id="repo-heading">
-    <a href="https://github.com/netflix">Our Repositories</a>
-</div>
-<div id="repo-content">
+<div id="sub-header">
+	<a href="#" onClick="showRepoContent(); return false;">
+	<div class="sub-header-item">
+		Repositories
+	</div>
+	</a>
 
+	<a href="#" onClick="showListContent(); return false;">
+	<div class="sub-header-item">
+		Mailing Lists
+	</div>
+	</a>
+</div>
+
+<div id="tab-content-repo">
+	<div id="repo-heading">
+	    <a href="https://github.com/netflix">Our Repositories</a>
+	</div>
+	<div id="repo-content">
+
+	</div>
+</div>
+
+<div id="tab-content-lists">
+	<div id="lists-content">
+		<div id="lists-content-heading">
+			Mailing Lists
+		</div>
+		
+		<div class="lists-content-item">
+			<p>
+			We maintain mailing lists for some of our open source projects. Click on the following
+			links to subscribe and/or maintain your subscriptions.
+			</p>
+			
+			<p>
+				<li><a href="http://maillist.netflix.com/mailman/listinfo/curator-user"><strong><i>Curator</i></strong> Mailing List</a></li>
+			</p>
+		</div>
+	</div>
 </div>
 
 <div id="info-box">
@@ -150,6 +198,7 @@
             <div class="info-box-content-item">
                 <div class="info-box-content-item-line"><a href="http://netflix.github.com/">Netflix Open Source</a></div>
                 <div class="info-box-content-item-line"><a href="https://github.com/Netflix/">Netflix GitHub</a></div>
+                <div class="info-box-content-item-line"><a href="#" onClick="showListContent(); return false;">Mailing Lists</a></div>
                 <div class="info-box-content-item-line">Get in on the fun: <a href="http://www.netflix.com/jobs">Join Us!</a></div>
             </div>
 
