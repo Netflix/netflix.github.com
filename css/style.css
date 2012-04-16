@@ -336,3 +336,8 @@ body
 	color: #b9090b;
 	font-size: 125%;
 }
+
+.lists-content-item li
+{
+	height: 2.5em;
+}
