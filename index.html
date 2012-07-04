@@ -74,7 +74,7 @@
                 if ( !thisRepo.private && !ignoreRepos[thisRepo.name] )
                 {
                     var updatedAt = parseISO8601(thisRepo.updated_at);
-                    var className = 'repo-color-' + (i % 8);
+                    var className = 'repo-color-' + (i % 16);
                     repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
                     repoContent += '<div id="repo-id-' + i + '" class="repo-item ' + className + '">';
                         repoContent += '<div id="repo-cover-id-' + i + '" class="repo-item-cover"><div class="repo-item-shadow"></div></div>';
