@@ -1,0 +1,41 @@
+#tab-content-timeline {
+    display: none;
+    margin: 0;
+}
+svg {
+    background-color: #fff
+}
+.title {
+    font-size: 21px;
+    font-weight: bold;
+    margin: 20px 0px 20px 10px;
+}
+#commits {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.commit {
+    stroke: black;
+    stroke-width: 2px;
+}
+.timeline {
+    stroke: #444;
+    stroke-width: 1px;
+}
+.axis {
+    shape-rendering: crispEdges;
+}
+.x.axis .minor {
+    stroke-opacity: .5;
+}
+.y.axis path {
+    stroke: #fff
+}
+.axis line, .axis path {
+    fill: none;
+    stroke: #000;
+}
+.help {
+    font-size: 16px;
+    margin: 10px 0px 0px 10px;
+}

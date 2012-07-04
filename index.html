@@ -8,8 +8,10 @@
   
     <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.dateFormat-1.0.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/commits.css">
 	<!--[if IE]>
 	<style>
 		.repo-item-cover, .repo-item-shadow, .repo-item-button
@@ -36,16 +38,24 @@
 		
 		function showListContent()
 		{
-			$('#tab-content-repo').hide(); 
+			$('#tab-content-repo').hide();
+            $('#tab-content-timeline').hide();
 			$('#tab-content-lists').show();
 		}
 		
 		function showRepoContent()
 		{
 			$('#tab-content-lists').hide(); 
+            $('#tab-content-timeline').hide();
 			$('#tab-content-repo').show(); 
 			resizeRepoContent();
 		}
+
+        function showTimelineContent() {
+            $('#tab-content-repo').hide(); 
+            $('#tab-content-lists').hide(); 
+            $('#tab-content-timeline').show();
+        }
 
         function parseISO8601(value) {
             a = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2}(?:\.\d*)?)Z$/.exec(value);
@@ -138,6 +148,12 @@
 	</div>
 	</a>
 
+    <a href="#" onClick="showTimelineContent(); return false;">
+    <div class="sub-header-item">
+        Commit Timeline
+    </div>
+    </a>
+
 	<a href="#" onClick="showListContent(); return false;">
 	<div class="sub-header-item">
 		Mailing Lists
@@ -152,6 +168,14 @@
 	<div id="repo-content">
 
 	</div>
+</div>
+
+
+<div id="tab-content-timeline">
+    <div class="title">Netflix OSS GitHub Repositories</div>
+    <div id="commits" orgName="Netflix" top-bottom-padding="380" left-right-padding="40" right-margin="50"></div>
+    <div class="help">Scroll to expand or compress the timelines, drag to shift the timelines earlier or later, and mouse over a timeline to see the committers's names and commit messages.</div>
+    <script type="text/javascript" src="http://javaposseroundup.github.com/d3github/commits.js"></script>
 </div>
 
 <div id="tab-content-lists">
@@ -174,7 +198,6 @@
 		</div>
 	</div>
 </div>
-
 <div id="info-box">
     <div id="info-box-content">
         <div class="info-box-content-item-header">
