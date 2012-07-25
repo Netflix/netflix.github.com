@@ -111,6 +111,11 @@ body
     filter:alpha(opacity=20); /* For IE8 and earlier */
 }
 
+@-moz-document url-prefix()
+{
+    .repo-item-box-shot{top: -245px;}
+}
+
 .repo-item-cover, .repo-item-shadow, .repo-item-button
 {
     width: 196px;
