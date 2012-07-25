@@ -124,6 +124,19 @@
                 });
             }
 
+            for ( i = 0; i < reposTab.length; ++i )
+            {
+                thisRepo = reposTab[i];
+				var imageUrl = 'http://netflix.github.com/' + thisRepo.name + '/box-shot.jpg';
+				var img = new Image();
+			    img.src = imageUrl;
+                img.repoIndex = i;
+			    img.onload = function(){
+                    $('#repo-id-' + this.repoIndex).append('<div class="repo-item-box-shot"></div>');
+                    $('#repo-id-' + this.repoIndex + ' .repo-item-box-shot').css('background-image', 'url(' + this.src + ')');
+                };
+			}
+
 			$(window).resize(function(){
 			              resizeRepoContent();
 					});

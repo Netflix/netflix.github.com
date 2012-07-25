@@ -97,6 +97,20 @@ body
     filter:alpha(opacity=30); /* For IE8 and earlier */
 }
 
+.repo-item-box-shot
+{
+	background-repeat: no-repeat;
+	background-size: 196px 266px; 
+	background-color: white;
+	left: -5px;
+	width: 196px;
+	top: -251px;
+	height: 266px;
+	position: relative;
+    opacity: .20;
+    filter:alpha(opacity=20); /* For IE8 and earlier */
+}
+
 .repo-item-cover, .repo-item-shadow, .repo-item-button
 {
     width: 196px;
