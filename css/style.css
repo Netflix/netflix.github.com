@@ -231,6 +231,7 @@ body
     font-size: 125%;
     margin-bottom: 20px;
     color: #000;
+	font-style: italic;
 }
 
 .repo-item-description
@@ -266,7 +267,7 @@ body
 
 .repo-item-container-with-box-shot
 {
-    font-weight: 600;
+	font-weight: bold;
     text-shadow: 1px 1px #fff;
 }
 
