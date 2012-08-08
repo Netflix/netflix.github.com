@@ -102,6 +102,7 @@ body
 	background-repeat: no-repeat;
 	background-size: 196px 266px; 
 	background-color: white;
+	background-position: center;
 	left: -5px;
 	width: 196px;
 	top: -251px;
@@ -229,30 +230,49 @@ body
     text-transform: capitalize;
     font-size: 125%;
     margin-bottom: 20px;
+    color: #000;
 }
 
 .repo-item-description
 {
-    font-weight: normal;
     text-align: left;
+    color: #000;
 }
 
 .repo-item-field-name
 {
     float: left;
     padding-top: 2px;
+    color: #000;
 }
 
 .repo-item-field-value
 {
     padding-left: 95px;
     padding-top: 2px;
+    color: #000;
 }
 
 .repo-item-anchor:link, .repo-item-anchor:visited, .repo-item-anchor:active
 {
     text-decoration: none;
     color: #222;
+}
+
+.repo-item-container
+{
+    color: #000;
+}
+
+.repo-item-container-with-box-shot
+{
+    font-weight: 600;
+    text-shadow: 1px 1px #fff;
+}
+
+.repo-item-container-with-box-shot .repo-item-name
+{
+    font-weight: bolder;
 }
 
 #repo-heading a:link, #repo-heading a:visited, #repo-heading a:active

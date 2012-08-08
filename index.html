@@ -89,7 +89,7 @@
                     repoContent += '<div id="repo-id-' + i + '" class="repo-item ' + className + '">';
                         repoContent += '<div id="repo-cover-id-' + i + '" class="repo-item-cover"><div class="repo-item-shadow"></div></div>';
                         repoContent += '<div id="repo-button-id-' + i + '" class="repo-item-button"></div>';
-                        repoContent += '<div class="repo-item-container">';
+                        repoContent += '<div id="repo-container-id-' + i + '" class="repo-item-container">';
                             repoContent += '<div class="repo-item-heading">';
                             repoContent += '<div class="repo-item-name">' + thisRepo.name + '</div>';
                             repoContent += '<div class="repo-item-description">' + thisRepo.description + '</div>';
@@ -134,6 +134,8 @@
 			    img.onload = function(){
                     $('#repo-id-' + this.repoIndex).append('<div class="repo-item-box-shot"></div>');
                     $('#repo-id-' + this.repoIndex + ' .repo-item-box-shot').css('background-image', 'url(' + this.src + ')');
+                    $('#repo-id-' + this.repoIndex).css('background-color', '#E1E1E1');
+                    $('#repo-container-id-' + this.repoIndex).addClass('repo-item-container-with-box-shot');
                 };
 			}
 
