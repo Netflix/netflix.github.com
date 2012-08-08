@@ -272,7 +272,7 @@ body
 
 .repo-item-container-with-box-shot .repo-item-name
 {
-    font-weight: bolder;
+    font-weight: bold;
 }
 
 #repo-heading a:link, #repo-heading a:visited, #repo-heading a:active
