@@ -84,12 +84,13 @@
                 if ( !thisRepo.private && !ignoreRepos[thisRepo.name] )
                 {
                     var updatedAt = parseISO8601(thisRepo.updated_at);
-                    var className = 'repo-color-' + (i % 16);
+					var imageUrl = 'http://netflix.github.com/' + thisRepo.name + '/box-shot.jpg';
+
                     repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
-                    repoContent += '<div id="repo-id-' + i + '" class="repo-item ' + className + '">';
+                    repoContent += '<div id="repo-id-' + i + '" class="repo-item">';
                         repoContent += '<div id="repo-cover-id-' + i + '" class="repo-item-cover"><div class="repo-item-shadow"></div></div>';
                         repoContent += '<div id="repo-button-id-' + i + '" class="repo-item-button"></div>';
-                        repoContent += '<div id="repo-container-id-' + i + '" class="repo-item-container">';
+                        repoContent += '<div id="repo-container-id-' + i + '" class="repo-item-container repo-item-container-with-box-shot">';
                             repoContent += '<div class="repo-item-heading">';
                             repoContent += '<div class="repo-item-name">' + thisRepo.name + '</div>';
                             repoContent += '<div class="repo-item-description">' + thisRepo.description + '</div>';
@@ -100,6 +101,7 @@
                             repoContent += '<div class="repo-item-field-name">Open Issues:</div><div class="repo-item-field-value">' + thisRepo.open_issues + '</div>';
                             repoContent += '<div class="repo-item-field-name">Updated:</div><div class="repo-item-field-value">' + $.format.date(updatedAt, "MM/dd/yy") + '<br>' + $.format.date(updatedAt, "@HH:mm:ss") + '</div>';
                         repoContent += '</div>';
+                        repoContent += '<div class="repo-item-box-shot" style="background-image: url(' + imageUrl + ')"></div>';
                     repoContent += '</div></a>';
                 }
             }
@@ -123,21 +125,6 @@
                     $(buttonId).hide();
                 });
             }
-
-            for ( i = 0; i < reposTab.length; ++i )
-            {
-                thisRepo = reposTab[i];
-				var imageUrl = 'http://netflix.github.com/' + thisRepo.name + '/box-shot.jpg';
-				var img = new Image();
-			    img.src = imageUrl;
-                img.repoIndex = i;
-			    img.onload = function(){
-                    $('#repo-id-' + this.repoIndex).append('<div class="repo-item-box-shot"></div>');
-                    $('#repo-id-' + this.repoIndex + ' .repo-item-box-shot').css('background-image', 'url(' + this.src + ')');
-                    $('#repo-id-' + this.repoIndex).css('background-color', '#E1E1E1');
-                    $('#repo-container-id-' + this.repoIndex).addClass('repo-item-container-with-box-shot');
-                };
-			}
 
 			$(window).resize(function(){
 			              resizeRepoContent();
