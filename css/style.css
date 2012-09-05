@@ -66,7 +66,7 @@ body
     font-size: 200%;
     color: white;
     font-weight: bold;
-    text-shadow: 0.1em 0.1em #000;
+    text-shadow: 1px 1px #fff;
 }
 
 .repo-item-button
@@ -149,8 +149,9 @@ body
     text-transform: capitalize;
     font-size: 125%;
     margin-bottom: 20px;
-    color: #000;
+    color: #FF090b;
 	font-style: italic;
+    text-shadow: 1px 1px #fff;
 }
 
 .repo-item-description
