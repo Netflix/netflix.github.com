@@ -35,6 +35,89 @@
 		var ignoreRepos = {
 			'netflix.github.com': true
 		};
+		var showingBalloonIndex = -1;
+		var shouldBeShowingBalloonIndex = -1;
+		
+		function removeBalloon()
+		{
+			$('#balloon-container').hide();
+			$('#balloon-arrow-left').hide();
+			$('#balloon-arrow-right').hide();
+			showingBalloonIndex = -1;
+		}
+
+		function displayBalloon(index)
+		{
+			if ( showingBalloonIndex === index )
+			{
+				return;
+			}
+			showingBalloonIndex = index;
+			
+            var thisRepo = reposTab[index];
+            var updatedAt = parseISO8601(thisRepo.updated_at);
+			var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
+
+			$('#balloon-heading').text(thisRepo.name);
+			$('#balloon-description').html(thisRepo.description + ' ' + '<span class="more-info"><a href="' + thisRepo.html_url + '">More&nbsp;Info</a></span>');
+			$('#balloon-watchers').text(thisRepo.watchers);
+			$('#balloon-forks').text(thisRepo.forks);
+			$('#balloon-language').text(thisRepo.language);
+			$('#balloon-issues').text(thisRepo.open_issues);
+			$('#balloon-updated').text(updatedStr);
+			
+			var windowWidth = $(window).width();
+			var offset = $('#repo-id-' + index).offset();
+			var width = $('#repo-id-' + index).width();
+			
+			if ( offset.left < (windowWidth - 600) )
+			{
+				$('#balloon-container').css('left', offset.left + width + 52);
+				$('#balloon-container').css('top', offset.top + 10);
+				$('#balloon-arrow-left').css('left', offset.left + width + 5);
+				$('#balloon-arrow-left').css('top', offset.top + 50);
+
+				$('#balloon-container').show();
+				$('#balloon-arrow-left').show();
+				$('#balloon-arrow-right').hide();
+			}
+			else
+			{
+				$('#balloon-container').css('left', offset.left - 329);
+				$('#balloon-container').css('top', offset.top + 10);
+				$('#balloon-arrow-right').css('left', offset.left - 38);
+				$('#balloon-arrow-right').css('top', offset.top + 50);
+
+				$('#balloon-container').show();
+				$('#balloon-arrow-left').hide();
+				$('#balloon-arrow-right').show();
+			}
+		}	
+
+		function showBalloon(index)
+		{
+			shouldBeShowingBalloonIndex = index;
+		}
+		
+		function hideBalloon()
+		{
+			shouldBeShowingBalloonIndex = -1;
+		}
+		
+		function adjustBalloon()
+		{
+			if ( shouldBeShowingBalloonIndex != showingBalloonIndex )
+			{
+				if ( shouldBeShowingBalloonIndex < 0 )
+				{
+					removeBalloon();
+				}
+				else
+				{
+					displayBalloon(shouldBeShowingBalloonIndex);
+				}
+			}
+		}
 		
 		function showListContent()
 		{
@@ -83,26 +166,16 @@
                 var thisRepo = reposTab[i];
                 if ( !thisRepo.private && !ignoreRepos[thisRepo.name] )
                 {
-                    var updatedAt = parseISO8601(thisRepo.updated_at);
 					var imageUrl = 'http://netflix.github.com/' + thisRepo.name + '/box-shot.jpg';
 
                     repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
-                    repoContent += '<div id="repo-id-' + i + '" class="repo-item">';
+                    repoContent += '<div class="repo-item-container">';
+                	repoContent += '<div id="repo-container-id-' + i + '" class="repo-item-name">' + thisRepo.name + '</div>';
+                    repoContent += '<div id="repo-id-' + i + '" class="repo-item" style="background-image: url(' + imageUrl + ')">';
                         repoContent += '<div id="repo-cover-id-' + i + '" class="repo-item-cover"><div class="repo-item-shadow"></div></div>';
                         repoContent += '<div id="repo-button-id-' + i + '" class="repo-item-button"></div>';
-                        repoContent += '<div id="repo-container-id-' + i + '" class="repo-item-container repo-item-container-with-box-shot">';
-                            repoContent += '<div class="repo-item-heading">';
-                            repoContent += '<div class="repo-item-name">' + thisRepo.name + '</div>';
-                            repoContent += '<div class="repo-item-description">' + thisRepo.description + '</div>';
-                            repoContent += '</div>';
-                            repoContent += '<div class="repo-item-field-name">Watchers:</div><div class="repo-item-field-value">' + thisRepo.watchers + '</div>';
-                            repoContent += '<div class="repo-item-field-name">Forks:</div><div class="repo-item-field-value">' + thisRepo.forks + '</div>';
-                            repoContent += '<div class="repo-item-field-name">Language:</div><div class="repo-item-field-value">' + thisRepo.language + '</div>';
-                            repoContent += '<div class="repo-item-field-name">Open Issues:</div><div class="repo-item-field-value">' + thisRepo.open_issues + '</div>';
-                            repoContent += '<div class="repo-item-field-name">Updated:</div><div class="repo-item-field-value">' + $.format.date(updatedAt, "MM/dd/yy") + '<br>' + $.format.date(updatedAt, "@HH:mm:ss") + '</div>';
-                        repoContent += '</div>';
-                        repoContent += '<div class="repo-item-box-shot" style="background-image: url(' + imageUrl + ')"></div>';
                     repoContent += '</div></a>';
+                    repoContent += '</div>';
                 }
             }
             $('#repo-content').html(repoContent);
@@ -113,23 +186,33 @@
                 var buttonId = '#repo-button-id-' + i;
                 $('#repo-id-' + i).data('cover-id', coverId);
                 $('#repo-id-' + i).data('button-id', buttonId);
+                $('#repo-id-' + i).data('index', i);
                 $('#repo-id-' + i).hover(function(){
                     var coverId = $(this).data('cover-id');
                     var buttonId = $(this).data('button-id');
+                    var index = $(this).data('index');
                     $(coverId).show();
                     $(buttonId).show();
+					showBalloon(index);
                 }, function(){
                     var coverId = $(this).data('cover-id');
                     var buttonId = $(this).data('button-id');
                     $(coverId).hide();
                     $(buttonId).hide();
+					hideBalloon();
                 });
             }
 
 			$(window).resize(function(){
+					      hideBalloon();
 			              resizeRepoContent();
 					});
 			resizeRepoContent();
+			
+			window.setInterval("adjustBalloon()", 500);
+			$('#balloon-container').hover(function(){
+				shouldBeShowingBalloonIndex = showingBalloonIndex;
+			});
         });
     </script>
 </head>
@@ -171,7 +254,6 @@
 
 	</div>
 </div>
-
 
 <div id="tab-content-timeline">
     <div class="title">Netflix OSS GitHub Repositories</div>
@@ -237,6 +319,39 @@
         </div>
     </div>
 </div>
+
+<div id="balloon-container">
+	<div class="balloon-frame">
+		<div id="balloon-heading"></div>
+	
+		<div id="balloon-content">
+			<div id="balloon-description"></div>
+			<div class="baloon-field">
+				<span class="balloon-label">Watchers: </span>
+				<span id="balloon-watchers"></span>
+			</div>
+			<div class="baloon-field">
+				<span class="balloon-label">Forks: </span>
+				<span id="balloon-forks"></span>
+			</div>
+			<div class="baloon-field">
+				<span class="balloon-label">Language: </span>
+				<span id="balloon-language"></span>
+			</div>
+			<div class="baloon-field">
+				<span class="balloon-label">Open Issues: </span>
+				<span id="balloon-issues"></span>
+			</div>
+			<div class="baloon-field">
+				<span class="balloon-label">Updated: </span>
+				<span id="balloon-updated"></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="balloon-arrow-left"><img src="assets/left-arrow.png" width="47" height="56" border="0" alt=""></div>
+<div id="balloon-arrow-right"><img src="assets/right-arrow.png" width="47" height="55" border="0" alt=""></div>
 
 </body>
 </html>
