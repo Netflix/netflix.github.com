@@ -161,21 +161,25 @@
 
         $(function(){
             var repoContent = "";
+			var backgroundIndex = 0;
             for ( var i = 0; i < reposTab.length; ++i )
             {
                 var thisRepo = reposTab[i];
                 if ( !thisRepo.private && !ignoreRepos[thisRepo.name] )
                 {
-					var imageUrl = 'http://netflix.github.com/' + thisRepo.name + '/box-shot.jpg';
-
                     repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
                     repoContent += '<div class="repo-item-container">';
-                	repoContent += '<div id="repo-container-id-' + i + '" class="repo-item-name">' + thisRepo.name + '</div>';
-                    repoContent += '<div id="repo-id-' + i + '" class="repo-item" style="background-image: url(' + imageUrl + ')">';
+                    repoContent += '<div id="repo-id-' + i + '" class="repo-item repo-item-background-' + backgroundIndex + '">';
                         repoContent += '<div id="repo-cover-id-' + i + '" class="repo-item-cover"><div class="repo-item-shadow"></div></div>';
                         repoContent += '<div id="repo-button-id-' + i + '" class="repo-item-button"></div>';
+                    	repoContent += '<div class="repo-item-name">' + thisRepo.name + "</div>";
                     repoContent += '</div></a>';
                     repoContent += '</div>';
+
+					if ( ++backgroundIndex > 10 )
+					{
+						backgroundIndex = 0;
+					}
                 }
             }
             $('#repo-content').html(repoContent);
@@ -212,6 +216,8 @@
 			window.setInterval("adjustBalloon()", 500);
 			$('#balloon-container').hover(function(){
 				shouldBeShowingBalloonIndex = showingBalloonIndex;
+			}, function(){
+				shouldBeShowingBalloonIndex = -1;
 			});
         });
     </script>

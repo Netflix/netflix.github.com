@@ -27,9 +27,7 @@ body
 
 #repo-heading
 {
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-right: 20px;
+	margin: 20px 20px 8px 10px;
     font-weight: bold;
     font-size: 150%;
 }
@@ -108,6 +106,17 @@ body
     float: left;
 }
 
+.repo-item-name
+{
+	text-align: center;
+	text-transform: capitalize;
+	font-weight: bold;
+	padding-top: 90px;
+	color: #222;
+    text-shadow: 1px 1px white;
+	font-size: 24px;
+}
+
 .repo-item
 {
     border: 1px solid #555;
@@ -120,23 +129,61 @@ body
     cursor: pointer;
     background-color: #FFF;
     color: #444;
-	background-repeat: no-repeat;
-	background-size: 196px 266px; 
-	background-position: center;
 }
 
-.repo-item-name
+.repo-item-background-0
 {
-    color: #FF090b;
-	background-color: #bbb;
-	border: 1px solid black;
-	margin: 12px 20px 0 10px;
-	padding-bottom: 3px;
-    text-shadow: 2px 2px #aaa;
-	font-size: 18px;
-    font-weight: bold;
-	text-align: center;
-	text-transform: capitalize;
+	background-color: #FFA07A;
+}
+
+.repo-item-background-1
+{
+	background-color: #FF7F50;
+}
+
+.repo-item-background-2
+{
+	background-color: #98FB98;
+}
+
+.repo-item-background-3
+{
+	background-color: #FFFACD;
+}
+
+.repo-item-background-4
+{
+	background-color: #B0E0E6;
+}
+
+.repo-item-background-5
+{
+	background-color: #7FFFD4;
+}
+
+.repo-item-background-6
+{
+	background-color: #D8BFD8;
+}
+
+.repo-item-background-7
+{
+	background-color: #F5DEB3;
+}
+
+.repo-item-background-8
+{
+	background-color: #FFF0F5;
+}
+
+.repo-item-background-9
+{
+	background-color: #B0C4DE;
+}
+
+.repo-item-background-10
+{
+	background-color: #DCDCDC;
 }
 
 .repo-item-anchor:link, .repo-item-anchor:visited, .repo-item-anchor:active
