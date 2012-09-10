@@ -10,8 +10,8 @@
     <script type="text/javascript" src="js/jquery.dateFormat-1.0.js"></script>
     <script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/commits.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=201209070710">
+    <link rel="stylesheet" type="text/css" href="css/commits.css?v=201209070710">
 	<!--[if IE]>
 	<style>
 		.repo-item-cover, .repo-item-shadow, .repo-item-button
@@ -161,12 +161,13 @@
 
         $(function(){
             var repoContent = "";
+			var boxArtIndex = 0;
             for ( var i = 0; i < reposTab.length; ++i )
             {
                 var thisRepo = reposTab[i];
                 if ( !thisRepo.private && !ignoreRepos[thisRepo.name] )
                 {
-					var imageUrl = 'http://netflix.github.com/' + thisRepo.name + '/box-shot.jpg';
+					var imageUrl = 'assets/box-art-' + boxArtIndex + '.jpg';
 
                     repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
                     repoContent += '<div class="repo-item-container">';
@@ -176,6 +177,11 @@
                         repoContent += '<div id="repo-button-id-' + i + '" class="repo-item-button"></div>';
                     repoContent += '</div></a>';
                     repoContent += '</div>';
+
+					if ( ++boxArtIndex > 10 )
+					{
+						boxArtIndex = 0;
+					}
                 }
             }
             $('#repo-content').html(repoContent);

@@ -129,7 +129,12 @@ body
 {
     color: #FF090b;
 	background-color: #bbb;
-	border: 1px solid black;
+	border-top: 1px;
+	border-right: 1px;
+	border-left: 1px;
+	border-bottom: 0;
+	border-color: black;
+	border-style: solid;
 	margin: 12px 20px 0 10px;
 	padding-bottom: 3px;
     text-shadow: 2px 2px #aaa;
