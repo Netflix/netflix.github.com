@@ -218,6 +218,8 @@
 			window.setInterval("adjustBalloon()", 500);
 			$('#balloon-container').hover(function(){
 				shouldBeShowingBalloonIndex = showingBalloonIndex;
+			},function(){
+				shouldBeShowingBalloonIndex = -1;
 			});
         });
     </script>
