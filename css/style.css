@@ -34,7 +34,7 @@ body
     font-size: 150%;
 }
 
-#repo-content
+#repo-content, #repo-list-content
 {
 	position: relative;
     overflow: auto;
@@ -379,4 +379,50 @@ body
 {
 	clear: both;
 	margin-bottom: 3px;
+}
+
+#repo-heading img
+{
+	margin-left: 10px;
+}
+
+#repo-heading span
+{
+	margin-right: 10px;
+}
+
+.repo-list-item-container
+{
+	margin: 10px;
+    background-color: #EEE;
+    box-shadow: 2px 2px 2px #888;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.repo-list-item-anchor:link, .repo-list-item-anchor:visited, .repo-list-item-anchor:active
+{
+    text-decoration: none;
+    color: #B9090B;
+	font-weight: bold;
+	text-transform: capitalize;
+	font-size: 1.25em;
+	margin-bottom: 3px;
+}
+
+.repo-list-item-description
+{
+	margin-bottom: 8px;
+	font-style: italic;
+}
+
+.repo-list-item-label
+{
+	float: left;
+	width: 100px;
+}
+
+repo-list-item-value
+{
+	clear: both;
 }
