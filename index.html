@@ -160,11 +160,26 @@
 		}
 
         $(function(){
-        	var imageUrl, imageFileName, boxArtOverride;
-        	var projectsToBoxArtOverrides = {'asgard': 'Independent.jpg'};
+        	var imageUrl, imageFileName, boxArtOverride, i;
+        	var projectsToBoxArtOverrides = {
+        		'astyanax': 'Sci-Fi-and-Fantasy.jpg',
+        		'archaius': 'Anime-and-Animation.jpg',
+                'asgard': 'Family-Animation.jpg',
+                'aws-autoscaling': 'Kids-Music.jpg',
+                'CassJMeter': 'Comedy.jpg',
+                'curator': 'Documentary.jpg',
+                'edda': 'Classics.jpg',
+                'eureka': 'Action-Adventure.jpg',
+                'exhibitor': 'Drama.jpg',
+                'frigga': 'Music-and-Musicals.jpg',
+                'governator': 'Crime-Action.jpg',
+                'Priam': 'Romantic-Comedies.jpg',
+                'servo': 'Animal-Tales.jpg',
+                'SimianArmy': 'Mobster.jpg'
+            };
             var repoContent = "";
 			var boxArtIndex = 0;
-            for ( var i = 0; i < reposTab.length; ++i )
+            for (i = 0; i < reposTab.length; ++i )
             {
                 var thisRepo = reposTab[i];
                 if ( !thisRepo.private && !ignoreRepos[thisRepo.name] )
