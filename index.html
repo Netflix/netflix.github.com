@@ -185,8 +185,16 @@
                 if ( !thisRepo.private && !ignoreRepos[thisRepo.name] )
                 {
                 	boxArtOverride = projectsToBoxArtOverrides[thisRepo.name];
-                	imageFileName = boxArtOverride ? boxArtOverride : 'box-art-' + boxArtIndex + '.jpg';
-					imageUrl = 'assets/' + imageFileName;
+                	if (boxArtOverride) {
+                		imageFileName = boxArtOverride;
+                	} else {
+                		imageFileName = 'box-art-' + boxArtIndex + '.jpg'
+                		boxArtIndex++;
+	                	if (boxArtIndex > 8) {
+							boxArtIndex = 0;
+						}
+                	}
+                	imageUrl = 'assets/' + imageFileName;
 
                     repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
                     repoContent += '<div class="repo-item-container">';
@@ -196,11 +204,6 @@
                         repoContent += '<div id="repo-button-id-' + i + '" class="repo-item-button"></div>';
                     repoContent += '</div></a>';
                     repoContent += '</div>';
-
-					if ( ++boxArtIndex > 10 )
-					{
-						boxArtIndex = 0;
-					}
                 }
             }
             $('#repo-content').html(repoContent);
