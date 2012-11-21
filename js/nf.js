@@ -149,6 +149,7 @@ function buildRepoContent()
 		'archaius': 'Anime-and-Animation.jpg',
         'asgard': 'Family-Animation.jpg',
         'aws-autoscaling': 'Kids-Music.jpg',
+        'blitz4j': 'Boxing.jpg',
         'CassJMeter': 'Comedy.jpg',
         'curator': 'Documentary.jpg',
         'edda': 'Classics.jpg',
