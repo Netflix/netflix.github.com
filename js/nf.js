@@ -174,7 +174,7 @@ function buildRepoContent()
         	} else {
         		imageFileName = 'box-art-' + boxArtIndex + '.jpg'
         		boxArtIndex++;
-            	if (boxArtIndex > 8) {
+            	if (boxArtIndex > 21) {
 					boxArtIndex = 0;
 				}
         	}
