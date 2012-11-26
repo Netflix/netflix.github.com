@@ -156,6 +156,7 @@ function buildRepoContent()
         'eureka': 'Action-Adventure.jpg',
         'exhibitor': 'Drama.jpg',
         'frigga': 'Music-and-Musicals.jpg',
+        'Hystrix': 'Thrillers.jpg',
         'governator': 'Crime-Action.jpg',
         'Priam': 'Romantic-Comedies.jpg',
         'servo': 'Animal-Tales.jpg',
@@ -174,7 +175,7 @@ function buildRepoContent()
         	} else {
         		imageFileName = 'box-art-' + boxArtIndex + '.jpg'
         		boxArtIndex++;
-            	if (boxArtIndex > 21) {
+            	if (boxArtIndex > 20) {
 					boxArtIndex = 0;
 				}
         	}
