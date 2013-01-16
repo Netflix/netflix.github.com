@@ -259,4 +259,6 @@ $(function(){
     },function(){
         shouldBeShowingBalloonIndex = -1;
     });
+
+    $('#year').text(new Date().getFullYear());
 });
