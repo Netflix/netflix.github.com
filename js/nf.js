@@ -159,7 +159,8 @@ function buildRepoContent()
         'Priam': 'Romantic-Comedies.jpg',
         'servo': 'Animal-Tales.jpg',
         'SimianArmy': 'Mobster.jpg',
-        'ribbon': 'box-art-6.jpg'
+        'ribbon': 'box-art-6.jpg',
+		'Hystrix': "Thrillers.jpg"
     };
     var repoContent = "";
 	var boxArtIndex = 0;
