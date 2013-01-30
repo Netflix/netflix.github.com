@@ -1,5 +1,6 @@
 var ignoreRepos = {
-	'netflix.github.com': true
+	'netflix.github.com': true,
+	'netflix-commons': true
 };
 var showingBalloonIndex = -1;
 var shouldBeShowingBalloonIndex = -1;
