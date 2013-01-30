@@ -1,6 +1,7 @@
 var ignoreRepos = {
 	'netflix.github.com': true,
-	'netflix-commons': true
+	'netflix-commons': true,
+	'aws-autoscaling': true
 };
 var showingBalloonIndex = -1;
 var shouldBeShowingBalloonIndex = -1;
