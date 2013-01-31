@@ -24,6 +24,7 @@
 
     <script type="text/javascript">
         var reposTab = {};
+
         function repos(json)
         {
         	var byName, repos;
@@ -35,7 +36,7 @@
         }
     </script>
     <script type="text/javascript" src="http://githubproxy-942908148.us-east-1.elb.amazonaws.com/REST/v1/repos?jsonp=repos"></script>
-    <script type="text/javascript" src="js/nf.js?v=201301152251"></script>
+    <script type="text/javascript" src="js/nf.js?v=2013013082424"></script>
 </head>
 
 <body>
@@ -72,6 +73,7 @@
 	    <span><a href="https://github.com/netflix">Our Repositories</a></span>
 		<a href="#" onclick="repoView(true);"><img src="assets/glyphicons_156_show_thumbnails.png" width="22" height="22" alt="Thumbnails" border="0"></a>
 		<a href="#" onclick="repoView(false);"><img src="assets/glyphicons_114_list.png" width="22" height="22" alt="List" border="0"></a>
+	    <span id="repstats"></span>
 	</div>
 	<div id="repo-content">
 
