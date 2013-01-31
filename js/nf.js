@@ -39,7 +39,7 @@ function displayBalloon(index)
 	}
 	showingBalloonIndex = index;
 	
-    var thisRepo = reposTab[index];
+    var thisRepo = publicReposTab[index];
     var updatedAt = parseISO8601(thisRepo.updated_at);
 	var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
 
@@ -206,7 +206,7 @@ function buildRepoContent()
     }
     $('#repo-content').html(repoContent);
 
-    for ( i = 0; i < reposTab.length; ++i )
+    for ( i = 0; i < publicReposTab.length; ++i )
     {
         var coverId = '#repo-cover-id-' + i;
         var buttonId = '#repo-button-id-' + i;
