@@ -253,6 +253,16 @@ function buildRepoListContent()
     $('#repo-list-content').html(repoListContent);
 }
 
+function setStats()
+{
+	var stats = "";
+	
+	stats = stats + "<div><a href=\"https://github.com/netflix\">" + publicReposTab.length + " public repos</a></div>";
+	stats = stats + "<div><a href=\"https://github.com/Netflix?tab=members\">" + membersTab.length + " members</a></div>";
+	
+	$('#repstats').html(stats);
+}
+
 $(function(){
 	initPublicReposTab();
 	buildRepoContent();
@@ -263,7 +273,7 @@ $(function(){
           resizeRepoContent();
 	});
 	resizeRepoContent();
-	$('#repstats').html("<a href=\"https://github.com/netflix\">" + publicReposTab.length + " public repos</a>");
+	setStats();
 	
 	window.setInterval("adjustBalloon()", 500);
 	$('#balloon-container').hover(function(){
