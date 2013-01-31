@@ -432,4 +432,10 @@ repo-list-item-value
 	float: right;
 	font-size: .75em;
 	font-style: italic;
+	margin-top: -10px;
+}
+
+#repstats div
+{
+	text-align: right;
 }
