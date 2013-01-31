@@ -257,7 +257,7 @@ function setStats()
 {
 	var stats = "";
 	
-	stats = stats + "<div><a href=\"https://github.com/netflix\">" + publicReposTab.length + " public repos</a></div>";
+	stats = stats + "<div><a href=\"https://github.com/Netflix\">" + publicReposTab.length + " public repos</a></div>";
 	stats = stats + "<div><a href=\"https://github.com/Netflix?tab=members\">" + membersTab.length + " members</a></div>";
 	
 	$('#repstats').html(stats);
