@@ -426,3 +426,10 @@ repo-list-item-value
 {
 	clear: both;
 }
+
+#repstats
+{
+	float: right;
+	font-size: .75em;
+	font-style: italic;
+}
