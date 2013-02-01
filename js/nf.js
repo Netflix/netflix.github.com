@@ -1,10 +1,3 @@
-var ignoreRepos = {
-	'netflix.github.com': true,
-	'netflix-commons': true,
-	'aws-autoscaling': true
-};
-var publicReposTab = new Array();
-
 var showingBalloonIndex = -1;
 var shouldBeShowingBalloonIndex = -1;
 
@@ -39,7 +32,7 @@ function displayBalloon(index)
 	}
 	showingBalloonIndex = index;
 	
-    var thisRepo = publicReposTab[index];
+    var thisRepo = reposTab[index];
     var updatedAt = parseISO8601(thisRepo.updated_at);
 	var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
 
@@ -145,45 +138,15 @@ function resizeRepoContent()
 	$('#repo-list-content').css({'height':(($(window).height())-320)+'px'});
 }
 
-function initPublicReposTab()
-{
-    for (var i = 0; i < reposTab.length; ++i )
-    {
-        var thisRepo = reposTab[i];
-        if ( !thisRepo.private && !ignoreRepos[thisRepo.name] )
-		{
-			publicReposTab.push(thisRepo);
-		}
-	}
-}
-
 function buildRepoContent()
 {
 	var imageUrl, imageFileName, boxArtOverride, i;
-	var projectsToBoxArtOverrides = {
-		'astyanax': 'Sci-Fi-and-Fantasy.jpg',
-		'archaius': 'Anime-and-Animation.jpg',
-        'asgard': 'Family-Animation.jpg',
-        'aws-autoscaling': 'Kids-Music.jpg',
-        'CassJMeter': 'Comedy.jpg',
-        'curator': 'Documentary.jpg',
-        'edda': 'Classics.jpg',
-        'eureka': 'Action-Adventure.jpg',
-        'exhibitor': 'Drama.jpg',
-        'frigga': 'Music-and-Musicals.jpg',
-        'governator': 'Crime-Action.jpg',
-        'Priam': 'Romantic-Comedies.jpg',
-        'servo': 'Animal-Tales.jpg',
-        'SimianArmy': 'Mobster.jpg',
-        'ribbon': 'box-art-6.jpg',
-		'Hystrix': "Thrillers.jpg"
-    };
     var repoContent = "";
 	var boxArtIndex = 0;
-    for (i = 0; i < publicReposTab.length; ++i )
+    for (i = 0; i < reposTab.length; ++i )
     {
-        var thisRepo = publicReposTab[i];
-    	boxArtOverride = projectsToBoxArtOverrides[thisRepo.name];
+        var thisRepo = reposTab[i];
+    	boxArtOverride = thisRepo.metadata.boxArt;
     	if (boxArtOverride) {
     		imageFileName = boxArtOverride;
     	} else {
@@ -206,7 +169,7 @@ function buildRepoContent()
     }
     $('#repo-content').html(repoContent);
 
-    for ( i = 0; i < publicReposTab.length; ++i )
+    for ( i = 0; i < reposTab.length; ++i )
     {
         var coverId = '#repo-cover-id-' + i;
         var buttonId = '#repo-button-id-' + i;
@@ -233,9 +196,9 @@ function buildRepoContent()
 function buildRepoListContent()
 {
     var repoListContent = "";
-    for ( i = 0; i < publicReposTab.length; ++i )
+    for ( i = 0; i < reposTab.length; ++i )
 	{
-        var thisRepo = publicReposTab[i];
+        var thisRepo = reposTab[i];
 	    var updatedAt = parseISO8601(thisRepo.updated_at);
 		var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
 
@@ -253,20 +216,35 @@ function buildRepoListContent()
     $('#repo-list-content').html(repoListContent);
 }
 
+function buildRepoMailingListContent()
+{
+    var content = "";
+    for ( i = 0; i < reposTab.length; ++i )
+	{
+        var thisRepo = reposTab[i];
+		if ( thisRepo.metadata.mailingListUrl )
+		{
+			content += '<li><a href="' + thisRepo.metadata.mailingListUrl + '"><strong><i>' + thisRepo.name + '</i></strong> Mailing List</a></li>';
+		}
+	}
+
+    $('#lists-repos').html(content);
+}
+
 function setStats()
 {
 	var stats = "";
 	
-	stats = stats + "<div><a href=\"https://github.com/Netflix\">" + publicReposTab.length + " public repos</a></div>";
+	stats = stats + "<div><a href=\"https://github.com/Netflix\">" + reposTab.length + " public repos</a></div>";
 	stats = stats + "<div><a href=\"https://github.com/Netflix?tab=members\">" + membersTab.length + " members</a></div>";
 	
 	$('#repstats').html(stats);
 }
 
 $(function(){
-	initPublicReposTab();
 	buildRepoContent();
 	buildRepoListContent();
+	buildRepoMailingListContent();
 
 	$(window).resize(function(){
 	      hideBalloon();
