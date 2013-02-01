@@ -439,3 +439,8 @@ repo-list-item-value
 {
 	text-align: right;
 }
+
+#lists-repos
+{
+	text-transform: capitalize;
+}
