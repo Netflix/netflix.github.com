@@ -23,17 +23,15 @@
 	<![endif]-->
 
     <script type="text/javascript">
-        var reposTab = {};
+        var reposTab = [];
         var membersTab = [];
 
         function repos(json)
         {
-        	var byName, repos;
-        	byName = function(a, b) {
-    			return a.name.toUpperCase().localeCompare(b.name.toUpperCase());
-        	};
-            repos = (json.repos && $.isArray(json.repos)) ? json.repos : json.data;
-            reposTab = repos.sort(byName);
+            if ( json.repos && $.isArray(json.repos) )
+            {
+				reposTab = json.repos;
+			}
 			if ( json.members && $.isArray(json.members) )
 			{
 				membersTab = json.members;
@@ -107,13 +105,7 @@
 			links to subscribe and/or maintain your subscriptions.
 			</p>
 			
-			<p>
-				<li><a href="http://groups.google.com/group/AsgardUsers"><strong><i>Asgard</i></strong> Mailing List</a></li>								
-				<li><a href="http://groups.google.com/group/curator-users"><strong><i>Curator</i></strong> Mailing List</a></li>
-				<li><a href="http://groups.google.com/group/exhibitor-users"><strong><i>Exhibitor</i></strong> Mailing List</a></li>		
-				<li><a href="http://groups.google.com/group/simianarmy-users"><strong><i>Simian Army</i></strong> Mailing List</a></li>		
-				<li><a href="http://groups.google.com/group/astyanax-cassandra-client"><strong><i>Astyanax</i></strong> Mailing List</a></li>		
-			</p>
+			<p id="lists-repos"></p>
 		</div>
 	</div>
 </div>
