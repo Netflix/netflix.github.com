@@ -253,6 +253,7 @@ $(function(){
 	resizeRepoContent();
 	setStats();
 	
+	$('#year').text(new Date().getFullYear());
 	window.setInterval("adjustBalloon()", 500);
 	$('#balloon-container').hover(function(){
 		shouldBeShowingBalloonIndex = showingBalloonIndex;
