@@ -1,6 +1,15 @@
 var showingBalloonIndex = -1;
 var shouldBeShowingBalloonIndex = -1;
 
+$.urlParam = function(name){
+    var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (!results)
+    { 
+        return 0; 
+    }
+    return results[1] || 0;
+}
+
 function repoView(thumbView)
 {
 	if ( thumbView )
@@ -32,7 +41,7 @@ function displayBalloon(index)
 	}
 	showingBalloonIndex = index;
 	
-    var thisRepo = reposTab[index];
+    var thisRepo = reposTab[index].repo;
     var updatedAt = parseISO8601(thisRepo.updated_at);
 	var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
 
@@ -145,7 +154,7 @@ function buildRepoContent()
 	var boxArtIndex = 0;
     for (i = 0; i < reposTab.length; ++i )
     {
-        var thisRepo = reposTab[i];
+        var thisRepo = reposTab[i].repo;
     	boxArtOverride = thisRepo.metadata.boxArt;
     	if (boxArtOverride) {
     		imageFileName = boxArtOverride;
@@ -198,7 +207,7 @@ function buildRepoListContent()
     var repoListContent = "";
     for ( i = 0; i < reposTab.length; ++i )
 	{
-        var thisRepo = reposTab[i];
+        var thisRepo = reposTab[i].repo;
 	    var updatedAt = parseISO8601(thisRepo.updated_at);
 		var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
 
@@ -219,9 +228,9 @@ function buildRepoListContent()
 function buildRepoMailingListContent()
 {
     var content = "";
-    for ( i = 0; i < reposTab.length; ++i )
+    for ( var i = 0; i < reposTab.length; ++i )
 	{
-        var thisRepo = reposTab[i];
+        var thisRepo = reposTab[i].repo;
 		if ( thisRepo.metadata.mailingListUrl )
 		{
 			content += '<li><a href="' + thisRepo.metadata.mailingListUrl + '"><strong><i>' + thisRepo.name + '</i></strong> Mailing List</a></li>';
@@ -241,6 +250,25 @@ function setStats()
 	$('#repstats').html(stats);
 }
 
+function handleViewParameter()
+{
+	if ( $.urlParam('view') )
+	{
+		if ( $.urlParam('view') === "repo" )
+		{
+			showRepoContent();
+		}
+		else if ( $.urlParam('view') === "timeline" )
+		{
+			showTimelineContent();
+		}
+		else if ( $.urlParam('view') === "mail" )
+		{
+			showListContent();
+		}
+	}
+}
+
 $(function(){
 	buildRepoContent();
 	buildRepoListContent();
@@ -253,10 +281,13 @@ $(function(){
 	resizeRepoContent();
 	setStats();
 	
+	$('#year').text(new Date().getFullYear());
 	window.setInterval("adjustBalloon()", 500);
 	$('#balloon-container').hover(function(){
 		shouldBeShowingBalloonIndex = showingBalloonIndex;
 	},function(){
 		shouldBeShowingBalloonIndex = -1;
 	});
+	
+	handleViewParameter();
 });
