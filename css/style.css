@@ -449,3 +449,68 @@ repo-list-item-value
 {
 	text-transform: capitalize;
 }
+
+#community-table
+{
+	background-color: white;
+	margin-left: 1%;
+	padding: 10px;
+    font-family: sans-serif;
+	border: none;
+	border-collapse: collapse;
+	width: 98%;
+    box-shadow: 2px 2px 2px #888;
+}
+
+#community-table tr
+{
+	vertical-align: top;
+}
+
+#community-table-content
+{
+	height: 70%;
+	overflow: auto;
+}
+
+.community-netflix-row
+{
+	border-top: none;
+}
+
+.community-netflix-cell
+{
+	font-size: 110%;
+}
+
+.community-item-row-cell-0, .community-item-row-cell-1
+{
+	font-size: 90%;
+}
+
+.community-netflix-cell
+{
+	padding: 6px;
+	font-weight: bold;
+}
+
+.community-netflix-row-secondary
+{
+	border-top: 2px solid #b9090b;
+}
+
+.community-item-row
+{
+	border-top: 1px solid #CCC;
+}
+
+.community-item-row-cell-0
+{
+	padding: 5px 5px 5px 25px;
+	white-space: nowrap;
+}
+
+.community-item-row-cell-1
+{
+	padding: 5px;
+}
