@@ -1,6 +1,15 @@
 var showingBalloonIndex = -1;
 var shouldBeShowingBalloonIndex = -1;
 
+$.urlParam = function(name){
+    var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (!results)
+    { 
+        return 0; 
+    }
+    return results[1] || 0;
+}
+
 function repoView(thumbView)
 {
 	if ( thumbView )
@@ -32,7 +41,7 @@ function displayBalloon(index)
 	}
 	showingBalloonIndex = index;
 	
-    var thisRepo = reposTab[index];
+    var thisRepo = reposTab[index].repo;
     var updatedAt = parseISO8601(thisRepo.updated_at);
 	var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
 
@@ -102,6 +111,7 @@ function showListContent()
 	$('#tab-content-repo').hide();
     $('#tab-content-timeline').hide();
 	$('#tab-content-lists').show();
+	$('#tab-content-community').hide();
 }
 
 function showRepoContent()
@@ -109,6 +119,7 @@ function showRepoContent()
 	$('#tab-content-lists').hide(); 
     $('#tab-content-timeline').hide();
 	$('#tab-content-repo').show(); 
+	$('#tab-content-community').hide();
 	resizeRepoContent();
 }
 
@@ -116,6 +127,16 @@ function showTimelineContent() {
     $('#tab-content-repo').hide(); 
     $('#tab-content-lists').hide(); 
     $('#tab-content-timeline').show();
+	$('#tab-content-community').hide();
+}
+
+function showCommunityContent()
+{
+    $('#tab-content-repo').hide(); 
+    $('#tab-content-lists').hide(); 
+    $('#tab-content-timeline').hide();
+	$('#tab-content-community').show();
+	resizeCommunityContent();
 }
 
 function parseISO8601(value) {
@@ -132,6 +153,11 @@ function parseISO8601(value) {
     return new Date();
   }
 
+function resizeCommunityContent()
+{
+	$('#community-table-content').css({'height':(($(window).height())-350)+'px'});
+}
+
 function resizeRepoContent()
 {
 	$('#repo-content').css({'height':(($(window).height())-320)+'px'});
@@ -145,7 +171,7 @@ function buildRepoContent()
 	var boxArtIndex = 0;
     for (i = 0; i < reposTab.length; ++i )
     {
-        var thisRepo = reposTab[i];
+        var thisRepo = reposTab[i].repo;
     	boxArtOverride = thisRepo.metadata.boxArt;
     	if (boxArtOverride) {
     		imageFileName = boxArtOverride;
@@ -198,7 +224,7 @@ function buildRepoListContent()
     var repoListContent = "";
     for ( i = 0; i < reposTab.length; ++i )
 	{
-        var thisRepo = reposTab[i];
+        var thisRepo = reposTab[i].repo;
 	    var updatedAt = parseISO8601(thisRepo.updated_at);
 		var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
 
@@ -219,9 +245,9 @@ function buildRepoListContent()
 function buildRepoMailingListContent()
 {
     var content = "";
-    for ( i = 0; i < reposTab.length; ++i )
+    for ( var i = 0; i < reposTab.length; ++i )
 	{
-        var thisRepo = reposTab[i];
+        var thisRepo = reposTab[i].repo;
 		if ( thisRepo.metadata.mailingListUrl )
 		{
 			content += '<li><a href="' + thisRepo.metadata.mailingListUrl + '"><strong><i>' + thisRepo.name + '</i></strong> Mailing List</a></li>';
@@ -229,6 +255,80 @@ function buildRepoMailingListContent()
 	}
 
     $('#lists-repos').html(content);
+}
+
+function addOutsideProject(tab, name, netflixName, url, description)
+{
+	var item = {};
+	item.name = name;
+	item.netflixName = netflixName;
+	item.url = url;
+	item.description = description;
+	
+	tab.push(item);
+}
+
+function getRepoUrl(name)
+{
+	name = name.toUpperCase();
+    for ( var i = 0; i < reposTab.length; ++i )
+	{
+        var thisRepo = reposTab[i].repo;
+		if ( thisRepo.name.toUpperCase() == name)
+		{
+			return thisRepo.html_url;
+		}
+	}
+	return "#";
+}
+
+function buildCommunityTable()
+{
+	var outsideProjects = new Array();
+	addOutsideProject(outsideProjects, 'Flux Capacitor', 'Curator', 'https://github.com/cfregly/fluxcapacitor', 'Java-based reference app demonstrating many Netflix Open Source components.');
+	addOutsideProject(outsideProjects, 'Galaxy', 'Curator', 'http://puniverse.github.com/galaxy/about.html', 'A high-performance in-memory data-grid (IMDG) that can serve as a basis for building distributed applications that require fine-tuned control over data placement and/or custom distributed data-structures.');
+	addOutsideProject(outsideProjects, 'Storm', 'Curator', 'https://github.com/nathanmarz/storm', 'A distributed realtime computation system.');
+	addOutsideProject(outsideProjects, 'Apache James Mailbox', 'Curator', 'http://james.apache.org/mailbox/index.html', 'A library providing a flexible Mailbox storage accessible by mail protocols (IMAP4, POP3, SMTP,...) and other protocols.');
+	addOutsideProject(outsideProjects, 'Dubbo', 'Curator', 'http://code.alibabatech.com/wiki/display/dubbo/Home', 'A distributed service framework empowers applications with service import/export capability with high performance RPC.');
+	addOutsideProject(outsideProjects, 'Palomino Benchpress', 'Curator', 'https://github.com/palominolabs/benchpress', 'Distributed load testing tool.');
+	addOutsideProject(outsideProjects, 'Druid', 'Curator', 'https://github.com/metamx/druid', 'Metamarkets Druid Data Store.');
+	addOutsideProject(outsideProjects, 'Chef-ZooKeeper', 'Exhibitor', 'https://github.com/SimpleFinance/chef-zookeeper', 'Installs and configures ZooKeeper and Exhibitor.');
+	addOutsideProject(outsideProjects, 'ZCache', 'Curator', 'https://github.com/NiceSystems/zcache', 'A simple cache implementation on top of ZooKeeper.');
+	addOutsideProject(outsideProjects, 'Titan Graph Database', 'Astyanax', 'https://github.com/thinkaurelius/titan', 'A highly scalable graph database optimized for storing and querying large graphs with billions of vertices and edges distributed across a multi-machine cluster.');
+	
+	outsideProjects.sort(function(rhs, lhs){
+		var i = (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
+		if ( i == 0 )
+		{
+			i = (rhs.name.toUpperCase() < lhs.name.toUpperCase()) ? -1 : ((rhs.name.toUpperCase() > lhs.name.toUpperCase()) ? 1 : 0);
+		}
+		return i;
+	});
+	
+	var content = '';
+	var currentNetflixName = '';
+	
+	for ( var i = 0; i < outsideProjects.length; ++i )
+	{
+		var item = outsideProjects[i];
+		
+		if ( item.netflixName != currentNetflixName )
+		{
+			currentNetflixName = item.netflixName;
+			
+			var netflixRowStyle = (i == 0) ? 'community-netflix-row' : 'community-netflix-row-secondary';
+			content += '<tr class="' + netflixRowStyle + '"><td class="community-netflix-cell" colspan="2">';
+			content += '<a href="' + getRepoUrl(item.netflixName) + '">' + item.netflixName + "</a>";
+			content += '</td></tr>';
+		}
+		
+		content += '<tr class="community-item-row">';
+		content += '<td class="community-item-row-cell-0"><a href="' + item.url + '">' + item.name + "</a></td>";
+		content += '<td class="community-item-row-cell-1">' + item.description + "</td>";
+		content += '</tr>';
+	}
+	
+	$('#community-table').html(content);
 }
 
 function setStats()
@@ -241,14 +341,39 @@ function setStats()
 	$('#repstats').html(stats);
 }
 
+function handleViewParameter()
+{
+	if ( $.urlParam('view') )
+	{
+		if ( $.urlParam('view') === "repo" )
+		{
+			showRepoContent();
+		}
+		else if ( $.urlParam('view') === "timeline" )
+		{
+			showTimelineContent();
+		}
+		else if ( $.urlParam('view') === "mail" )
+		{
+			showListContent();
+		}
+		else if ( $.urlParam('view') === "community" )
+		{
+			showCommunityContent();
+		}
+	}
+}
+
 $(function(){
 	buildRepoContent();
 	buildRepoListContent();
 	buildRepoMailingListContent();
+	buildCommunityTable();
 
 	$(window).resize(function(){
 	      hideBalloon();
           resizeRepoContent();
+		  resizeCommunityContent();
 	});
 	resizeRepoContent();
 	setStats();
@@ -260,4 +385,6 @@ $(function(){
 	},function(){
 		shouldBeShowingBalloonIndex = -1;
 	});
+	
+	handleViewParameter();
 });
