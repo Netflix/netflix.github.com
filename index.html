@@ -38,8 +38,8 @@
 			}
         }
     </script>
-    <script type="text/javascript" src="http://githubproxy-942908148.us-east-1.elb.amazonaws.com/REST/v2?jsonp=repos"></script>
-    <script type="text/javascript" src="js/nf.js?v=2013013082424"></script>
+    <script type="text/javascript" src="http://githubproxy-942908148.us-east-1.elb.amazonaws.com/REST/v2/consolidated?jsonp=repos"></script>
+    <script type="text/javascript" src="js/nf.js?v=201302011222"></script>
 </head>
 
 <body>
@@ -69,6 +69,12 @@
 		Mailing Lists
 	</div>
 	</a>
+
+	<a href="#" onClick="showCommunityContent(); return false;">
+	<div class="sub-header-item">
+		Community
+	</div>
+	</a>
 </div>
 
 <div id="tab-content-repo">
@@ -78,19 +84,16 @@
 		<a href="#" onclick="repoView(false);"><img src="assets/glyphicons_114_list.png" width="22" height="22" alt="List" border="0"></a>
 	    <span id="repstats"></span>
 	</div>
-	<div id="repo-content">
-
-	</div>
-	<div id="repo-list-content">
-
-	</div>
+	<div id="repo-content"></div>
+	<div id="repo-list-content"></div>
 </div>
 
 <div id="tab-content-timeline">
     <div class="title">Netflix OSS GitHub Repositories</div>
     <div id="commits" orgName="Netflix" top-bottom-padding="380" left-right-padding="40" right-margin="50"></div>
     <div class="help">Scroll to expand or compress the timelines, drag to shift the timelines earlier or later, and mouse over a timeline to see the committers's names and commit messages.</div>
-    <script type="text/javascript" src="http://javaposseroundup.github.com/d3github/commits.js"></script>
+    <script type="text/javascript" src="http://javaposseroundup.github.com/d3github/commitsbase.js"></script>
+    <script type="text/javascript" src="js/commits.js?v=201302011222"></script>
 </div>
 
 <div id="tab-content-lists">
@@ -109,6 +112,15 @@
 		</div>
 	</div>
 </div>
+
+<div id="tab-content-community">
+    <div class="title">Netflix OSS is popular! Here are some outside projects that utilize Netflix OSS:</div>
+
+	<div id="community-table-content">
+		<table id="community-table"></table>
+	</div>
+</div>
+
 <div id="info-box">
     <div id="info-box-content">
         <div class="info-box-content-item-header">
