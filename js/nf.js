@@ -112,6 +112,7 @@ function showListContent()
     $('#tab-content-timeline').hide();
 	$('#tab-content-lists').show();
 	$('#tab-content-community').hide();
+	$('#tab-content-powered-by').hide();
 }
 
 function showRepoContent()
@@ -120,6 +121,7 @@ function showRepoContent()
     $('#tab-content-timeline').hide();
 	$('#tab-content-repo').show(); 
 	$('#tab-content-community').hide();
+	$('#tab-content-powered-by').hide();
 	resizeRepoContent();
 }
 
@@ -128,6 +130,7 @@ function showTimelineContent() {
     $('#tab-content-lists').hide(); 
     $('#tab-content-timeline').show();
 	$('#tab-content-community').hide();
+	$('#tab-content-powered-by').hide();
 }
 
 function showCommunityContent()
@@ -136,7 +139,17 @@ function showCommunityContent()
     $('#tab-content-lists').hide(); 
     $('#tab-content-timeline').hide();
 	$('#tab-content-community').show();
+	$('#tab-content-powered-by').hide();
 	resizeCommunityContent();
+}
+
+function showPoweredByContent() {
+    $('#tab-content-repo').hide(); 
+    $('#tab-content-lists').hide(); 
+    $('#tab-content-timeline').hide();
+	$('#tab-content-community').hide();
+	$('#tab-content-powered-by').show();
+	resizePoweredByContent();
 }
 
 function parseISO8601(value) {
@@ -152,6 +165,11 @@ function parseISO8601(value) {
     }
     return new Date();
   }
+
+function resizePoweredByContent()
+{
+	$('#content-powered-by').css({'height':(($(window).height())-310)+'px'});
+}
 
 function resizeCommunityContent()
 {
@@ -184,7 +202,7 @@ function buildRepoContent()
     	}
     	imageUrl = 'assets/' + imageFileName;
 
-        repoContent += '<a class="repo-item-anchor" href="' + thisRepo.html_url + '">';
+        repoContent += '<a class="standard-anchor" href="' + thisRepo.html_url + '">';
         repoContent += '<div class="repo-item-container">';
     	repoContent += '<div id="repo-container-id-' + i + '" class="repo-item-name">' + thisRepo.name + '</div>';
         repoContent += '<div id="repo-id-' + i + '" class="repo-item" style="background-image: url(' + imageUrl + ')">';
@@ -255,6 +273,45 @@ function buildRepoMailingListContent()
 	}
 
     $('#lists-repos').html(content);
+}
+
+function addPoweredBy(tab, name, netflixNames, url, imageUrl, width, height)
+{
+	var item = {};
+	item.name = name;
+	item.netflixNames = netflixNames;
+	item.url = url;
+	item.image = {};
+	item.image.url = imageUrl;
+	item.image.width = width;
+	item.image.height = height;
+	
+	tab.push(item);
+}
+
+function buildPoweredByContent()
+{
+	var poweredBy = new Array();
+	addPoweredBy(poweredBy, "Maginatics", "Curator", "http://maginatics.com/", "assets/powered/maginatics.png", 210, 140);
+	addPoweredBy(poweredBy, "UserEvents", "Curator", "http://www.userevents.com/", "assets/powered/userevents.png", 310, 65);
+	addPoweredBy(poweredBy, "Bazaarvoice", "Curator", "http://www.bazaarvoice.com/", "assets/powered/bazaarvoice.png", 193, 50);
+	addPoweredBy(poweredBy, "OpenSCG", "Curator", "http://www.openscg.com/", "assets/powered/openscg.png", 242, 54);
+	
+	var content = "";
+	for ( var i = 0; i < poweredBy.length; ++i )
+	{
+		var item = poweredBy[i];
+		
+		content += '<div class="powered-by-item" id=powered-by-item-' + i + '>';
+		content += '<a class="standard-anchor" href="' + item.url + '">';
+		content += '<div class="powered-by-item-image">';
+		content += '<img alt="' + item.name + '" src="' + item.image.url + '" width="' + item.image.width + '" height="' + item.image.height + '" border="0">';
+		content += '</div>';
+		content += "</a>";
+		content += '</div>';
+	}
+	
+	$('#content-powered-by').html(content);
 }
 
 function addOutsideProject(tab, name, netflixName, url, description)
@@ -369,6 +426,10 @@ function handleViewParameter()
 		{
 			showCommunityContent();
 		}
+		else if ( $.urlParam('view') === "powered" )
+		{
+			showPoweredByContent();
+		}
 	}
 }
 
@@ -377,11 +438,13 @@ $(function(){
 	buildRepoListContent();
 	buildRepoMailingListContent();
 	buildCommunityTable();
+	buildPoweredByContent();
 
 	$(window).resize(function(){
 	      hideBalloon();
           resizeRepoContent();
 		  resizeCommunityContent();
+		  resizePoweredByContent();
 	});
 	resizeRepoContent();
 	setStats();
