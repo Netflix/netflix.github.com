@@ -358,12 +358,12 @@ function buildCommunityTable()
 	outsideProjects.push(new OutsideProject('Bazaarvoice Curator Extensions', 'Curator', 'https://github.com/bazaarvoice/curator-extensions', 'Helpers that extend the functionality of Curator.'));
 		
 	outsideProjects.sort(function(rhs, lhs){
-		var i = (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
-		if ( i == 0 )
+		var diff = (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
+		if ( diff == 0 )
 		{
-			i = (rhs.name.toUpperCase() < lhs.name.toUpperCase()) ? -1 : ((rhs.name.toUpperCase() > lhs.name.toUpperCase()) ? 1 : 0);
+			diff = (rhs.name.toUpperCase() < lhs.name.toUpperCase()) ? -1 : ((rhs.name.toUpperCase() > lhs.name.toUpperCase()) ? 1 : 0);
 		}
-		return i;
+		return diff;
 	});
 	
 	var content = '';
@@ -457,8 +457,26 @@ function buildAroundTheWeb()
 
 	webLinks.push(new WebLink('Blitz4J', 'Netflix Log4J Optimizations Yield Logging at Massive Scale', 'http://www.infoq.com/news/2012/12/bitz4j-netflix'));
 
+	webLinks.push(new WebLink('Hystrix', 'Gigaom: Netflix Open Sources Tool for Making Cloud Services Play Nice', 'http://gigaom.com/cloud/netflix-open-sources-tool-for-making-cloud-services-play-nice/'));
+	webLinks.push(new WebLink('Hystrix', 'TechCrunch: Netflix Releases Hystrix, A Service For Making Apps in the Cloud More Resilient', 'http://techcrunch.com/2012/11/26/netflix-releases-hystrix-a-service-for-making-apps-in-the-cloud-more-resilient/'));
+	webLinks.push(new WebLink('Hystrix', 'SlashDot: Netflix Gives Data Center Tools to Fail', 'http://slashdot.org/topic/datacenter/netflix-gives-data-center-tools-to-fail/'));
+	webLinks.push(new WebLink('Hystrix', 'ZDNet: Netflix Open Sources Resiliency Tools for Distributed Services', 'http://www.zdnet.com/netflix-open-sources-resiliency-tools-for-distributed-services-7000007963/'));
+	webLinks.push(new WebLink('Hystrix', 'ProgrammableWeb: Today In APIs: Netflix Hystrix...', 'http://blog.programmableweb.com/2012/11/27/today-in-apis-netflix-hystrix-zeit-api-and-23-new-apis/'));
+	webLinks.push(new WebLink('Hystrix', 'H-Online: Netflix Open Sources Hystrix Resiliency Library', 'http://www.h-online.com/open/news/item/Netflix-open-sources-Hystrix-resilience-library-1757427.html'));
+	webLinks.push(new WebLink('Hystrix', 'The Web Hosting Industry Review: New Netflix Open Source Technology Hystrix Improves Cloud Resiliency, Uptime', 'http://www.thewhir.com/web-hosting-news/new-netflix-open-source-technology-hystrix-improves-cloud-resiliency-uptime'));
+	webLinks.push(new WebLink('Hystrix', 'World TV/PC: Netflix in Hystrix With New Open Source Safeguard Service', 'http://www.worldtvpc.com/blog/netflix-in-hysterix-with-new-open-source-safeguard-service/'));
+	webLinks.push(new WebLink('Hystrix', 'Netflix open-sources Hystrix to boost global cloud performance and stability', 'http://www.extremetech.com/internet/141594-netflix-open-sources-hystrix-to-boost-global-cloud-performance-and-stability'));
+	webLinks.push(new WebLink('Hystrix', 'InfoQ: Netflix Hystrix - Latency and Fault Tolerance for Complex Distributed Systems', 'http://www.infoq.com/news/2012/12/netflix-hystrix-fault-tolerance'));
+	webLinks.push(new WebLink('Hystrix', 'InfoQ: Netflix Hystrix - Latency and Fault Tolerance for Complex Distributed Systems (InfoQ China)', 'http://www.infoq.com/cn/news/2013/01/netflix-hystrix-fault-tolerance'));
+	webLinks.push(new WebLink('Hystrix', 'InfoQ: Netflix Hystrix - Latency and Fault Tolerance for Complex Distributed Systems (InfoQ Japan)', 'http://www.infoq.com/jp/news/2012/12/netflix-hystrix-fault-tolerance'));
+	
 	webLinks.sort(function(rhs, lhs){
-		return (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
+		var diff = (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
+		if ( diff == 0 )
+		{
+			diff = (rhs.text.toUpperCase() < lhs.text.toUpperCase()) ? -1 : ((rhs.text.toUpperCase() > lhs.text.toUpperCase()) ? 1 : 0);
+		}
+		return diff
 	});
 
 	var content = '';
