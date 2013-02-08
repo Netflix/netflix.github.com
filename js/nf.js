@@ -168,7 +168,7 @@ function parseISO8601(value) {
 
 function resizePoweredByContent()
 {
-	$('#content-powered-by').css({'height':(($(window).height())-310)+'px'});
+	$('#content-powered-by').css({'height':(($(window).height())-350)+'px'});
 }
 
 function resizeCommunityContent()
@@ -296,7 +296,7 @@ function buildPoweredByContent()
 	addPoweredBy(poweredBy, "UserEvents", "Curator", "http://www.userevents.com/", "assets/powered/userevents.png", 310, 65);
 	addPoweredBy(poweredBy, "Bazaarvoice", "Curator", "http://www.bazaarvoice.com/", "assets/powered/bazaarvoice.png", 193, 50);
 	addPoweredBy(poweredBy, "OpenSCG", "Curator", "http://www.openscg.com/", "assets/powered/openscg.png", 242, 54);
-	
+
 	var content = "";
 	for ( var i = 0; i < poweredBy.length; ++i )
 	{
