@@ -235,6 +235,7 @@ td a:hover
 	background-color: #6B6765;
 	border-top: 1px solid #E1E1E1;
 	height: 28px;
+	overflow: hidden;
 }
 
 .sub-header-item
@@ -525,7 +526,7 @@ repo-list-item-value
 
 .display-table-item-row-cell-0
 {
-	padding: 5px 5px 5px 25px;
+	padding: 5px 10px 5px 25px;
 	white-space: nowrap;
 }
 
