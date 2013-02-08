@@ -1,6 +1,29 @@
 var showingBalloonIndex = -1;
 var shouldBeShowingBalloonIndex = -1;
 
+function TabSpec(code, id, text)
+{
+	this.code = code;
+	this.id = id;
+	this.text = text;
+}
+
+var TAB_CODE_REPOS = "repo";
+var TAB_CODE_TIMELINE = "timeline";
+var TAB_CODE_MAILING_LISTS = "mail";
+var TAB_CODE_COMMUNITY = "community";
+var TAB_CODE_POWERED_BY = "powered";
+var TAB_CODE_WEB = "web";
+
+var tabs = [
+	new TabSpec(TAB_CODE_REPOS, "tab-content-repo", "Repositories"),
+	new TabSpec(TAB_CODE_TIMELINE, "tab-content-timeline", "Commit Timeline"),
+	new TabSpec(TAB_CODE_MAILING_LISTS, "tab-content-lists", "Mailing Lists"),
+	new TabSpec(TAB_CODE_COMMUNITY, "tab-content-community", "Community"),
+	new TabSpec(TAB_CODE_POWERED_BY, "tab-content-powered-by", "Powered By"),
+	new TabSpec(TAB_CODE_WEB, "tab-content-web", "Around the Web")
+];
+
 $.urlParam = function(name){
     var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (!results)
@@ -106,50 +129,37 @@ function adjustBalloon()
 	}
 }
 
-function showListContent()
+function showTab(which)
 {
-	$('#tab-content-repo').hide();
-    $('#tab-content-timeline').hide();
-	$('#tab-content-lists').show();
-	$('#tab-content-community').hide();
-	$('#tab-content-powered-by').hide();
-}
-
-function showRepoContent()
-{
-	$('#tab-content-lists').hide(); 
-    $('#tab-content-timeline').hide();
-	$('#tab-content-repo').show(); 
-	$('#tab-content-community').hide();
-	$('#tab-content-powered-by').hide();
-	resizeRepoContent();
-}
-
-function showTimelineContent() {
-    $('#tab-content-repo').hide(); 
-    $('#tab-content-lists').hide(); 
-    $('#tab-content-timeline').show();
-	$('#tab-content-community').hide();
-	$('#tab-content-powered-by').hide();
-}
-
-function showCommunityContent()
-{
-    $('#tab-content-repo').hide(); 
-    $('#tab-content-lists').hide(); 
-    $('#tab-content-timeline').hide();
-	$('#tab-content-community').show();
-	$('#tab-content-powered-by').hide();
-	resizeCommunityContent();
-}
-
-function showPoweredByContent() {
-    $('#tab-content-repo').hide(); 
-    $('#tab-content-lists').hide(); 
-    $('#tab-content-timeline').hide();
-	$('#tab-content-community').hide();
-	$('#tab-content-powered-by').show();
-	resizePoweredByContent();
+	var showId = null;
+	for ( var i = 0; i < tabs.length; ++i )
+	{
+		if ( tabs[i].code === which )
+		{
+			showId = tabs[i].id;
+			break;
+		}
+	}
+	
+	if ( showId )
+	{
+		for ( var i = 0; i < tabs.length; ++i )
+		{
+			if ( tabs[i].id === showId )
+			{
+				$('#' + tabs[i].id).show();
+			}
+			else
+			{
+				$('#' + tabs[i].id).hide();
+			}
+		}
+		doResizing();
+	}
+	else
+	{
+		showTab(TAB_CODE_REPOS);
+	}
 }
 
 function parseISO8601(value) {
@@ -165,22 +175,6 @@ function parseISO8601(value) {
     }
     return new Date();
   }
-
-function resizePoweredByContent()
-{
-	$('#content-powered-by').css({'height':(($(window).height())-350)+'px'});
-}
-
-function resizeCommunityContent()
-{
-	$('#community-table-content').css({'height':(($(window).height())-350)+'px'});
-}
-
-function resizeRepoContent()
-{
-	$('#repo-content').css({'height':(($(window).height())-320)+'px'});
-	$('#repo-list-content').css({'height':(($(window).height())-320)+'px'});
-}
 
 function buildRepoContent()
 {
@@ -289,13 +283,24 @@ function addPoweredBy(tab, name, netflixNames, url, imageUrl, width, height)
 	tab.push(item);
 }
 
+function PoweredBySpec(name, netflixNames, url, imageUrl, width, height)
+{
+	this.name = name;
+	this.netflixNames = netflixNames;
+	this.url = url;
+	this.image = {};
+	this.image.url = imageUrl;
+	this.image.width = width;
+	this.image.height = height;
+}
+
 function buildPoweredByContent()
 {
 	var poweredBy = new Array();
-	addPoweredBy(poweredBy, "Maginatics", "Curator", "http://maginatics.com/", "assets/powered/maginatics.png", 210, 140);
-	addPoweredBy(poweredBy, "UserEvents", "Curator", "http://www.userevents.com/", "assets/powered/userevents.png", 310, 65);
-	addPoweredBy(poweredBy, "Bazaarvoice", "Curator", "http://www.bazaarvoice.com/", "assets/powered/bazaarvoice.png", 193, 50);
-	addPoweredBy(poweredBy, "OpenSCG", "Curator", "http://www.openscg.com/", "assets/powered/openscg.png", 242, 54);
+	poweredBy.push(new PoweredBySpec("Maginatics", "Curator", "http://maginatics.com/", "assets/powered/maginatics.png", 210, 140));
+	poweredBy.push(new PoweredBySpec("UserEvents", "Curator", "http://www.userevents.com/", "assets/powered/userevents.png", 310, 65));
+	poweredBy.push(new PoweredBySpec("Bazaarvoice", "Curator", "http://www.bazaarvoice.com/", "assets/powered/bazaarvoice.png", 193, 50));
+	poweredBy.push(new PoweredBySpec("OpenSCG", "Curator", "http://www.openscg.com/", "assets/powered/openscg.png", 242, 54));
 
 	var content = "";
 	for ( var i = 0; i < poweredBy.length; ++i )
@@ -314,24 +319,13 @@ function buildPoweredByContent()
 	$('#content-powered-by').html(content);
 }
 
-function addOutsideProject(tab, name, netflixName, url, description)
-{
-	var item = {};
-	item.name = name;
-	item.netflixName = netflixName;
-	item.url = url;
-	item.description = description;
-	
-	tab.push(item);
-}
-
 function getRepoUrl(name)
 {
 	name = name.toUpperCase();
     for ( var i = 0; i < reposTab.length; ++i )
 	{
         var thisRepo = reposTab[i].repo;
-		if ( thisRepo.name.toUpperCase() == name)
+		if ( thisRepo.name.toUpperCase() == name )
 		{
 			return thisRepo.html_url;
 		}
@@ -339,21 +333,29 @@ function getRepoUrl(name)
 	return "#";
 }
 
+function OutsideProject(name, netflixName, url, description)
+{
+	this.name = name;
+	this.netflixName = netflixName;
+	this.url = url;
+	this.description = description;
+}
+
 function buildCommunityTable()
 {
 	var outsideProjects = new Array();
-	addOutsideProject(outsideProjects, 'Flux Capacitor', '', 'https://github.com/cfregly/fluxcapacitor', 'Java-based reference app demonstrating many Netflix Open Source components.');
+	outsideProjects.push(new OutsideProject('Flux Capacitor', '', 'https://github.com/cfregly/fluxcapacitor', 'Java-based reference app demonstrating many Netflix Open Source components.'));
 	
-	addOutsideProject(outsideProjects, 'Galaxy', 'Curator', 'http://puniverse.github.com/galaxy/about.html', 'A high-performance in-memory data-grid (IMDG) that can serve as a basis for building distributed applications that require fine-tuned control over data placement and/or custom distributed data-structures.');
-	addOutsideProject(outsideProjects, 'Storm', 'Curator', 'https://github.com/nathanmarz/storm', 'A distributed realtime computation system.');
-	addOutsideProject(outsideProjects, 'Apache James Mailbox', 'Curator', 'http://james.apache.org/mailbox/index.html', 'A library providing a flexible Mailbox storage accessible by mail protocols (IMAP4, POP3, SMTP,...) and other protocols.');
-	addOutsideProject(outsideProjects, 'Dubbo', 'Curator', 'http://code.alibabatech.com/wiki/display/dubbo/Home', 'A distributed service framework empowers applications with service import/export capability with high performance RPC.');
-	addOutsideProject(outsideProjects, 'Palomino Benchpress', 'Curator', 'https://github.com/palominolabs/benchpress', 'Distributed load testing tool.');
-	addOutsideProject(outsideProjects, 'Druid', 'Curator', 'https://github.com/metamx/druid', 'Metamarkets Druid Data Store.');
-	addOutsideProject(outsideProjects, 'Chef-ZooKeeper', 'Exhibitor', 'https://github.com/SimpleFinance/chef-zookeeper', 'Installs and configures ZooKeeper and Exhibitor.');
-	addOutsideProject(outsideProjects, 'ZCache', 'Curator', 'https://github.com/NiceSystems/zcache', 'A simple cache implementation on top of ZooKeeper.');
-	addOutsideProject(outsideProjects, 'Titan Graph Database', 'Astyanax', 'https://github.com/thinkaurelius/titan', 'A highly scalable graph database optimized for storing and querying large graphs with billions of vertices and edges distributed across a multi-machine cluster.');
-	addOutsideProject(outsideProjects, 'Bazaarvoice Curator Extensions', 'Curator', 'https://github.com/bazaarvoice/curator-extensions', 'Helpers that extend the functionality of Curator.');
+	outsideProjects.push(new OutsideProject('Galaxy', 'Curator', 'http://puniverse.github.com/galaxy/about.html', 'A high-performance in-memory data-grid (IMDG) that can serve as a basis for building distributed applications that require fine-tuned control over data placement and/or custom distributed data-structures.'));
+	outsideProjects.push(new OutsideProject('Storm', 'Curator', 'https://github.com/nathanmarz/storm', 'A distributed realtime computation system.'));
+	outsideProjects.push(new OutsideProject('Apache James Mailbox', 'Curator', 'http://james.apache.org/mailbox/index.html', 'A library providing a flexible Mailbox storage accessible by mail protocols (IMAP4, POP3, SMTP,...) and other protocols.'));
+	outsideProjects.push(new OutsideProject('Dubbo', 'Curator', 'http://code.alibabatech.com/wiki/display/dubbo/Home', 'A distributed service framework empowers applications with service import/export capability with high performance RPC.'));
+	outsideProjects.push(new OutsideProject('Palomino Benchpress', 'Curator', 'https://github.com/palominolabs/benchpress', 'Distributed load testing tool.'));
+	outsideProjects.push(new OutsideProject('Druid', 'Curator', 'https://github.com/metamx/druid', 'Metamarkets Druid Data Store.'));
+	outsideProjects.push(new OutsideProject('Chef-ZooKeeper', 'Exhibitor', 'https://github.com/SimpleFinance/chef-zookeeper', 'Installs and configures ZooKeeper and Exhibitor.'));
+	outsideProjects.push(new OutsideProject('ZCache', 'Curator', 'https://github.com/NiceSystems/zcache', 'A simple cache implementation on top of ZooKeeper.'));
+	outsideProjects.push(new OutsideProject('Titan Graph Database', 'Astyanax', 'https://github.com/thinkaurelius/titan', 'A highly scalable graph database optimized for storing and querying large graphs with billions of vertices and edges distributed across a multi-machine cluster.'));
+	outsideProjects.push(new OutsideProject('Bazaarvoice Curator Extensions', 'Curator', 'https://github.com/bazaarvoice/curator-extensions', 'Helpers that extend the functionality of Curator.'));
 		
 	outsideProjects.sort(function(rhs, lhs){
 		var i = (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
@@ -375,8 +377,8 @@ function buildCommunityTable()
 		{
 			currentNetflixName = item.netflixName;
 			
-			var netflixRowStyle = (i == 0) ? 'community-netflix-row' : 'community-netflix-row-secondary';
-			content += '<tr class="' + netflixRowStyle + '"><td class="community-netflix-cell" colspan="2">';
+			var netflixRowStyle = (i == 0) ? 'display-table-row' : 'display-table-row-secondary';
+			content += '<tr class="' + netflixRowStyle + '"><td class="display-table-cell" colspan="2">';
 			if ( item.netflixName.length > 0 )
 			{
 				content += '<a href="' + getRepoUrl(item.netflixName) + '">' + item.netflixName + "</a>";
@@ -388,13 +390,100 @@ function buildCommunityTable()
 			content += '</td></tr>';
 		}
 		
-		content += '<tr class="community-item-row">';
-		content += '<td class="community-item-row-cell-0"><a href="' + item.url + '">' + item.name + "</a></td>";
-		content += '<td class="community-item-row-cell-1">' + item.description + "</td>";
+		content += '<tr class="display-table-item-row">';
+		content += '<td class="display-table-item-row-cell-0"><a href="' + item.url + '">' + item.name + "</a></td>";
+		content += '<td class="display-table-item-row-cell-1">' + item.description + "</td>";
 		content += '</tr>';
 	}
 	
 	$('#community-table').html(content);
+}
+
+function WebLink(netflixName, text, url)
+{
+	this.text = text;
+	this.url = url;
+	this.netflixName = netflixName;
+}
+
+function buildAroundTheWeb()
+{
+	var webLinks = new Array();
+
+	webLinks.push(new WebLink('Asgard', 'Amazon Web Services Blog: New From Netflix - Asgard for Cloud Management and Deployment', 'http://aws.typepad.com/aws/2012/06/new-from-netflix-asgard-for-cloud-management-and-deployment.html'));
+	webLinks.push(new WebLink('Asgard', 'PCWorld: Netflix Releases Customized Amazon Control Console', 'http://www.pcworld.com/businesscenter/article/258344/netflix_releases_customized_amazon_control_console.html'));
+	webLinks.push(new WebLink('Asgard', 'GigaOM: Netflix open sources Asgard cloud deployment smarts', 'http://gigaom.com/cloud/netflix-open-sources-asgard-cloud-deployment-smarts/'));
+	webLinks.push(new WebLink('Asgard', 'Real User Monitoring Blog: Netflix Offers More Open Source Goodness with Asgard Cloud Deployment Tool', 'http://www.real-user-monitoring.com/netflix-offers-more-open-source-goodness-with-asgard-cloud-deployment-tool/'));
+	webLinks.push(new WebLink('Asgard', 'Data Center Knowledge: Netflix releases Asgard to open source', 'http://www.datacenterknowledge.com/archives/2012/06/26/cloud-news-fujitsu-eucalyptus-netflix-oracle/'));
+	webLinks.push(new WebLink('Asgard', 'MSPNews: Netflix Launches Asgard Open Source Cloud Control for Amazon', 'http://www.mspnews.com/channels/cloud/articles/296735-netflix-launches-asgard-open-source-cloud-control-amazon.htm'));
+
+	webLinks.push(new WebLink('Astyanax', 'Brian ONeill\'s Blog: Compound/Composite Keys: Connecting the dots between CQL3, Astyanax and Hector', 'http://brianoneill.blogspot.com/2012/09/composite-keys-connecting-dots-between.html'));
+	webLinks.push(new WebLink('Astyanax', 'DZone: CQL, Astyanax and Compound/Composite Keys: Writing Data', 'http://java.dzone.com/articles/cql-astyanax-and'));
+
+	webLinks.push(new WebLink('SimianArmy', 'Forbes: Netflix Releases Free Infrastructure Failure Testing Software "Chaos Monkey" To Public', 'http://www.forbes.com/sites/reuvencohen/2012/07/30/netflix-releases-free-infrastructure-failure-testing-software-chaos-monkey-to-public/'));
+	webLinks.push(new WebLink('SimianArmy', 'Coding Horror: Working with the Chaos Monkey', 'http://www.codinghorror.com/blog/2011/04/working-with-the-chaos-monkey.html'));
+	webLinks.push(new WebLink('SimianArmy', 'Ars Technica: Netflix attacks own network with "Chaos Monkey"---and now you can too', 'http://arstechnica.com/information-technology/2012/07/netflix-attacks-own-network-with-chaos-monkey-and-now-you-can-too/'));
+	webLinks.push(new WebLink('SimianArmy', 'IT World:Open source Chaos Monkey brings order to cloud', 'http://www.itworld.com/cloud-computing/288039/open-source-chaos-monkey-brings-order-cloud'));
+	webLinks.push(new WebLink('SimianArmy', 'Information Week: Netflix Wants You To Adopt Chaos Monkey', 'http://www.informationweek.com/smb/security/netflix-wants-you-to-adopt-chaos-monkey/240004829'));
+	webLinks.push(new WebLink('SimianArmy', 'Network World: Netflix uncages Chaos Monkey disaster testing system', 'http://www.networkworld.com/news/2012/073012-chaos-monkey-261279.html'));
+	webLinks.push(new WebLink('SimianArmy', 'GigaOM: Netflix open sources cloud-testing Chaos Monkey', 'http://gigaom.com/cloud/netflix-open-sources-cloud-testing-chaos-monkey/'));
+	webLinks.push(new WebLink('SimianArmy', 'TechCrunch: Netflix Open Sources Chaos Monkey -- A Tool Designed To Cause Failure So You Can Make A Stronger Cloud', 'http://techcrunch.com/2012/07/30/netflix-open-sources-chaos-monkey-a-tool-designed-to-cause-failure-so-you-can-make-a-stronger-cloud/'));
+	webLinks.push(new WebLink('SimianArmy', 'The Verge:Netflix releases "Chaos Monkey" code to help developers defend against outages', 'http://www.theverge.com/2012/7/30/3205402/netflix-chaos-monkey-code-developers-amazon-web-services'));
+	webLinks.push(new WebLink('SimianArmy', 'Tech News World: Netflix Releases Chaos Monkey Into the Wild', 'http://www.technewsworld.com/story/75780.html'));
+	webLinks.push(new WebLink('SimianArmy', 'Read Write Web: Chaos Monkey: How Netflix Uses Random Failure to Ensure Success', 'http://www.readwriteweb.com/cloud/2010/12/chaos-monkey-how-netflix-uses.php'));
+	webLinks.push(new WebLink('SimianArmy', 'InfoQ: Netflix Unleashes Chaos Monkey as its Latest Open Source Tool', 'http://www.infoq.com/news/2012/07/chaos-monkey'));
+	webLinks.push(new WebLink('SimianArmy', 'Gigaom: Netflix open sources tool to clean up your AWS cloud', 'http://gigaom.com/cloud/netflix-open-sources-tool-to-clean-up-your-aws-cloud/'));
+	webLinks.push(new WebLink('SimianArmy', 'The Web Hosting Industry Review: Netflix Open Sources Janitor Monkey Tool that Cleans Up Unused AWS Cloud Resources', 'http://www.thewhir.com/web-hosting-news/netflix-open-sources-janitor-monkey-tool-that-cleans-up-unused-aws-cloud-resources'));
+	webLinks.push(new WebLink('SimianArmy', 'Network World: Netflix open sources Janitor Monkey to help tidy up unused Amazon cloud resources', 'http://www.networkworld.com/news/2013/010413-janitor-monkey-netflix-265504.html'));
+	webLinks.push(new WebLink('SimianArmy', 'DatacenterDynamics:Netflix makes cloud Janitor Monkey open source', 'http://www.datacenterdynamics.com/focus/archive/2013/01/netflix-makes-cloud-janitor-monkey-open-source'));
+	
+	webLinks.push(new WebLink('Curator', 'Netflix Curator for Zookeeper', 'http://www.youtube.com/watch?v=8e9bnaPw5RI'));
+	webLinks.push(new WebLink('Curator', 'Introduction to ZooKeeper -- TriHUG May 22, 2012', 'http://www.slideshare.net/mumrah/introduction-to-zookeeper-trihug-may-22-2012'));
+	webLinks.push(new WebLink('Curator', 'Configuring the Cluster Component', 'http://puniverse.github.com/galaxy/manual/config/config-cluster.html'));
+	webLinks.push(new WebLink('Curator', 'Using Netflix Curator for Service Discovery', 'http://blog.palominolabs.com/2012/08/14/using-netflix-curator-for-service-discovery/'));
+	webLinks.push(new WebLink('Curator', 'Stay in sync with Apache Zookeeper', 'http://funnel.hasgeek.com/rootconf/338-stay-in-sync-with-apache-zookeeper'));
+	webLinks.push(new WebLink('Curator', 'Lesson in Distributed Computing with Apache ZooKeeper (German)', 'http://www.java-forum-stuttgart.de/jfs/2012/folien/A6.pdf'));
+	webLinks.push(new WebLink('Curator', 'Dataweek Keynote: Large Scale Search, Discovery and Analysis in Action (Slides 23/24)', 'http://www.slideshare.net/iprovalo/data-week-lucidworks'));
+	webLinks.push(new WebLink('Curator', 'Hadoop: The Definitive Guide - 3rd Edition (page 522)', 'http://www.amazon.com/Hadoop-Definitive-Guide-Tom-White/dp/1449311520/ref=pd_sim_b_1'));
+	webLinks.push(new WebLink('Curator', 'Curator Framework: Reducing the Complexity of Building Distributed Systems', 'http://www.optify.net/marketing-technology/curator-framework-reducing-the-complexity-of-building-distributed-systems'));
+	webLinks.push(new WebLink('Curator', 'Leader Electon, Curator and Embedded ZK', 'https://dl.dropbox.com/u/7540961/zk_leader_election.pdf'));
+	webLinks.push(new WebLink('Curator', 'Zookeeper, Netflix Curator and ACLs', 'http://michaelmorello.blogspot.com/2012/12/zookeeper-netflix-curator-and-acls.html'));
+	webLinks.push(new WebLink('Curator', 'Adventures in Clustering -- part 1', 'http://sourcedelica.com/blog/2013/01/adventures-in-clustering-part-1/'));
+	webLinks.push(new WebLink('Curator', 'Software Developer\'s Journal - Hadoop Issue', 'http://sdjournal.org/apache-hadoop-ecosystem/'));
+
+	webLinks.push(new WebLink('Exhibitor', 'Web Pro News: Netflix Introduces Exhibitor, A Supervisor System For ZooKeeper', 'http://www.webpronews.com/netflix-introduces-exhibitor-a-supervisor-system-for-zookeeper-2012-04'));
+	webLinks.push(new WebLink('Exhibitor', 'Setting up a ZooKeeper Quorum on Amazon EC2 with Exhibitor', 'http://pulasthisupun.blogspot.com/2012/08/setting-up-zookeeper-quorum-on-amazon.html'));
+	webLinks.push(new WebLink('Exhibitor', 'Software Developer\'s Journal - Hadoop Issue', 'http://sdjournal.org/apache-hadoop-ecosystem/'));
+
+	webLinks.push(new WebLink('Blitz4J', 'Netflix Log4J Optimizations Yield Logging at Massive Scale', 'http://www.infoq.com/news/2012/12/bitz4j-netflix'));
+
+	webLinks.sort(function(rhs, lhs){
+		return (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
+	});
+
+	var content = '';
+	var currentNetflixName = '';
+	
+	for ( var i = 0; i < webLinks.length; ++i )
+	{
+		var item = webLinks[i];
+		
+		if ( item.netflixName != currentNetflixName )
+		{
+			currentNetflixName = item.netflixName;
+			
+			var netflixRowStyle = (i == 0) ? 'display-table-row' : 'display-table-row-secondary';
+			content += '<tr class="' + netflixRowStyle + '"><td class="display-table-cell">';
+			content += '<a href="' + getRepoUrl(item.netflixName) + '">' + item.netflixName + "</a>";
+			content += '</td></tr>';
+		}
+		
+		content += '<tr class="display-table-item-row">';
+		content += '<td class="display-table-item-row-cell-0"><li><a href="' + item.url + '">' + item.text + "</a></td>";
+		content += '</tr>';
+	}
+	
+	$('#web-table').html(content);
 }
 
 function setStats()
@@ -407,47 +496,61 @@ function setStats()
 	$('#repstats').html(stats);
 }
 
-function handleViewParameter()
+function doResizing()
 {
-	if ( $.urlParam('view') )
+	resizeRepoContent();
+	resizeCommunityContent();
+	resizePoweredByContent();
+	resizeWebContent();
+}
+
+function resizeWebContent()
+{
+	$('#web-table-content').css({'height':(($(window).height())-350)+'px'});
+}
+
+function resizePoweredByContent()
+{
+	$('#content-powered-by').css({'height':(($(window).height())-350)+'px'});
+}
+
+function resizeCommunityContent()
+{
+	$('#community-table-content').css({'height':(($(window).height())-350)+'px'});
+}
+
+function resizeRepoContent()
+{
+	$('#repo-content').css({'height':(($(window).height())-320)+'px'});
+	$('#repo-list-content').css({'height':(($(window).height())-320)+'px'});
+}
+
+function buildTabs()
+{
+	var content = "";
+	for ( var i = 0; i < tabs.length; ++i )
 	{
-		if ( $.urlParam('view') === "repo" )
-		{
-			showRepoContent();
-		}
-		else if ( $.urlParam('view') === "timeline" )
-		{
-			showTimelineContent();
-		}
-		else if ( $.urlParam('view') === "mail" )
-		{
-			showListContent();
-		}
-		else if ( $.urlParam('view') === "community" )
-		{
-			showCommunityContent();
-		}
-		else if ( $.urlParam('view') === "powered" )
-		{
-			showPoweredByContent();
-		}
+		content += '<a href="#" onClick="showTab(\'' + tabs[i].code + '\'); return false;">';
+		content += '<div class="sub-header-item">' + tabs[i].text + '</div>';
+		content += '</a>';
 	}
+	
+	$('#sub-header').html(content);
 }
 
 $(function(){
+	buildTabs();
 	buildRepoContent();
 	buildRepoListContent();
 	buildRepoMailingListContent();
 	buildCommunityTable();
 	buildPoweredByContent();
+	buildAroundTheWeb();
 
 	$(window).resize(function(){
-	      hideBalloon();
-          resizeRepoContent();
-		  resizeCommunityContent();
-		  resizePoweredByContent();
+	    hideBalloon();
+		doResizing();
 	});
-	resizeRepoContent();
 	setStats();
 	
 	$('#year').text(new Date().getFullYear());
@@ -458,5 +561,5 @@ $(function(){
 		shouldBeShowingBalloonIndex = -1;
 	});
 	
-	handleViewParameter();
+	showTab($.urlParam('view'));
 });

@@ -39,7 +39,7 @@
         }
     </script>
     <script type="text/javascript" src="http://githubproxy-942908148.us-east-1.elb.amazonaws.com/REST/v2/consolidated?jsonp=repos"></script>
-    <script type="text/javascript" src="js/nf.js?v=201302011222"></script>
+    <script type="text/javascript" src="js/nf.js?v=201302081300"></script>
 </head>
 
 <body>
@@ -52,35 +52,6 @@
 </div>
 
 <div id="sub-header">
-	<a href="#" onClick="showRepoContent(); return false;">
-	<div class="sub-header-item">
-		Repositories
-	</div>
-	</a>
-
-    <a href="#" onClick="showTimelineContent(); return false;">
-    <div class="sub-header-item">
-        Commit Timeline
-    </div>
-    </a>
-
-	<a href="#" onClick="showListContent(); return false;">
-	<div class="sub-header-item">
-		Mailing Lists
-	</div>
-	</a>
-
-	<a href="#" onClick="showCommunityContent(); return false;">
-	<div class="sub-header-item">
-		Community
-	</div>
-	</a>
-
-	<a href="#" onClick="showPoweredByContent(); return false;">
-	<div class="sub-header-item">
-		Powered By
-	</div>
-	</a>
 </div>
 
 <div id="tab-content-repo">
@@ -122,14 +93,22 @@
 <div id="tab-content-community">
     <div class="title">Netflix OSS is popular! Here are some outside projects that utilize Netflix OSS:</div>
 
-	<div id="community-table-content">
-		<table id="community-table"></table>
+	<div id="community-table-content" class="display-table-content">
+		<table id="community-table" class="display-table"></table>
 	</div>
 </div>
 
 <div id="tab-content-powered-by">
     <div class="title">These companies are using Netflix OSS Components</div>
 	<div id="content-powered-by">
+	</div>
+</div>
+
+<div id="tab-content-web">
+    <div class="title">Articles and blogs about Netflix OSS</div>
+
+	<div id="web-table-content" class="display-table-content">
+		<table id="web-table" class="display-table"></table>
 	</div>
 </div>
 
