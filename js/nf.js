@@ -356,6 +356,7 @@ function buildCommunityTable()
 	outsideProjects.push(new OutsideProject('ZCache', 'Curator', 'https://github.com/NiceSystems/zcache', 'A simple cache implementation on top of ZooKeeper.'));
 	outsideProjects.push(new OutsideProject('Titan Graph Database', 'Astyanax', 'https://github.com/thinkaurelius/titan', 'A highly scalable graph database optimized for storing and querying large graphs with billions of vertices and edges distributed across a multi-machine cluster.'));
 	outsideProjects.push(new OutsideProject('Bazaarvoice Curator Extensions', 'Curator', 'https://github.com/bazaarvoice/curator-extensions', 'Helpers that extend the functionality of Curator.'));
+	outsideProjects.push(new OutsideProject('Ostrich', 'Curator', 'http://www.github.com/bazaarvoice/ostrich', 'Bazaarvoice\'s service oriented architecture library that is built on top of Curator and ZooKeeper.'));
 		
 	outsideProjects.sort(function(rhs, lhs){
 		var diff = (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
