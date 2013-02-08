@@ -18,6 +18,19 @@ body
     text-align: center;
 }
 
+a:link, a:visited, a:active, a:hover, td a:link, td a:visited, td a:active
+{
+	font-color: #00458b;
+	color: #00458B;
+	text-decoration: none;
+}
+
+td a:hover
+{
+	text-decoration: underline;
+	color: #b9090b;
+}
+
 .header
 {
     background-color: #b9090b;
