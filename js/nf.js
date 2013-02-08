@@ -353,7 +353,8 @@ function buildCommunityTable()
 	addOutsideProject(outsideProjects, 'Chef-ZooKeeper', 'Exhibitor', 'https://github.com/SimpleFinance/chef-zookeeper', 'Installs and configures ZooKeeper and Exhibitor.');
 	addOutsideProject(outsideProjects, 'ZCache', 'Curator', 'https://github.com/NiceSystems/zcache', 'A simple cache implementation on top of ZooKeeper.');
 	addOutsideProject(outsideProjects, 'Titan Graph Database', 'Astyanax', 'https://github.com/thinkaurelius/titan', 'A highly scalable graph database optimized for storing and querying large graphs with billions of vertices and edges distributed across a multi-machine cluster.');
-	
+	addOutsideProject(outsideProjects, 'Bazaarvoice Curator Extensions', 'Curator', 'https://github.com/bazaarvoice/curator-extensions', 'Helpers that extend the functionality of Curator.');
+		
 	outsideProjects.sort(function(rhs, lhs){
 		var i = (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
 		if ( i == 0 )
