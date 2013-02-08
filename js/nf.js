@@ -369,6 +369,7 @@ function buildCommunityTable()
 	var content = '';
 	var currentNetflixName = null;
 	
+	content += '<table id="community-table" class="display-table">';
 	for ( var i = 0; i < outsideProjects.length; ++i )
 	{
 		var item = outsideProjects[i];
@@ -396,7 +397,10 @@ function buildCommunityTable()
 		content += '</tr>';
 	}
 	
-	$('#community-table').html(content);
+	content += '</table>';
+	content += '<p>&nbsp;</p>';
+	
+	$('#community-table-content').html(content);
 }
 
 function WebLink(netflixName, text, url)
@@ -482,6 +486,8 @@ function buildAroundTheWeb()
 	var content = '';
 	var currentNetflixName = '';
 	
+	content += '<table id="web-table" class="display-table">';
+	
 	for ( var i = 0; i < webLinks.length; ++i )
 	{
 		var item = webLinks[i];
@@ -501,7 +507,10 @@ function buildAroundTheWeb()
 		content += '</tr>';
 	}
 	
-	$('#web-table').html(content);
+	content += '</table>';	
+	content += "<p>&nbsp;</p>";
+	
+	$('#web-table-content').html(content);
 }
 
 function setStats()
@@ -524,7 +533,7 @@ function doResizing()
 
 function resizeWebContent()
 {
-	$('#web-table-content').css({'height':(($(window).height())-350)+'px'});
+	$('#web-table-content').css({'height':(($(window).height())-330)+'px'});
 }
 
 function resizePoweredByContent()
@@ -534,7 +543,7 @@ function resizePoweredByContent()
 
 function resizeCommunityContent()
 {
-	$('#community-table-content').css({'height':(($(window).height())-350)+'px'});
+	$('#community-table-content').css({'height':(($(window).height())-330)+'px'});
 }
 
 function resizeRepoContent()
