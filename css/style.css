@@ -34,7 +34,7 @@ body
     font-size: 150%;
 }
 
-#repo-list-content
+#repo-list-content, #tab-content-community, #tab-content-powered-by
 {
 	display: none;
 }
@@ -148,7 +148,7 @@ body
 	text-transform: capitalize;
 }
 
-.repo-item-anchor:link, .repo-item-anchor:visited, .repo-item-anchor:active
+.standard-anchor:link, .standard-anchor:visited, .standard-anchor:active
 {
     text-decoration: none;
     color: #222;
@@ -513,4 +513,34 @@ repo-list-item-value
 .community-item-row-cell-1
 {
 	padding: 5px;
+}
+
+#content-powered-by
+{
+	margin-top: 30px;
+	overflow: auto;
+}
+
+.powered-by-item
+{
+	margin: 10px;
+	padding: 10px;
+	width: 350px;
+	background-color: #DDD;
+    box-shadow: 2px 2px 2px #333;
+	float: left;
+}
+
+.powered-by-item-image
+{
+	text-align: center;
+}
+
+.powered-by-item-text
+{
+	margin-top: 6px;
+	text-align: right;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 125%;
 }
