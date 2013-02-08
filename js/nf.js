@@ -285,7 +285,8 @@ function getRepoUrl(name)
 function buildCommunityTable()
 {
 	var outsideProjects = new Array();
-	addOutsideProject(outsideProjects, 'Flux Capacitor', 'Curator', 'https://github.com/cfregly/fluxcapacitor', 'Java-based reference app demonstrating many Netflix Open Source components.');
+	addOutsideProject(outsideProjects, 'Flux Capacitor', '', 'https://github.com/cfregly/fluxcapacitor', 'Java-based reference app demonstrating many Netflix Open Source components.');
+	
 	addOutsideProject(outsideProjects, 'Galaxy', 'Curator', 'http://puniverse.github.com/galaxy/about.html', 'A high-performance in-memory data-grid (IMDG) that can serve as a basis for building distributed applications that require fine-tuned control over data placement and/or custom distributed data-structures.');
 	addOutsideProject(outsideProjects, 'Storm', 'Curator', 'https://github.com/nathanmarz/storm', 'A distributed realtime computation system.');
 	addOutsideProject(outsideProjects, 'Apache James Mailbox', 'Curator', 'http://james.apache.org/mailbox/index.html', 'A library providing a flexible Mailbox storage accessible by mail protocols (IMAP4, POP3, SMTP,...) and other protocols.');
@@ -306,7 +307,7 @@ function buildCommunityTable()
 	});
 	
 	var content = '';
-	var currentNetflixName = '';
+	var currentNetflixName = null;
 	
 	for ( var i = 0; i < outsideProjects.length; ++i )
 	{
@@ -318,7 +319,14 @@ function buildCommunityTable()
 			
 			var netflixRowStyle = (i == 0) ? 'community-netflix-row' : 'community-netflix-row-secondary';
 			content += '<tr class="' + netflixRowStyle + '"><td class="community-netflix-cell" colspan="2">';
-			content += '<a href="' + getRepoUrl(item.netflixName) + '">' + item.netflixName + "</a>";
+			if ( item.netflixName.length > 0 )
+			{
+				content += '<a href="' + getRepoUrl(item.netflixName) + '">' + item.netflixName + "</a>";
+			}
+			else
+			{
+				content += '<i>Recipes based on Netflix OSS</i>';
+			}
 			content += '</td></tr>';
 		}
 		
