@@ -382,7 +382,7 @@ function buildCommunityTable()
 			}
 			else
 			{
-				content += '<i>Recipes based on Netflix OSS</i>';
+				content += 'Recipes based on Netflix OSS';
 			}
 			content += '</td></tr>';
 		}

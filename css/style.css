@@ -494,6 +494,7 @@ repo-list-item-value
 .community-netflix-cell
 {
 	font-size: 110%;
+	font-style: italic;
 }
 
 .community-item-row-cell-0, .community-item-row-cell-1
@@ -505,6 +506,11 @@ repo-list-item-value
 {
 	padding: 6px;
 	font-weight: bold;
+}
+
+.community-netflix-row
+{
+	color: #00458B;
 }
 
 .community-netflix-row-secondary
