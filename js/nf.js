@@ -420,7 +420,11 @@ function buildAroundTheWeb()
 	webLinks.push(new WebLink('Asgard', 'GigaOM: Netflix open sources Asgard cloud deployment smarts', 'http://gigaom.com/cloud/netflix-open-sources-asgard-cloud-deployment-smarts/'));
 	webLinks.push(new WebLink('Asgard', 'Real User Monitoring Blog: Netflix Offers More Open Source Goodness with Asgard Cloud Deployment Tool', 'http://www.real-user-monitoring.com/netflix-offers-more-open-source-goodness-with-asgard-cloud-deployment-tool/'));
 	webLinks.push(new WebLink('Asgard', 'Data Center Knowledge: Netflix releases Asgard to open source', 'http://www.datacenterknowledge.com/archives/2012/06/26/cloud-news-fujitsu-eucalyptus-netflix-oracle/'));
-	webLinks.push(new WebLink('Asgard', 'MSPNews: Netflix Launches Asgard Open Source Cloud Control for Amazon', 'http://www.mspnews.com/channels/cloud/articles/296735-netflix-launches-asgard-open-source-cloud-control-amazon.htm'));
+	webLinks.push(new WebLink('Asgard', 'MSPNews: Netflix Launches Asgard Open Source Cloud Control for Amazon', 'http://expertsupportnj.com/2012/06/netflix-launches-asgard-open-source-cloud-control-for-amazon/'));
+	webLinks.push(new WebLink('Asgard', 'SlideShare: Intro to "Asgard"', 'http://www.slideshare.net/pritiman/intro-to-asgard'));
+	webLinks.push(new WebLink('Asgard', 'TechClaw: Deploying Smart Cloud Applications', 'http://techclaw.com/deploying-smart-cloud-applications.html'));
+	webLinks.push(new WebLink('Asgard', 'DevOpsAngle: Netflix Brings Cluster, Application Management to Amazon Web Services with Asgard Open Source Tool', 'http://devopsangle.com/2012/06/25/netflix-brings-cluster-application-management-to-amazon-web-services-with-asgard-open-source-tool/'));
+	webLinks.push(new WebLink('Asgard', 'Adcloud: TechTalk #5 - Asgard and the AWS Cloud', 'http://dev.adcloud.com/blog/2013/02/27/asgard/'));
 
 	webLinks.push(new WebLink('Astyanax', 'Brian ONeill\'s Blog: Compound/Composite Keys: Connecting the dots between CQL3, Astyanax and Hector', 'http://brianoneill.blogspot.com/2012/09/composite-keys-connecting-dots-between.html'));
 	webLinks.push(new WebLink('Astyanax', 'DZone: CQL, Astyanax and Compound/Composite Keys: Writing Data', 'http://java.dzone.com/articles/cql-astyanax-and'));
@@ -456,7 +460,14 @@ function buildAroundTheWeb()
 	webLinks.push(new WebLink('Curator', 'Adventures in Clustering -- part 1', 'http://sourcedelica.com/blog/2013/01/adventures-in-clustering-part-1/'));
 	webLinks.push(new WebLink('Curator', 'Software Developer\'s Journal - Hadoop Issue', 'http://sdjournal.org/apache-hadoop-ecosystem/'));
 
-	webLinks.push(new WebLink('Exhibitor', 'Web Pro News: Netflix Introduces Exhibitor, A Supervisor System For ZooKeeper', 'http://www.webpronews.com/netflix-introduces-exhibitor-a-supervisor-system-for-zookeeper-2012-04'));
+	webLinks.push(new WebLink('Eureka', 'GigaOM: Netflix open-sources Eureka to fill gap in Amazon’s cloud', 'http://gigaom.com/2012/09/04/netflix-open-sources-eureka-to-fill-gap-in-amazons-cloud/'));
+	webLinks.push(new WebLink('Eureka', "ZDNet: Netflix hopes to inspire better AWS load balancing with 'Eureka'", 'http://www.zdnet.com/netflix-hopes-to-inspire-better-aws-load-balancing-with-eureka-7000003835/'));
+	webLinks.push(new WebLink('Eureka', 'ArsTechnica: Eureka! Netflix makes Amazon more reliable with open source software', 'http://arstechnica.com/information-technology/2012/09/eureka-netflix-makes-amazon-more-reliable-with-open-source-software/'));
+	webLinks.push(new WebLink('Eureka', 'The Next Web: Netflix reveals Eureka, an open source REST-based service that helps it prepare for AWS outages', 'http://thenextweb.com/dd/2012/09/04/netflix-reveals-eureka-open-source-rest-based-service-helps-prepare-aws-outages/'));
+	webLinks.push(new WebLink('Eureka', 'Tech Well: Netflix Has a Eureka Moment', 'http://www.techwell.com/2012/09/netflix-has-eureka-moment'));
+	webLinks.push(new WebLink('Eureka', 'DZone: Netflix Open Sources Cloud Service Registry and Cloud Load Balancer', 'http://architects.dzone.com/articles/netflix-open-sources-cloud'));
+
+    webLinks.push(new WebLink('Exhibitor', 'Web Pro News: Netflix Introduces Exhibitor, A Supervisor System For ZooKeeper', 'http://www.webpronews.com/netflix-introduces-exhibitor-a-supervisor-system-for-zookeeper-2012-04'));
 	webLinks.push(new WebLink('Exhibitor', 'Setting up a ZooKeeper Quorum on Amazon EC2 with Exhibitor', 'http://pulasthisupun.blogspot.com/2012/08/setting-up-zookeeper-quorum-on-amazon.html'));
 	webLinks.push(new WebLink('Exhibitor', 'Software Developer\'s Journal - Hadoop Issue', 'http://sdjournal.org/apache-hadoop-ecosystem/'));
 
