@@ -269,20 +269,6 @@ function buildRepoMailingListContent()
     $('#lists-repos').html(content);
 }
 
-function addPoweredBy(tab, name, netflixNames, url, imageUrl, width, height)
-{
-	var item = {};
-	item.name = name;
-	item.netflixNames = netflixNames;
-	item.url = url;
-	item.image = {};
-	item.image.url = imageUrl;
-	item.image.width = width;
-	item.image.height = height;
-	
-	tab.push(item);
-}
-
 function PoweredBySpec(name, netflixNames, url, imageUrl, width, height)
 {
 	this.name = name;
