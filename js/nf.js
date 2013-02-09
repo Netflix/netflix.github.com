@@ -20,7 +20,7 @@ var tabs = [
 	new TabSpec(TAB_CODE_TIMELINE, "tab-content-timeline", "Commit Timeline"),
 	new TabSpec(TAB_CODE_MAILING_LISTS, "tab-content-lists", "Mailing Lists"),
 	new TabSpec(TAB_CODE_COMMUNITY, "tab-content-community", "Community"),
-	new TabSpec(TAB_CODE_POWERED_BY, "tab-content-powered-by", "Powered By"),
+	new TabSpec(TAB_CODE_POWERED_BY, "tab-content-powered-by", "Powered By NetflixOSS"),
 	new TabSpec(TAB_CODE_WEB, "tab-content-web", "Around the Web")
 ];
 
