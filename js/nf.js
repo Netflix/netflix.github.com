@@ -401,7 +401,13 @@ function buildAroundTheWeb()
 {
 	var webLinks = new Array();
 
-	webLinks.push(new WebLink('Asgard', 'Amazon Web Services Blog: New From Netflix - Asgard for Cloud Management and Deployment', 'http://aws.typepad.com/aws/2012/06/new-from-netflix-asgard-for-cloud-management-and-deployment.html'));
+	webLinks.push(new WebLink('NetflixOSS', 'Paul Guth: Netflix teaches everyone how to host a tech meetup', 'http://constructolution.wordpress.com/2013/02/06/netflix-teaches-everyone-how-to-host-a-tech-meetup/'));
+	webLinks.push(new WebLink('NetflixOSS', 'Cloud Ecosystem: Making Cloud Apps the Netflix Way', 'http://www.cloudecosystem.com/author.asp?section_id=2810&doc_id=258653'));
+	webLinks.push(new WebLink('NetflixOSS', 'GigaOM: Netflix to developers: More monkeys to come', 'http://gigaom.com/2013/02/06/netflix-open-house-draws-a-big-developer-crowd/'));
+	webLinks.push(new WebLink('NetflixOSS', 'TechCrunch: Netflix Gives A Hollywood Look To Open Source Center On GitHub', 'http://techcrunch.com/2012/11/13/netflix-gives-a-hollywood-look-to-open-source-center-on-github/'));
+	webLinks.push(new WebLink('NetflixOSS', 'TechCrunch: Netflix Promises To Make Its Open Source Cloud Management Tools More Portable', 'http://techcrunch.com/2013/02/06/netflix-more-portable-open-source-cloud-platform/'));
+
+    webLinks.push(new WebLink('Asgard', 'Amazon Web Services Blog: New From Netflix - Asgard for Cloud Management and Deployment', 'http://aws.typepad.com/aws/2012/06/new-from-netflix-asgard-for-cloud-management-and-deployment.html'));
 	webLinks.push(new WebLink('Asgard', 'PCWorld: Netflix Releases Customized Amazon Control Console', 'http://www.pcworld.com/businesscenter/article/258344/netflix_releases_customized_amazon_control_console.html'));
 	webLinks.push(new WebLink('Asgard', 'GigaOM: Netflix open sources Asgard cloud deployment smarts', 'http://gigaom.com/cloud/netflix-open-sources-asgard-cloud-deployment-smarts/'));
 	webLinks.push(new WebLink('Asgard', 'Real User Monitoring Blog: Netflix Offers More Open Source Goodness with Asgard Cloud Deployment Tool', 'http://www.real-user-monitoring.com/netflix-offers-more-open-source-goodness-with-asgard-cloud-deployment-tool/'));
