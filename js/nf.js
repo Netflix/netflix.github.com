@@ -283,6 +283,7 @@ function PoweredBySpec(name, netflixNames, url, imageUrl, width, height)
 function buildPoweredByContent()
 {
 	var poweredBy = new Array();
+	poweredBy.push(new PoweredBySpec("Yahoo", "Curator", "http://yahoo.com/", "assets/powered/yahoo.jpg", 268, 188));
 	poweredBy.push(new PoweredBySpec("Maginatics", "Curator", "http://maginatics.com/", "assets/powered/maginatics.png", 210, 140));
 	poweredBy.push(new PoweredBySpec("UserEvents", "Curator", "http://www.userevents.com/", "assets/powered/userevents.png", 310, 65));
 	poweredBy.push(new PoweredBySpec("Bazaarvoice", "Curator", "http://www.bazaarvoice.com/", "assets/powered/bazaarvoice.png", 193, 50));
