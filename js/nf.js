@@ -346,6 +346,8 @@ function buildCommunityTable()
 	outsideProjects.push(new OutsideProject('Ostrich', 'Curator', 'http://www.github.com/bazaarvoice/ostrich', 'Bazaarvoice\'s service oriented architecture library that is built on top of Curator and ZooKeeper.'));
 	outsideProjects.push(new OutsideProject('Dropwizard-Extra', 'Curator', 'https://github.com/datasift/dropwizard-extra', 'A set of miscellaneous and common Dropwizard utilities.'));
 		
+	outsideProjects.push(new OutsideProject('exhibitor-deb-builder', 'Exhibitor', 'https://github.com/qubitdigital/exhibitor-deb-builder', 'A build script to create deb package of Exhibitor.'));
+
 	outsideProjects.sort(function(rhs, lhs){
 		var diff = (rhs.netflixName.toUpperCase() < lhs.netflixName.toUpperCase()) ? -1 : ((rhs.netflixName.toUpperCase() > lhs.netflixName.toUpperCase()) ? 1 : 0);
 		if ( diff == 0 )
