@@ -269,10 +269,9 @@ function buildRepoMailingListContent()
     $('#lists-repos').html(content);
 }
 
-function PoweredBySpec(name, netflixNames, url, imageUrl, width, height)
+function PoweredBySpec(name, url, imageUrl, width, height)
 {
 	this.name = name;
-	this.netflixNames = netflixNames;
 	this.url = url;
 	this.image = {};
 	this.image.url = imageUrl;
@@ -283,11 +282,12 @@ function PoweredBySpec(name, netflixNames, url, imageUrl, width, height)
 function buildPoweredByContent()
 {
 	var poweredBy = new Array();
-	poweredBy.push(new PoweredBySpec("Yahoo", "Curator", "http://yahoo.com/", "assets/powered/yahoo.png", 202, 50));
-	poweredBy.push(new PoweredBySpec("Maginatics", "Curator", "http://maginatics.com/", "assets/powered/maginatics.png", 210, 140));
-	poweredBy.push(new PoweredBySpec("UserEvents", "Curator", "http://www.userevents.com/", "assets/powered/userevents.png", 310, 65));
-	poweredBy.push(new PoweredBySpec("Bazaarvoice", "Curator", "http://www.bazaarvoice.com/", "assets/powered/bazaarvoice.png", 193, 50));
-	poweredBy.push(new PoweredBySpec("OpenSCG", "Curator", "http://www.openscg.com/", "assets/powered/openscg.png", 242, 54));
+	poweredBy.push(new PoweredBySpec("Maginatics", "http://maginatics.com", "assets/powered/maginatics2.png", 137, 91));
+	poweredBy.push(new PoweredBySpec("Yahoo", "http://yahoo.com", "assets/powered/yahoo.png", 202, 50));
+	poweredBy.push(new PoweredBySpec("UserEvents", "http://www.userevents.com", "assets/powered/userevents.png", 310, 65));
+	poweredBy.push(new PoweredBySpec("Bazaarvoice", "http://www.bazaarvoice.com", "assets/powered/bazaarvoice.png", 193, 50));
+	poweredBy.push(new PoweredBySpec("OpenSCG", "http://www.openscg.com", "assets/powered/openscg.png", 242, 54));
+	poweredBy.push(new PoweredBySpec("Eucalyptus", "http://www.eucalyptus.com", "assets/powered/eucalyptus.jpg", 306, 33));
 
 	var content = "";
 	for ( var i = 0; i < poweredBy.length; ++i )
