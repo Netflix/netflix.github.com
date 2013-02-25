@@ -282,12 +282,12 @@ function PoweredBySpec(name, url, imageUrl, width, height)
 function buildPoweredByContent()
 {
 	var poweredBy = new Array();
-	poweredBy.push(new PoweredBySpec("Maginatics", "http://maginatics.com", "assets/powered/maginatics2.png", 137, 91));
 	poweredBy.push(new PoweredBySpec("Yahoo", "http://yahoo.com", "assets/powered/yahoo.png", 202, 50));
+	poweredBy.push(new PoweredBySpec("Eucalyptus", "http://www.eucalyptus.com", "assets/powered/eucalyptus2.png", 352, 84));
+	poweredBy.push(new PoweredBySpec("Maginatics", "http://maginatics.com", "assets/powered/maginatics2.png", 137, 91));
 	poweredBy.push(new PoweredBySpec("UserEvents", "http://www.userevents.com", "assets/powered/userevents.png", 310, 65));
 	poweredBy.push(new PoweredBySpec("Bazaarvoice", "http://www.bazaarvoice.com", "assets/powered/bazaarvoice.png", 193, 50));
 	poweredBy.push(new PoweredBySpec("OpenSCG", "http://www.openscg.com", "assets/powered/openscg.png", 242, 54));
-	poweredBy.push(new PoweredBySpec("Eucalyptus", "http://www.eucalyptus.com", "assets/powered/eucalyptus.jpg", 306, 33));
 
 	var content = "";
 	for ( var i = 0; i < poweredBy.length; ++i )
