@@ -20,15 +20,15 @@ body
 
 a:link, a:visited, a:active, a:hover, td a:link, td a:visited, td a:active
 {
-	font-color: #00458b;
-	color: #00458B;
-	text-decoration: none;
+    font-color: #00458b;
+    color: #00458B;
+    text-decoration: none;
 }
 
 td a:hover
 {
-	text-decoration: underline;
-	color: #b9090b;
+    text-decoration: underline;
+    color: #b9090b;
 }
 
 .header
@@ -49,12 +49,12 @@ td a:hover
 
 #repo-list-content, #tab-content-community, #tab-content-powered-by
 {
-	display: none;
+    display: none;
 }
 
 #repo-content, #repo-list-content
 {
-	position: relative;
+    position: relative;
     overflow: auto;
 }
 
@@ -65,7 +65,7 @@ td a:hover
     position: absolute;
     left: 0;
     top: 100%;
-	margin-top: -180px;
+    margin-top: -180px;
 }
 
 .header-logo
@@ -118,7 +118,7 @@ td a:hover
 .repo-item-cover, .repo-item-shadow, .repo-item-button
 {
     width: 196px;
-	height: 266px;
+    height: 266px;
 }
 
 .repo-item-container
@@ -138,27 +138,27 @@ td a:hover
     cursor: pointer;
     background-color: #FFF;
     color: #444;
-	background-repeat: no-repeat;
-	background-size: 196px 266px; 
-	background-position: center;
+    background-repeat: no-repeat;
+    background-size: 196px 266px; 
+    background-position: center;
 }
 
 .repo-item-name
 {
     color: #B9090B;
-	background-color: #f2f2f2;
-	border-top: 1px;
-	border-right: 1px;
-	border-left: 1px;
-	border-bottom: 0;
-	border-color: black;
-	border-style: solid;
-	margin: 12px 20px 0 10px;
-	padding: 3px 0;
-	font-size: 22px;
+    background-color: #f2f2f2;
+    border-top: 1px;
+    border-right: 1px;
+    border-left: 1px;
+    border-bottom: 0;
+    border-color: black;
+    border-style: solid;
+    margin: 12px 20px 0 10px;
+    padding: 3px 0;
+    font-size: 22px;
     font-weight: bold;
-	text-align: center;
-	text-transform: capitalize;
+    text-align: center;
+    text-transform: capitalize;
 }
 
 .standard-anchor:link, .standard-anchor:visited, .standard-anchor:active
@@ -232,335 +232,365 @@ td a:hover
 
 #sub-header
 {
-	background-color: #6B6765;
-	border-top: 1px solid #E1E1E1;
-	height: 28px;
-	overflow: hidden;
+    background-color: #6B6765;
+    border-top: 1px solid #E1E1E1;
+    height: 28px;
+    overflow: hidden;
 }
 
 .sub-header-item
 {
-	float: left;
-	border-right: 1px solid #E1E1E1;
-	border-left: 1px solid #6B6765;
-	border-bottom: 1px solid #6B6765;
-	color: white;
-	height: 16px;
-	padding: 5px 20px 5px 20px;
+    float: left;
+    border-right: 1px solid #E1E1E1;
+    border-left: 1px solid #6B6765;
+    border-bottom: 1px solid #6B6765;
+    color: white;
+    height: 16px;
+    padding: 5px 20px 5px 20px;
 }
 
 #sub-header a:hover .sub-header-item
 {
-	background-color: #E1E1E1;
-	border-top: 1px solid #6B6765;
-	color: #b9090b;
+    background-color: #E1E1E1;
+    border-top: 1px solid #6B6765;
+    color: #b9090b;
 }
 
 #tab-content-lists
 {
-	display: none;
+    display: none;
 }
 
 #lists-content
 {
-	width: 600px;
-	position: absolute;
-	left: 50%;
-	top: 150px;
-	height: 400px;
-	margin-left: -300px;
-	background-image: url(https://netflix.hs.llnwd.net/e1/en_us/layout/page_titles/bgvignette/950w/YourAccountBackGround.jpg);
-	background-position: top left;
-	background-repeat: no-repeat;
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 150px;
+    height: 400px;
+    margin-left: -300px;
+    background-image: url(https://netflix.hs.llnwd.net/e1/en_us/layout/page_titles/bgvignette/950w/YourAccountBackGround.jpg);
+    background-position: top left;
+    background-repeat: no-repeat;
     background-color: #FFF;
     box-shadow: 2px 2px 2px #888;
-	padding: 10px;
+    padding: 10px;
 }
 
 #lists-content-heading
 {
-	color: #3B3B3B;
-	font: bold 18pt/1em arial, helvetica, sans-serif;
-	margin-bottom: 20px;
+    color: #3B3B3B;
+    font: bold 18pt/1em arial, helvetica, sans-serif;
+    margin-bottom: 20px;
 }
 
 .lists-content-item
 {
-	background-color: #EFECE8;
-	font-size: 15px;
-	color: black;
-	padding: 10px;
-	height: 75%;
-	margin-left: 5px;
-	margin-right: 5px;
+    background-color: #EFECE8;
+    font-size: 15px;
+    color: black;
+    padding: 10px;
+    height: 75%;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .lists-content-item a:link, .lists-content-item a:visited
 {
-	text-decoration: none;
-	color: #00458B;
-	font-size: 125%;
+    text-decoration: none;
+    color: #00458B;
+    font-size: 125%;
 }
 
 .lists-content-item a:hover, .lists-content-item a:active
 {
-	text-decoration: underline;
-	color: #b9090b;
-	font-size: 125%;
+    text-decoration: underline;
+    color: #b9090b;
+    font-size: 125%;
 }
 
 .lists-content-item li
 {
-	height: 2.5em;
+    height: 2.5em;
 }
 
 #balloon-container
 {
-	position: absolute;
-	top: 200px;
-	left: 295px;
-	display: none;
-	z-index: 100;
+    position: absolute;
+    top: 200px;
+    left: 295px;
+    display: none;
+    z-index: 100;
 }
 
 .balloon-frame
 {
-	border: 1px white solid;
-	background-color: white;
-	width: 289px;
+    border: 1px white solid;
+    background-color: white;
+    width: 289px;
     box-shadow: rgba(0, 0, 0, 0.796875) 0px 0px 15px 0px;
 }
 
 #balloon-heading
 {
-	background-color: #B9090B;
-	color: white;
-	text-transform: capitalize;
-	font-size: 19px;
-	font-weight: bold;	
-	padding: 6px 12px 6px 12px;
+    background-color: #B9090B;
+    color: white;
+    text-transform: capitalize;
+    font-size: 19px;
+    font-weight: bold;  
+    padding: 6px 12px 6px 12px;
 }
 
 #balloon-content
 {
-	font-size: 15px;
-	padding: 12px;
+    font-size: 15px;
+    padding: 12px;
 }
 
 #balloon-arrow-left
 {
-	position: absolute;
-	top: 232px;
-	left: 248px;
-	width: 47px;
-	height: 56px;
-	display: none;
-	z-index: 100;
+    position: absolute;
+    top: 232px;
+    left: 248px;
+    width: 47px;
+    height: 56px;
+    display: none;
+    z-index: 100;
 }
 
 #balloon-arrow-right
 {
-	position: absolute;
-	top: 232px;
-	left: 586px;
-	width: 20px;
-	height: 20px;
-	display: none;
-	z-index: 100;
+    position: absolute;
+    top: 232px;
+    left: 586px;
+    width: 20px;
+    height: 20px;
+    display: none;
+    z-index: 100;
 }
 
 #balloon-description
 {
-	margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .more-info a, .more-info a:hover, .more-info a:link, .more-info a:visited, .more-info a:hover, .more-info a:active
 {
-	color: #B9090B;
-	text-decoration: none;
-	font-weight: normal;
-	font-style: normal;
+    color: #B9090B;
+    text-decoration: none;
+    font-weight: normal;
+    font-style: normal;
 }
 
 .more-info a:hover
 {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 .balloon-label
 {
-	font-weight: bold;
-	float: left;
-	width: 115px;
+    font-weight: bold;
+    float: left;
+    width: 115px;
 }
 
 .baloon-field
 {
-	clear: both;
-	margin-bottom: 3px;
+    clear: both;
+    margin-bottom: 3px;
 }
 
 #repo-heading img
 {
-	margin-left: 10px;
+    margin-left: 10px;
 }
 
 #repo-heading span
 {
-	margin-right: 10px;
+    margin-right: 10px;
 }
 
 .repo-list-item-container
 {
-	margin: 10px;
+    margin: 10px;
     background-color: #EEE;
     box-shadow: 2px 2px 2px #888;
-	padding: 10px;
-	cursor: pointer;
+    padding: 10px;
+    cursor: pointer;
 }
 
 .repo-list-item-anchor:link, .repo-list-item-anchor:visited, .repo-list-item-anchor:active
 {
     text-decoration: none;
     color: #B9090B;
-	font-weight: bold;
-	text-transform: capitalize;
-	font-size: 1.25em;
-	margin-bottom: 3px;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 1.25em;
+    margin-bottom: 3px;
 }
 
 .repo-list-item-description
 {
-	margin-bottom: 8px;
-	font-style: italic;
+    margin-bottom: 8px;
+    font-style: italic;
 }
 
 .repo-list-item-label
 {
-	float: left;
-	width: 100px;
+    float: left;
+    width: 100px;
 }
 
 repo-list-item-value
 {
-	clear: both;
+    clear: both;
 }
 
 #repstats
 {
-	float: right;
-	font-size: .75em;
-	font-style: italic;
-	margin-top: -10px;
+    float: right;
+    font-size: .75em;
+    font-style: italic;
+    margin-top: -10px;
 }
 
 #repstats div
 {
-	text-align: right;
+    text-align: right;
 }
 
 #lists-repos
 {
-	text-transform: capitalize;
+    text-transform: capitalize;
 }
 
 .display-table
 {
-	background-color: white;
-	margin-left: 1%;
-	padding: 10px;
+    background-color: white;
+    margin-left: 1%;
+    padding: 10px;
     font-family: sans-serif;
-	border: none;
-	border-collapse: collapse;
-	width: 98%;
+    border: none;
+    border-collapse: collapse;
+    width: 98%;
     box-shadow: 2px 2px 2px #888;
 }
 
 .display-table tr
 {
-	vertical-align: top;
+    vertical-align: top;
 }
 
 .display-table-content
 {
-	height: 70%;
-	overflow: auto;
+    height: 70%;
+    overflow: auto;
 }
 
 .display-table-row
 {
-	border-top: none;
+    border-top: none;
 }
 
 .display-table-cell
 {
-	font-size: 110%;
-	font-style: italic;
+    font-size: 110%;
+    font-style: italic;
 }
 
 .display-table-item-row-cell-0, .display-table-item-row-cell-1
 {
-	font-size: 90%;
+    font-size: 90%;
 }
 
 .display-table-cell
 {
-	padding: 6px;
-	font-weight: bold;
+    padding: 6px;
+    font-weight: bold;
 }
 
 .display-table-row
 {
-	color: #00458B;
+    color: #00458B;
 }
 
 .display-table-row-secondary
 {
-	border-top: 2px solid #b9090b;
+    border-top: 2px solid #b9090b;
 }
 
 .display-table-item-row
 {
-	border-top: 1px solid #CCC;
+    border-top: 1px solid #CCC;
 }
 
 .display-table-item-row-cell-0
 {
-	padding: 5px 10px 5px 25px;
-	white-space: nowrap;
+    padding: 5px 10px 5px 25px;
+    white-space: nowrap;
 }
 
 .display-table-item-row-cell-1
 {
-	padding: 5px;
+    padding: 5px;
 }
 
 #content-powered-by
 {
-	margin-top: 30px;
-	overflow: auto;
+    margin-top: 30px;
+    overflow: auto;
 }
 
 .powered-by-item
 {
-	margin: 10px;
-	padding: 10px;
-	width: 350px;
-	background-color: #DDD;
+    margin: 10px;
+    padding: 10px;
+    width: 350px;
+    background-color: #DDD;
     box-shadow: 2px 2px 2px #333;
-	float: left;
+    float: left;
 }
 
 .powered-by-item-image
 {
-	text-align: center;
+    text-align: center;
 }
 
 .powered-by-item-text
 {
-	margin-top: 6px;
-	text-align: right;
-	font-style: italic;
-	font-weight: bold;
-	font-size: 125%;
+    margin-top: 6px;
+    text-align: right;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 125%;
+}
+
+@media only screen and (max-width : 800px) {
+    .header-text{
+        text-align: right;
+        padding-right: 1em;
+    }
+}
+@media only screen and (max-width : 640px) {
+    .header-text{
+        font-size: 150%;
+    }
+}
+@media only screen and (max-width : 540px) {
+    .header-text{
+        float: left;
+        position: relative;
+        top: .5em;
+        font-size: 145%;
+    }
+    .header {
+        height: 90px;
+    }
+    #repo-heading {
+        margin-top: 10px;
+        font-size: 125%;
+    }
+    #repstats {
+        display: none;
+    }
 }
