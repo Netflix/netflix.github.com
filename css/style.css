@@ -5,6 +5,7 @@ body
     background-color: #e1e1e1;
     margin: 0;
     padding: 10px;
+	overflow: hidden;
 }
 
 a:link, a:visited, a:active, a:hover, td a:link, td a:visited, td a:active
@@ -20,8 +21,26 @@ td a:hover
 	color: #b9090b;
 }
 
+#non-scrolling-section
+{
+	position: absolute;
+	top: 0;
+	width: 100%;
+	height: 200px;
+}
+
+#scrolling-section
+{
+	overflow: auto;
+    position: absolute;
+    width: 100%;
+    top: 90px;
+    bottom: 0;
+}
+
 .header
 {
+	position: relative;
     background-color: #b9090b;
     width: 100%;
     height: 60px;
@@ -233,12 +252,12 @@ td a:hover
 
 .content-padding
 {
-	height: 71%;
+	height: 83%;
 }
 
 .content-padding-light
 {
-	height: 69%;
+	height: 81%;
 }
 
 #lists-content
