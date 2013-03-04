@@ -397,7 +397,7 @@ td a:hover
 .repo-list-item-container
 {
 	margin: 10px;
-    background-color: #EEE;
+    background-color: white;
     box-shadow: 2px 2px 2px #888;
 	padding: 10px;
 	cursor: pointer;
