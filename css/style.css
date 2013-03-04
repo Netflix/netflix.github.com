@@ -2,20 +2,9 @@ body
 {
     font-family: sans-serif;
     font-size: 14px;
-    background-color: #BABABA;
+    background-color: #e1e1e1;
     margin: 0;
     padding: 10px;
-    overflow: hidden;
-}
-
-.footer
-{
-    position: absolute;
-    top: 100%;
-    margin-top: -20px;
-    font-size: 75%;
-    width: 100%;
-    text-align: center;
 }
 
 a:link, a:visited, a:active, a:hover, td a:link, td a:visited, td a:active
@@ -50,22 +39,6 @@ td a:hover
 #repo-list-content, #tab-content-community, #tab-content-powered-by
 {
 	display: none;
-}
-
-#repo-content, #repo-list-content
-{
-	position: relative;
-    overflow: auto;
-}
-
-#info-box
-{
-    z-index: 100;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    top: 100%;
-	margin-top: -180px;
 }
 
 .header-logo
@@ -179,25 +152,23 @@ td a:hover
     text-decoration: underline;
 }
 
+#info-box
+{
+}
+
 #info-box-content
 {
-    background-color: #b9090b;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    color: white;
+    margin: 20px 40px 0 20px;
+    border-top: 3px solid #b9090b;
+    padding: 10px 10px 0 10px;
+    color: #555;
     height: 145px;
-    margin: 10px;
 }
 
 .info-box-content-item, .info-box-content-item-header
 {
     float: left;
     width: 33%;
-}
-
-.info-box-content-item
-{
 }
 
 .info-box-content-item-line
@@ -211,11 +182,16 @@ td a:hover
     margin-bottom: 2px;
 }
 
-.info-box-content-item-line a:link, .info-box-content-item-line a:visited, .info-box-content-item-line a:active, .info-box-content-item-line a:hover
+.info-box-content-item-line a:link, .info-box-content-item-line a:visited, .info-box-content-item-line a:active
+{
+    text-decoration: none;
+    color: #b9090b;
+    font-weight: normal;
+}
+
+.info-box-content-item-line a:hover
 {
     text-decoration: underline;
-    color: white;
-    font-weight: normal;
 }
 
 .info-box-content-item-clear
@@ -227,13 +203,11 @@ td a:hover
     margin-top: 0;
     margin-bottom: 0;
     padding: 0;
-    border-top: 1px solid #D3423E;
 }
 
 #sub-header
 {
 	background-color: #6B6765;
-	border-top: 1px solid #E1E1E1;
 	height: 28px;
 	overflow: hidden;
 }
@@ -259,6 +233,16 @@ td a:hover
 #tab-content-lists
 {
 	display: none;
+}
+
+.content-padding
+{
+	height: 71%;
+}
+
+.content-padding-light
+{
+	height: 69%;
 }
 
 #lists-content
@@ -481,12 +465,6 @@ repo-list-item-value
 	vertical-align: top;
 }
 
-.display-table-content
-{
-	height: 70%;
-	overflow: auto;
-}
-
 .display-table-row
 {
 	border-top: none;
@@ -546,7 +524,7 @@ repo-list-item-value
 	margin: 10px;
 	padding: 10px;
 	width: 350px;
-	background-color: #DDD;
+	background-color: #BBB;
     box-shadow: 2px 2px 2px #333;
 	float: left;
 }

@@ -154,7 +154,6 @@ function showTab(which)
 				$('#' + tabs[i].id).hide();
 			}
 		}
-		doResizing();
 	}
 	else
 	{
@@ -531,35 +530,6 @@ function setStats()
 	$('#repstats').html(stats);
 }
 
-function doResizing()
-{
-	resizeRepoContent();
-	resizeCommunityContent();
-	resizePoweredByContent();
-	resizeWebContent();
-}
-
-function resizeWebContent()
-{
-	$('#web-table-content').css({'height':(($(window).height())-330)+'px'});
-}
-
-function resizePoweredByContent()
-{
-	$('#content-powered-by').css({'height':(($(window).height())-350)+'px'});
-}
-
-function resizeCommunityContent()
-{
-	$('#community-table-content').css({'height':(($(window).height())-330)+'px'});
-}
-
-function resizeRepoContent()
-{
-	$('#repo-content').css({'height':(($(window).height())-320)+'px'});
-	$('#repo-list-content').css({'height':(($(window).height())-320)+'px'});
-}
-
 function buildTabs()
 {
 	var content = "";
@@ -584,7 +554,6 @@ $(function(){
 
 	$(window).resize(function(){
 	    hideBalloon();
-		doResizing();
 	});
 	setStats();
 	
