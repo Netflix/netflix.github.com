@@ -152,13 +152,9 @@ td a:hover
     text-decoration: underline;
 }
 
-#info-box
-{
-}
-
 #info-box-content
 {
-    margin: 20px 40px 0 20px;
+    margin: 20px 20px 0 20px;
     border-top: 3px solid #b9090b;
     padding: 10px 10px 0 10px;
     color: #555;
