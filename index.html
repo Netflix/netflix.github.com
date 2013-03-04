@@ -10,8 +10,8 @@
     <script type="text/javascript" src="js/jquery.dateFormat-1.0.js"></script>
     <script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=201211141130">
-    <link rel="stylesheet" type="text/css" href="css/commits.css?v=201211141130">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=201303031550">
+    <link rel="stylesheet" type="text/css" href="css/commits.css?v=201303031550">
 	<!--[if IE]>
 	<style>
 		.repo-item-cover, .repo-item-shadow, .repo-item-button
@@ -39,7 +39,7 @@
         }
     </script>
     <script type="text/javascript" src="http://githubproxy-942908148.us-east-1.elb.amazonaws.com/REST/v2/consolidated?jsonp=repos"></script>
-    <script type="text/javascript" src="js/nf.js?v=201302081300"></script>
+    <script type="text/javascript" src="js/nf.js?v=201303031550"></script>
 </head>
 
 <body>
@@ -61,7 +61,7 @@
 		<a href="#" onclick="repoView(false);"><img src="assets/glyphicons_114_list.png" width="22" height="22" alt="List" border="0"></a>
 	    <span id="repstats"></span>
 	</div>
-	<div id="repo-content"></div>
+	<div id="repo-content"></div><br clear="all">
 	<div id="repo-list-content"></div>
 </div>
 
@@ -74,18 +74,20 @@
 </div>
 
 <div id="tab-content-lists">
-	<div id="lists-content">
-		<div id="lists-content-heading">
-			Mailing Lists
-		</div>
+	<div class="content-padding">
+		<div id="lists-content">
+			<div id="lists-content-heading">
+				Mailing Lists
+			</div>
 		
-		<div class="lists-content-item">
-			<p>
-			We maintain mailing lists for some of our open source projects. Click on the following
-			links to subscribe and/or maintain your subscriptions.
-			</p>
+			<div class="lists-content-item">
+				<p>
+				We maintain mailing lists for some of our open source projects. Click on the following
+				links to subscribe and/or maintain your subscriptions.
+				</p>
 			
-			<p id="lists-repos"></p>
+				<p id="lists-repos"></p>
+			</div>
 		</div>
 	</div>
 </div>
@@ -98,8 +100,10 @@
 </div>
 
 <div id="tab-content-powered-by">
-    <div class="title">These companies are using Netflix OSS Components</div>
-	<div id="content-powered-by">
+	<div class="content-padding-light">
+	    <div class="title">These companies are using Netflix OSS Components</div>
+		<div id="content-powered-by">
+		</div>
 	</div>
 </div>
 
