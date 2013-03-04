@@ -24,9 +24,9 @@ td a:hover
 #non-scrolling-section
 {
 	position: absolute;
-	top: 0;
+	top: 10px;
 	width: 100%;
-	height: 200px;
+	height: 210px;
 }
 
 #scrolling-section
@@ -34,7 +34,7 @@ td a:hover
 	overflow: auto;
     position: absolute;
     width: 100%;
-    top: 90px;
+    top: 100px;
     bottom: 0;
 }
 
