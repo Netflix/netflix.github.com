@@ -46,6 +46,12 @@ td a:hover
     height: 60px;
 }
 
+#repo-hero
+{
+	text-align: center;
+	padding: 10px;
+}
+
 #repo-heading
 {
     margin-top: 20px;
