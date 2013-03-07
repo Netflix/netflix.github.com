@@ -6,12 +6,11 @@ function TabSpec(code, id, text, handler)
 	this.handler = handler;
 }
 
-function BlogSpec(code, date, name, file)
+function BlogSpec(code, date, name)
 {
 	this.code = code;
 	this.date = date;
 	this.name = name;
-	this.file = file;
 }
 
 function PoweredBySpec(name, url, imageUrl, width, height)
@@ -52,7 +51,7 @@ var tabs = [
 ];
 
 var blogs = [
-	new BlogSpec('intro', 'March 7, 2013', 'Introducing the Netflix OSS Blog', 'intro.html')
+	new BlogSpec('intro', 'March 7, 2013', 'Introducing the Netflix OSS Blog')
 ];
 
 var poweredBy = [

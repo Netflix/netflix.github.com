@@ -414,7 +414,7 @@ function refineBlogHash(hash)
 	if ( parts.length < 2 )
 	{
 		location.hash = parts[0];
-		blogName = blogs[0].file;
+		blogName = blogs[0].code;
 	}
 	else
 	{
