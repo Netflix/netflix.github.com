@@ -51,7 +51,7 @@ var tabs = [
 ];
 
 var blogs = [
-	new BlogSpec('intro', 'March 7, 2013', 'Introducing the Netflix OSS Blog')
+	new BlogSpec('meetup-2', 'March 7, 2013', 'NetflixOSS Meetup - Season 1, Episode 2')
 ];
 
 var poweredBy = [
