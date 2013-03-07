@@ -6,7 +6,7 @@
     box-shadow: 2px 2px 2px #000;
 }
 
-.blog-title
+#blog-content h1
 {
 	font-weight: bold;
     color: #b9090b;
@@ -14,21 +14,12 @@
 	margin-bottom: 18px;
 }
 
-.blog-heading
+#blog-content h2
 {
-	font-weight: bold;
-    font-size: 17px;
 	margin-bottom: 5px;
 }
 
-.blog-sub-heading
-{
-    font-size: 14px;
-	font-style: italic;
-}
-
-#blog-content div
+#blog-content p
 {
 	margin-bottom: 5px;
-	font-size: 14px;
 }
