@@ -5,3 +5,23 @@
 	background-color: white;
     box-shadow: 2px 2px 2px #000;
 }
+
+.blog-title
+{
+	font-weight: bold;
+    color: #b9090b;
+    font-size: 21px;
+}
+
+.blog-heading
+{
+	font-weight: bold;
+    font-size: 17px;
+	margin-bottom: 5px;
+}
+
+.blog-sub-heading
+{
+    font-size: 14px;
+	font-style: italic;
+}

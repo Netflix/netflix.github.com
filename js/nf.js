@@ -441,7 +441,7 @@ function buildBlogs()
 		content += '<td class="display-table-item-row-cell-0"><li>';
 		content += '<a href="#blog-' + item.code + '" onClick="showTab(\'blog-' + item.code + '\'); return false;">';
 		content += item.name;
-		content += '</a></li></td>';
+		content += '</a> - ' + item.date + '</li></td>';
 		content += '</tr>';
 	}
 	
