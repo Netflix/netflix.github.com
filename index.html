@@ -10,8 +10,9 @@
     <script type="text/javascript" src="js/jquery.dateFormat-1.0.js"></script>
     <script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=201303062240">
-    <link rel="stylesheet" type="text/css" href="css/commits.css?v=201303062240">
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=201303071100">
+    <link rel="stylesheet" type="text/css" href="css/blog.css?v=201303071100">
+    <link rel="stylesheet" type="text/css" href="css/commits.css?v=201303071100">
 	<!--[if IE]>
 	<style>
 		.repo-item-cover, .repo-item-shadow, .repo-item-button
@@ -39,7 +40,8 @@
         }
     </script>
     <script type="text/javascript" src="http://githubproxy-942908148.us-east-1.elb.amazonaws.com/REST/v2/consolidated?jsonp=repos"></script>
-    <script type="text/javascript" src="js/nf.js?v=201303062240"></script>
+    <script type="text/javascript" src="js/models.js?v=201303071100"></script>
+    <script type="text/javascript" src="js/nf.js?v=201303071100"></script>
 </head>
 
 <body>
@@ -75,7 +77,7 @@
     <div id="commits" orgName="Netflix" top-bottom-padding="380" left-right-padding="40" right-margin="50"></div>
     <div class="help">Scroll to expand or compress the timelines, drag to shift the timelines earlier or later, and mouse over a timeline to see the committers's names and commit messages.</div>
     <script type="text/javascript" src="http://javaposseroundup.github.com/d3github/commitsbase.js"></script>
-    <script type="text/javascript" src="js/commits.js?v=201303062240"></script>
+    <script type="text/javascript" src="js/commits.js?v=201303071100"></script>
 </div>
 
 <div id="tab-content-lists">
@@ -119,6 +121,16 @@
 	</div>
 </div>
 
+<div id="tab-content-blog">
+    <div class="title">The Netflix OSS Blog</div>
+
+	<div id="blog-content">
+	</div>
+
+	<div id="blog-table-content" class="display-table-content">
+	</div>
+</div>
+
 <div id="info-box">
     <div id="info-box-content">
         <div class="info-box-content-item-header">
@@ -143,7 +155,6 @@
             <div class="info-box-content-item">
                 <div class="info-box-content-item-line"><a href="http://netflix.github.com/">Netflix Open Source</a></div>
                 <div class="info-box-content-item-line"><a href="https://github.com/Netflix/">Netflix GitHub</a></div>
-                <div class="info-box-content-item-line"><a href="#" onClick="showListContent(); return false;">Mailing Lists</a></div>
                 <div class="info-box-content-item-line">Get in on the fun: <a href="http://www.netflix.com/jobs">Join Us!</a></div>
             </div>
 
