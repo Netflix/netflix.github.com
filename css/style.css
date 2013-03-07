@@ -33,17 +33,61 @@ td a:hover
 {
 	overflow: auto;
     position: absolute;
-    width: 100%;
+    width: 99%;
     top: 100px;
     bottom: 0;
 }
 
 .header
 {
-	position: relative;
     background-color: #b9090b;
-    width: 100%;
+    width: 99%;
     height: 60px;
+}
+
+.header-logo
+{
+    padding-top: 12px;
+    padding-left: 12px;
+    height: 60px;
+    width: 100%;
+}
+
+.header-text
+{
+    position: relative;
+    text-align: center;
+    top: -35px;
+    font-size: 200%;
+    color: white;
+    font-weight: bold;
+    text-shadow: 2px 2px #000;
+}
+
+#sub-header
+{
+	background-color: #6B6765;
+    width: 99%;
+	height: 28px;
+	overflow: hidden;
+}
+
+.sub-header-item
+{
+	float: left;
+	border-right: 1px solid #E1E1E1;
+	border-left: 1px solid #6B6765;
+	border-bottom: 1px solid #6B6765;
+	color: white;
+	height: 16px;
+	padding: 5px 20px 5px 20px;
+}
+
+#sub-header a:hover .sub-header-item
+{
+	background-color: #E1E1E1;
+	border-top: 1px solid #6B6765;
+	color: #b9090b;
 }
 
 #repo-hero
@@ -64,25 +108,6 @@ td a:hover
 #repo-list-content, #tab-content-community, #tab-content-powered-by
 {
 	display: none;
-}
-
-.header-logo
-{
-    padding-top: 12px;
-    padding-left: 12px;
-    height: 60px;
-    width: 100%;
-}
-
-.header-text
-{
-    position: relative;
-    text-align: center;
-    top: -35px;
-    font-size: 200%;
-    color: white;
-    font-weight: bold;
-    text-shadow: 2px 2px #000;
 }
 
 .repo-item-button
@@ -226,31 +251,6 @@ td a:hover
     padding: 0;
 }
 
-#sub-header
-{
-	background-color: #6B6765;
-	height: 28px;
-	overflow: hidden;
-}
-
-.sub-header-item
-{
-	float: left;
-	border-right: 1px solid #E1E1E1;
-	border-left: 1px solid #6B6765;
-	border-bottom: 1px solid #6B6765;
-	color: white;
-	height: 16px;
-	padding: 5px 20px 5px 20px;
-}
-
-#sub-header a:hover .sub-header-item
-{
-	background-color: #E1E1E1;
-	border-top: 1px solid #6B6765;
-	color: #b9090b;
-}
-
 #tab-content-lists
 {
 	display: none;
@@ -264,6 +264,20 @@ td a:hover
 .content-padding-light
 {
 	height: 81%;
+}
+
+.section-heading 
+{
+    font-size: 21px;
+    font-weight: bold;
+    margin: 20px 0px 20px 10px;
+}
+
+.section-sub-heading 
+{
+    font-size: 17px;
+    font-weight: bold;
+    margin: 20px 0px 20px 10px;
 }
 
 #lists-content
