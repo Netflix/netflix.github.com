@@ -1,11 +1,12 @@
 var showingBalloonIndex = -1;
 var shouldBeShowingBalloonIndex = -1;
 
-function TabSpec(code, id, text)
+function TabSpec(code, id, text, hash)
 {
 	this.code = code;
 	this.id = id;
 	this.text = text;
+	this.hash = hash;
 }
 
 var TAB_CODE_REPOS = "repo";
@@ -16,12 +17,12 @@ var TAB_CODE_POWERED_BY = "powered";
 var TAB_CODE_WEB = "web";
 
 var tabs = [
-	new TabSpec(TAB_CODE_REPOS, "tab-content-repo", "Repositories"),
-	new TabSpec(TAB_CODE_TIMELINE, "tab-content-timeline", "Commit Timeline"),
-	new TabSpec(TAB_CODE_MAILING_LISTS, "tab-content-lists", "Mailing Lists"),
-	new TabSpec(TAB_CODE_COMMUNITY, "tab-content-community", "Community"),
-	new TabSpec(TAB_CODE_POWERED_BY, "tab-content-powered-by", "Powered By NetflixOSS"),
-	new TabSpec(TAB_CODE_WEB, "tab-content-web", "Around the Web")
+	new TabSpec(TAB_CODE_REPOS, "tab-content-repo", "Repositories", TAB_CODE_REPOS),
+	new TabSpec(TAB_CODE_TIMELINE, "tab-content-timeline", "Commit Timeline", TAB_CODE_TIMELINE),
+	new TabSpec(TAB_CODE_MAILING_LISTS, "tab-content-lists", "Mailing Lists", TAB_CODE_MAILING_LISTS),
+	new TabSpec(TAB_CODE_COMMUNITY, "tab-content-community", "Community", TAB_CODE_COMMUNITY),
+	new TabSpec(TAB_CODE_POWERED_BY, "tab-content-powered-by", "Powered By NetflixOSS", TAB_CODE_POWERED_BY),
+	new TabSpec(TAB_CODE_WEB, "tab-content-web", "Around the Web", TAB_CODE_WEB)
 ];
 
 $.urlParam = function(name){
@@ -129,36 +130,20 @@ function adjustBalloon()
 	}
 }
 
-function showTab(which)
-{
-	var showId = null;
+function showTab(index)
+{	
 	for ( var i = 0; i < tabs.length; ++i )
 	{
-		if ( tabs[i].code === which )
+		if ( index == i )
 		{
-			showId = tabs[i].id;
-			break;
+			$('#' + tabs[i].id).show();
+			location.hash = tabs[index].hash;
 		}
-	}
-	
-	if ( showId )
-	{
-		for ( var i = 0; i < tabs.length; ++i )
+		else
 		{
-			if ( tabs[i].id === showId )
-			{
-				$('#' + tabs[i].id).show();
-			}
-			else
-			{
-				$('#' + tabs[i].id).hide();
-			}
+			$('#' + tabs[i].id).hide();
 		}
-	}
-	else
-	{
-		showTab(TAB_CODE_REPOS);
-	}
+	}	
 }
 
 function parseISO8601(value) {
@@ -535,7 +520,7 @@ function buildTabs()
 	var content = "";
 	for ( var i = 0; i < tabs.length; ++i )
 	{
-		content += '<a href="#" onClick="showTab(\'' + tabs[i].code + '\'); return false;">';
+		content += '<a href="#' + tabs[i].hash + '" onClick="showTab(' + i + '); return false;">';
 		content += '<div class="sub-header-item">' + tabs[i].text + '</div>';
 		content += '</a>';
 	}
@@ -543,7 +528,36 @@ function buildTabs()
 	$('#sub-header').html(content);
 }
 
+function getTabIndex(which)
+{
+	var index = null;
+	for ( var i = 0; i < tabs.length; ++i )
+	{
+		if ( tabs[i].code === which )
+		{
+			index = i;
+			break;
+		}
+	}
+	return index ? index : 0;
+}
+
+function getViewParam()
+{
+	if ( location.hash )
+	{
+		return location.hash.substring(1);
+	}
+	return $.urlParam('view');
+}
+
 $(function(){
+	if ( $.urlParam('view') )
+	{
+		location.href = "index.html#" + $.urlParam('view');
+		return;
+	}
+
 	buildTabs();
 	buildRepoContent();
 	buildRepoListContent();
@@ -565,5 +579,5 @@ $(function(){
 		shouldBeShowingBalloonIndex = -1;
 	});
 	
-	showTab($.urlParam('view'));
+	showTab(getTabIndex(getViewParam()));
 });
