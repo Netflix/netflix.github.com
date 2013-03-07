@@ -554,7 +554,7 @@ function getViewParam()
 $(function(){
 	if ( $.urlParam('view') )
 	{
-		location.href = "index.html#" + $.urlParam('view');
+		location.href = "/#" + $.urlParam('view');
 		return;
 	}
 
