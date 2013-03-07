@@ -11,6 +11,7 @@
 	font-weight: bold;
     color: #b9090b;
     font-size: 21px;
+	margin-bottom: 18px;
 }
 
 .blog-heading
@@ -24,4 +25,10 @@
 {
     font-size: 14px;
 	font-style: italic;
+}
+
+#blog-content div
+{
+	margin-bottom: 5px;
+	font-size: 14px;
 }
