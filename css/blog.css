@@ -23,3 +23,8 @@
 {
 	margin-bottom: 5px;
 }
+
+#blog-content pre
+{
+	overflow-x: auto;
+}
