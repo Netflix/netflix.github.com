@@ -387,7 +387,7 @@ function getTabIndex(which)
 	var index = null;
 	for ( var i = 0; i < tabs.length; ++i )
 	{
-		if ( which.match(tabs[i].code + '.*') )
+		if ( which && (which.match(tabs[i].code + '.*')) )
 		{
 			index = i;
 			break;
