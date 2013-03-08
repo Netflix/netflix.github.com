@@ -106,12 +106,17 @@ function adjustBalloon()
 	}
 }
 
+function isTabCode(str, item)
+{
+	return str && item && (str.indexOf(item.code) == 0);
+}
+
 function showTab(which)
 {	
 	for ( var i = 0; i < tabs.length; ++i )
 	{
 		var item = tabs[i];
-		if ( which && which.match(item.code + '.*') )
+		if ( isTabCode(which, item) )
 		{
 			if ( item.handler )
 			{
@@ -394,10 +399,7 @@ function getViewParam()
 function refineBlogHash(hash)
 {
 	$('#tab-content-blog').show();
-	if ( location.hash != hash )
-	{
-		location.hash = hash;
-	}
+	location.hash = hash;
 
 	var blogName;
 	if ( hash.indexOf("blog-") == 0 )
