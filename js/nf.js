@@ -382,27 +382,13 @@ function buildTabs()
 	$('#sub-header').html(content);
 }
 
-function getTabIndex(which)
-{
-	var index = null;
-	for ( var i = 0; i < tabs.length; ++i )
-	{
-		if ( which && (which.match(tabs[i].code + '.*')) )
-		{
-			index = i;
-			break;
-		}
-	}
-	return index ? index : 0;
-}
-
 function getViewParam()
 {
 	if ( location.hash )
 	{
 		return location.hash.substring(1);
 	}
-	return $.urlParam('view');
+	return tabs[0].code;
 }
 
 function refineBlogHash(hash)
