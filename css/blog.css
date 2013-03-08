@@ -24,8 +24,7 @@
 	margin-bottom: 5px;
 }
 
-#blog-content code
+#blog-content pre
 {
 	overflow-x: auto;
-	white-space: pre;
 }
