@@ -409,17 +409,14 @@ function refineBlogHash(hash)
 {
 	$('#tab-content-blog').show();
 
-	var parts = hash.split('-');
 	var blogName;
-	if ( parts.length < 2 )
+	if ( hash.indexOf("blog-") == 0 )
 	{
-		location.hash = parts[0];
-		blogName = blogs[0].code;
+		blogName = hash.substring(5);
 	}
-	else
+	else	
 	{
-		location.hash = hash;
-		blogName = parts[1];
+		blogName = blogs[0].code;
 	}
 
 	$('#blog-content').load('blogs/' + blogName + ".html", null, function(){
