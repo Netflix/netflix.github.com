@@ -51,7 +51,7 @@ var tabs = [
 ];
 
 var blogs = [
-	new BlogSpec('mockwebserver, 'March 8, 2013', "Why mock servers that don't mock matter"),
+	new BlogSpec('mockwebserver', 'March 8, 2013', "Why mock servers that don't mock matter"),
 	new BlogSpec('meetup-2', 'March 7, 2013', 'NetflixOSS Meetup - Season 1, Episode 2')
 ];
 
