@@ -23,3 +23,9 @@
 {
 	margin-bottom: 5px;
 }
+
+#blog-content code
+{
+	overflow-x: auto;
+	white-space: pre;
+}
