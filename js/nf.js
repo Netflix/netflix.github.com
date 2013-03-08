@@ -111,7 +111,7 @@ function showTab(which)
 	for ( var i = 0; i < tabs.length; ++i )
 	{
 		var item = tabs[i];
-		if ( which.match(item.code + '.*') )
+		if ( which && which.match(item.code + '.*') )
 		{
 			if ( item.handler )
 			{
