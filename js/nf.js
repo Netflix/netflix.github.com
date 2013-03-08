@@ -394,7 +394,10 @@ function getViewParam()
 function refineBlogHash(hash)
 {
 	$('#tab-content-blog').show();
-	location.hash = hash;
+	if ( location.hash != hash )
+	{
+		location.hash = hash;
+	}
 
 	var blogName;
 	if ( hash.indexOf("blog-") == 0 )
