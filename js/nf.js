@@ -151,9 +151,11 @@ function parseISO8601(value) {
 
 function buildRepoContent()
 {
-	var imageUrl, imageFileName, boxArtOverride, i;
+	var imageUrl, boxArtOverride, i;
+	var imageFileName = "";
     var repoContent = "";
 	var boxArtIndex = 0;
+	var previousImageFileName = "";
     for (i = 0; i < reposTab.length; ++i )
     {
         var thisRepo = reposTab[i].repo;
@@ -161,13 +163,17 @@ function buildRepoContent()
     	if (boxArtOverride) {
     		imageFileName = boxArtOverride;
     	} else {
-    		imageFileName = 'box-art-' + boxArtIndex + '.jpg'
-    		boxArtIndex++;
-        	if (boxArtIndex > 8) {
-				boxArtIndex = 0;
+			while ( imageFileName === previousImageFileName )
+			{
+	    		imageFileName = 'box-art-' + boxArtIndex + '.jpg'
+	    		boxArtIndex++;
+	        	if (boxArtIndex > 8) {
+					boxArtIndex = 0;
+				}
 			}
     	}
     	imageUrl = 'assets/' + imageFileName;
+		previousImageFileName = imageFileName;
 
         repoContent += '<a class="standard-anchor" href="' + thisRepo.html_url + '">';
         repoContent += '<div class="repo-item-container">';
