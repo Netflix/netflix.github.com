@@ -162,16 +162,16 @@ function buildRepoContent()
     	boxArtOverride = thisRepo.metadata.boxArt;
     	if (boxArtOverride) {
     		imageFileName = boxArtOverride;
-    	} else {
-			while ( imageFileName === previousImageFileName )
-			{
-	    		imageFileName = 'box-art-' + boxArtIndex + '.jpg'
-	    		boxArtIndex++;
-	        	if (boxArtIndex > 8) {
-					boxArtIndex = 0;
-				}
-			}
     	}
+		while ( imageFileName === previousImageFileName )
+		{
+    		imageFileName = 'box-art-' + boxArtIndex + '.jpg'
+    		boxArtIndex++;
+        	if (boxArtIndex > 8) {
+				boxArtIndex = 0;
+			}
+		}
+
     	imageUrl = 'assets/' + imageFileName;
 		previousImageFileName = imageFileName;
 
