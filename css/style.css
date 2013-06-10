@@ -256,11 +256,6 @@ td a:hover
 	display: none;
 }
 
-.content-padding
-{
-	height: 83%;
-}
-
 .content-padding-light
 {
 	height: 81%;
@@ -283,11 +278,12 @@ td a:hover
 #lists-content
 {
 	width: 600px;
-	position: absolute;
+	position: relative;
 	left: 50%;
 	top: 150px;
 	height: 400px;
 	margin-left: -300px;
+	margin-bottom: 175px;
 	background-image: url(https://netflix.hs.llnwd.net/e1/en_us/layout/page_titles/bgvignette/950w/YourAccountBackGround.jpg);
 	background-position: top left;
 	background-repeat: no-repeat;

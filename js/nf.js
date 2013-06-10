@@ -402,50 +402,6 @@ function getViewParam()
 	return tabs[0].code;
 }
 
-function refineBlogHash(hash)
-{
-	$('#tab-content-blog').show();
-	location.hash = hash;
-
-	var blogName;
-	if ( hash.indexOf("blog-") == 0 )
-	{
-		blogName = hash.substring(5);
-	}
-	else	
-	{
-		blogName = blogs[0].code;
-	}
-
-	$('#blog-content').load('blogs/' + blogName + ".html", null, function(){
-		$('#blog-content').show();
-	});
-}
-
-function buildBlogs()
-{
-	var content = '';
-	
-	content += '<table id="blog-table" class="display-table">';
-	
-	for ( var i = 0; i < blogs.length; ++i )
-	{
-		var item = blogs[i];
-		
-		content += '<tr class="display-table-item-row">';
-		content += '<td class="display-table-item-row-cell-0"><li>';
-		content += '<a href="#blog-' + item.code + '" onClick="showTab(\'blog-' + item.code + '\'); return false;">';
-		content += item.name;
-		content += '</a> - ' + item.date + '</li></td>';
-		content += '</tr>';
-	}
-	
-	content += '</table>';	
-	content += "<p>&nbsp;</p>";
-	
-	$('#blog-table-content').html(content);
-}
-
 $(function(){
 	if ( $.urlParam('view') )
 	{
@@ -460,7 +416,6 @@ $(function(){
 	buildCommunityTable();
 	buildPoweredByContent();
 	buildAroundTheWeb();
-	buildBlogs();
 
 	$(window).resize(function(){
 	    hideBalloon();
