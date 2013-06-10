@@ -6,13 +6,6 @@ function TabSpec(code, id, text, handler)
 	this.handler = handler;
 }
 
-function BlogSpec(code, date, name)
-{
-	this.code = code;
-	this.date = date;
-	this.name = name;
-}
-
 function PoweredBySpec(name, url, imageUrl, width, height)
 {
 	this.name = name;
@@ -44,15 +37,7 @@ var tabs = [
 	new TabSpec('mail', 'tab-content-lists', 'Mailing Lists'),
 	new TabSpec('community', 'tab-content-community', 'Community'),
 	new TabSpec('powered', 'tab-content-powered-by', 'Powered By NetflixOSS'),
-	new TabSpec('web', 'tab-content-web', 'Around the Web'),
-	new TabSpec('blog', 'tab-content-blog', 'Blog', function(hash){
-		refineBlogHash(hash);
-	})
-];
-
-var blogs = [
-	new BlogSpec('mockwebserver', 'March 8, 2013', "Why mock servers that don't mock matter"),
-	new BlogSpec('meetup-2', 'March 7, 2013', 'NetflixOSS Meetup - Season 1, Episode 2')
+	new TabSpec('web', 'tab-content-web', 'Around the Web')
 ];
 
 var poweredBy = [
