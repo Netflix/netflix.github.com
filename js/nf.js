@@ -222,7 +222,8 @@ function buildRepoListContent()
         repoListContent += '<div class="repo-list-item-container" onClick="location.href=\'' + thisRepo.html_url + '\'; return false;">';
         repoListContent += '<div><a class="repo-list-item-anchor" href="' + thisRepo.html_url + '">' + thisRepo.name + '</a></div>';
         repoListContent += '<div class="repo-list-item-description">' + thisRepo.description + '</div>';
-        repoListContent += '<div><span class="repo-list-item-label">Watchers: </span><span class="repo-list-item-value">' + thisRepo.watchers + '</span></div>';
+        // GitHub JSON data only reports counts of Stars, not Watchers, although the JSON data mislabels the numbers as "watchers"
+        repoListContent += '<div><span class="repo-list-item-label">Stars: </span><span class="repo-list-item-value">' + thisRepo.watchers + '</span></div>';
         repoListContent += '<div><span class="repo-list-item-label">Forks: </span><span class="repo-list-item-value">' + thisRepo.forks + '</span></div>';
         repoListContent += '<div><span class="repo-list-item-label">Language: </span><span class="repo-list-item-value">' + thisRepo.language + '</span></div>';
         repoListContent += '<div><span class="repo-list-item-label">Open Issues: </span><span class="repo-list-item-value">' + thisRepo.open_issues + '</span></div>';
