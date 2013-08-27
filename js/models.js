@@ -44,6 +44,7 @@ var tabs = [
 var poweredBy = [
 	new PoweredBySpec("Yahoo", "http://yahoo.com", "assets/powered/yahoo.png", 202, 50),
 	new PoweredBySpec("Eucalyptus", "http://www.eucalyptus.com", "assets/powered/eucalyptus2.png", 352, 84),
+	new PoweredBySpec("StumbleUpon", "http://www.stumbleupon.com/", "assets/powered/stumbleupon.png", 91, 91),
 	new PoweredBySpec("Maginatics", "http://maginatics.com", "assets/powered/maginatics2.png", 137, 91),
 	new PoweredBySpec("UserEvents", "http://www.userevents.com", "assets/powered/userevents.png", 310, 65),
 	new PoweredBySpec("Bazaarvoice", "http://www.bazaarvoice.com", "assets/powered/bazaarvoice.png", 193, 50),
@@ -63,7 +64,7 @@ var outsideProjects = [
 	new OutsideProject('Titan Graph Database', 'Astyanax', 'https://github.com/thinkaurelius/titan', 'A highly scalable graph database optimized for storing and querying large graphs with billions of vertices and edges distributed across a multi-machine cluster.'),
 	new OutsideProject('Bazaarvoice Curator Extensions', 'Curator', 'https://github.com/bazaarvoice/curator-extensions', 'Helpers that extend the functionality of Curator.'),
 	new OutsideProject('Ostrich', 'Curator', 'http://www.github.com/bazaarvoice/ostrich', 'Bazaarvoice\'s service oriented architecture library that is built on top of Curator and ZooKeeper.'),
-	new OutsideProject('Dropwizard-Extra', 'Curator', 'https://github.com/datasift/dropwizard-extra', 'A set of miscellaneous and common Dropwizard utilities.'),	
+	new OutsideProject('Dropwizard-Extra', 'Curator', 'https://github.com/datasift/dropwizard-extra', 'A set of miscellaneous and common Dropwizard utilities.'),
 	new OutsideProject('exhibitor-deb-builder', 'Exhibitor', 'https://github.com/qubitdigital/exhibitor-deb-builder', 'A build script to create deb package of Exhibitor.')
 ];
 
