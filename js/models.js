@@ -48,7 +48,8 @@ var poweredBy = [
 	new PoweredBySpec("Maginatics", "http://maginatics.com", "assets/powered/maginatics2.png", 137, 91),
 	new PoweredBySpec("UserEvents", "http://www.userevents.com", "assets/powered/userevents.png", 310, 65),
 	new PoweredBySpec("Bazaarvoice", "http://www.bazaarvoice.com", "assets/powered/bazaarvoice.png", 193, 50),
-	new PoweredBySpec("OpenSCG", "http://www.openscg.com", "assets/powered/openscg.png", 242, 54)
+	new PoweredBySpec("OpenSCG", "http://www.openscg.com", "assets/powered/openscg.png", 242, 54),
+	new PoweredBySpec("Suncorp", "http://www.suncorp.com.au/", "assets/powered/suncorp.png", 172, 100)
 ];
 
 var outsideProjects = [
