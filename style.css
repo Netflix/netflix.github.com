@@ -26,7 +26,6 @@ td a:hover
 	width: 100%;
 	z-index: 500;
 	height: 100px;
-	min-width: 950px;
 }
 
 #scrolling-section
@@ -120,14 +119,8 @@ td a:hover
 	padding: 140px 10px 10px;
 	background-color: #323232;	
 	position: relative;
-}
-
-.hero-content a {
-	color: #fff;
-}
-
-.hero-content a:hover {
-	text-decoration: underline;
+	top: -120px;
+	margin-bottom: -120px;
 }
 
 .hero-content {
@@ -140,42 +133,13 @@ td a:hover
 	margin-bottom: 10px;
 }
 
-#tab-content-repo {
-	background: url(../assets/background-column.png) right top repeat-y;
-	overflow: auto;
-	position: relative;
-	top: -120px;
-	min-width: 950px;
-}
-
-#repo-content .category {
-	float: left;
-	clear: both;
-	margin-bottom: 10px;
-}
-
-#repo-list-content .category {
-	margin-bottom: 30px;
-}
-
-#repo-content .category h2 {
-	color: #666;
-	font-size: 140%;
-	margin-bottom: 7px;
-}
-
-#repo-list-content .category h2 {
-	color: #666;
-	font-size: 140%;
-	margin-bottom: 14px;
-}
-
 .img-placeholder {
 	width: 350px;
 	height: 250px;
+	background-color: #111;
 	border: 1px solid #000;
 	float: left;
-	margin-right: 30px;	
+	margin-right: 30px;
 }
 
 .hero-text {
@@ -195,64 +159,42 @@ td a:hover
     margin-top: 20px;
     margin-left: 30px;
     margin-right: 20px;
-    margin-bottom: 10px;
-    clear: both;
-    overflow: auto;
+    font-weight: bold;
+    font-size: 150%;
+    
 }
 
 #repo-content,
 #repo-list-content {
 	float: left;
 	margin-top: -20px;
-	padding-right: 20px;
-	
-}
-
-#repo-list-content {
-	margin-top: -35px;
 }
 
 #content-left {
 	width: 74%;
-	min-width: 700px;
 	float: left;
 	clear: both;
 }
 
 #sidebar-right {
-	width: 190px;
+	width: 20%;
 	position: relative;
+	min-height: 1000px;
 	float: right;
 	padding-top: 10px;
 	padding-right: 3.0em;
 	line-height: 1.5em;
 	font-size: 90%;
 	color: #444;
-	padding-left: 10px;
-}
-
-#sidebar-right a {
-	color: #444;
-}
-
-#sidebar-right a:hover {
-	color: #000;
-	text-decoration: underline;
 }
 
 #sidebar-right h2 {
 	color: #000;
-	font-size: 140%;
-	
-}
-
-#sidebar-right ul {
-	padding-left: 25px;
 }
 
 hr {
 	border: none;
-	border-bottom: 1px solid #aaa;
+	border-bottom: 1px solid #bbb;
 	margin-bottom: 30px;
 	margin-top: 30px;
 }
@@ -591,7 +533,7 @@ hr {
 
 .repo-list-item-container
 {
-	margin: 10px 10px 20px;
+	margin: 10px 10px 20px 20px;
     background-color: white;
     box-shadow: 0px 0px 10px #aaa;
     border: 1px solid #999;
@@ -633,37 +575,15 @@ repo-list-item-value
 	clear: both;
 }
 
-#repo-heading h2 {
-	width: 200px;
-	float: left;
-	margin-top: 0px;
-	
-}
-
-.repo-view {
-	font-size: 90%;
-	width: 300px;
-	float: left;
-}
-
-.repo-view img {
-	margin-right: 10px;
-}
-
-.repo-view .type {
-	position: relative;
-	top: -5px;
-}
-
 #repstats 
 {
-	font-size: .95em;
+	font-size: .65em;
 	font-style: normal;
+	position: relative;
+	top: -30px;
+	left: 280px;
 	border-left: 1px solid #ccc;
 	padding-left: 25px;
-	position: absolute;
-	left: 520px;
-	margin-top: -5px;
 }
 
 #repstats a {
@@ -770,4 +690,14 @@ repo-list-item-value
 	font-style: italic;
 	font-weight: bold;
 	font-size: 125%;
+}
+
+.category
+{
+    clear: both;
+}
+
+.category h2 {
+    padding: 1em 0 0 0;
+    margin: 0;
 }

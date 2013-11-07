@@ -156,34 +156,39 @@ function buildRepoContent()
     var repoContent = "";
 	var boxArtIndex = 0;
 	var previousImageFileName = "";
-    for (i = 0; i < reposTab.length; ++i )
-    {
-        var thisRepo = reposTab[i].repo;
-    	boxArtOverride = thisRepo.metadata.boxArt;
-    	if (boxArtOverride) {
-    		imageFileName = boxArtOverride;
-    	}
-		while ( imageFileName === previousImageFileName )
-		{
-    		imageFileName = 'box-art-' + boxArtIndex + '.jpg'
-    		boxArtIndex++;
-        	if (boxArtIndex > 8) {
-				boxArtIndex = 0;
-			}
-		}
 
-    	imageUrl = 'assets/' + imageFileName;
-		previousImageFileName = imageFileName;
+    $.each(categories, function(i, category) {
+        repoContent += '<div class="category"><h2>' + category.name + '</h2>';
+        $.each(category.projects, function(j, project) {
+            var thisRepo = project.repo;
+            var index = project.repoIndex;
+            boxArtOverride = thisRepo.metadata.boxArt;
+            if (boxArtOverride) {
+                imageFileName = boxArtOverride;
+            }
+            while ( imageFileName === previousImageFileName )
+            {
+                imageFileName = 'box-art-' + boxArtIndex + '.jpg'
+                boxArtIndex++;
+                if (boxArtIndex > 8) {
+                    boxArtIndex = 0;
+                }
+            }
 
-        repoContent += '<a class="standard-anchor" href="' + thisRepo.html_url + '">';
-        repoContent += '<div class="repo-item-container">';
-    	repoContent += '<div id="repo-container-id-' + i + '" class="repo-item-name">' + thisRepo.name + '</div>';
-        repoContent += '<div id="repo-id-' + i + '" class="repo-item" style="background-image: url(' + imageUrl + ')">';
-            repoContent += '<div id="repo-cover-id-' + i + '" class="repo-item-cover"><div class="repo-item-shadow"></div></div>';
-            repoContent += '<div id="repo-button-id-' + i + '" class="repo-item-button"></div>';
-        repoContent += '</div></a>';
+            imageUrl = 'assets/' + imageFileName;
+            previousImageFileName = imageFileName;
+
+            repoContent += '<a class="standard-anchor" href="' + thisRepo.html_url + '">';
+            repoContent += '<div class="repo-item-container">';
+            repoContent += '<div id="repo-container-id-' + index + '" class="repo-item-name">' + thisRepo.name + '</div>';
+            repoContent += '<div id="repo-id-' + index + '" class="repo-item" style="background-image: url(' + imageUrl + ')">';
+                repoContent += '<div id="repo-cover-id-' + index + '" class="repo-item-cover"><div class="repo-item-shadow"></div></div>';
+                repoContent += '<div id="repo-button-id-' + index + '" class="repo-item-button"></div>';
+            repoContent += '</div></a>';
+            repoContent += '</div>';
+        });
         repoContent += '</div>';
-    }
+    });
     $('#repo-content').html(repoContent);
 
     for ( i = 0; i < reposTab.length; ++i )
@@ -213,24 +218,26 @@ function buildRepoContent()
 function buildRepoListContent()
 {
     var repoListContent = "";
-    for ( i = 0; i < reposTab.length; ++i )
-	{
-        var thisRepo = reposTab[i].repo;
-	    var updatedAt = parseISO8601(thisRepo.updated_at);
-		var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
+    $.each(categories, function(i, category) {
+        repoListContent += '<div class="category"><h2>' + category.name + '</h2>';
+        $.each(category.projects, function(j, project) {
+            var thisRepo = project.repo;
+            var updatedAt = parseISO8601(thisRepo.updated_at);
+            var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
 
-        repoListContent += '<div class="repo-list-item-container" onClick="location.href=\'' + thisRepo.html_url + '\'; return false;">';
-        repoListContent += '<div><a class="repo-list-item-anchor" href="' + thisRepo.html_url + '">' + thisRepo.name + '</a></div>';
-        repoListContent += '<div class="repo-list-item-description">' + thisRepo.description + '</div>';
-        // GitHub JSON data only reports counts of Stars, not Watchers, although the JSON data mislabels the numbers as "watchers"
-        repoListContent += '<div><span class="repo-list-item-label">Stars: </span><span class="repo-list-item-value">' + thisRepo.watchers + '</span></div>';
-        repoListContent += '<div><span class="repo-list-item-label">Forks: </span><span class="repo-list-item-value">' + thisRepo.forks + '</span></div>';
-        repoListContent += '<div><span class="repo-list-item-label">Language: </span><span class="repo-list-item-value">' + thisRepo.language + '</span></div>';
-        repoListContent += '<div><span class="repo-list-item-label">Open Issues: </span><span class="repo-list-item-value">' + thisRepo.open_issues + '</span></div>';
-        repoListContent += '<div><span class="repo-list-item-label">Updated: </span><span class="repo-list-item-value">' + updatedStr + '</span></div>';
-		repoListContent += '</div>';
-	}
-	
+            repoListContent += '<div class="repo-list-item-container" onClick="location.href=\'' + thisRepo.html_url + '\'; return false;">';
+            repoListContent += '<div><a class="repo-list-item-anchor" href="' + thisRepo.html_url + '">' + thisRepo.name + '</a></div>';
+            repoListContent += '<div class="repo-list-item-description">' + thisRepo.description + '</div>';
+            // GitHub JSON data only reports counts of Stars, not Watchers, although the JSON data mislabels the numbers as "watchers"
+            repoListContent += '<div><span class="repo-list-item-label">Stars: </span><span class="repo-list-item-value">' + thisRepo.watchers + '</span></div>';
+            repoListContent += '<div><span class="repo-list-item-label">Forks: </span><span class="repo-list-item-value">' + thisRepo.forks + '</span></div>';
+            repoListContent += '<div><span class="repo-list-item-label">Language: </span><span class="repo-list-item-value">' + thisRepo.language + '</span></div>';
+            repoListContent += '<div><span class="repo-list-item-label">Open Issues: </span><span class="repo-list-item-value">' + thisRepo.open_issues + '</span></div>';
+            repoListContent += '<div><span class="repo-list-item-label">Updated: </span><span class="repo-list-item-value">' + updatedStr + '</span></div>';
+            repoListContent += '</div>';
+        });
+        repoListContent += '</div>';
+    });
     $('#repo-list-content').html(repoListContent);
 }
 
@@ -403,6 +410,23 @@ function getViewParam()
 	return tabs[0].code;
 }
 
+function categorize() {
+    $.each(categories, function(i, category) {
+        $.each(category.projects, function(j, project) {
+            var id = project.id;
+            $.each(reposTab, function(k, repo) {
+                if (repo.repo.id === id) {
+                    project.repo = repo.repo;
+                    project.repoIndex = k;
+                }
+            });
+            if (!project.repo) {
+                console.error('no repo found', project);
+            }
+        });
+    });
+}
+
 $(function(){
 	if ( $.urlParam('view') )
 	{
@@ -410,6 +434,7 @@ $(function(){
 		return;
 	}
 
+    categorize();
 	buildTabs();
 	buildRepoContent();
 	buildRepoListContent();

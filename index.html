@@ -5,7 +5,7 @@
     <link rel="shortcut icon" href="http://cdn-0.nflximg.com/en_US/icons/nficon.ico">
     <meta name="description" content="Netflix Open Source">
     <meta name="title" content="Netflix Open Source">
-    <title>Netflix Open Source</title>
+    <title>Netflix Open Source Software Center</title>
   
     <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.dateFormat-1.0.js"></script>
@@ -38,10 +38,33 @@
 				membersTab = json.members;
 			}
         }
+
+        var categories = [];
+
+        function setCategories(json) {
+            categories = json.categories;
+        }
     </script>
     <script type="text/javascript" src="http://githubproxy-942908148.us-east-1.elb.amazonaws.com/REST/v2/consolidated?jsonp=repos"></script>
+    <script type="text/javascript" src=" http://osscategories--frontend-1724609120.us-west-1.elb.amazonaws.com/categories"></script>
     <script type="text/javascript" src="js/models.js?v=201303071100"></script>
     <script type="text/javascript" src="js/nf.js?v=201303071100"></script>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+      var pluginUrl = 
+       '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+      _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    
+      ga('create', 'UA-45515011-1', 'netflix.github.io');
+      ga('send', 'pageview');
+    
+    </script>
+    
 </head>
 
 <body>
@@ -50,26 +73,69 @@
 	<div class="header">
 	    <div class="header-logo">
 	        <a href="http://www.netflix.com"><img src="assets/Netflix_OSS_Logo.jpg" width="224" height="40" align="middle" alt="Netflix" border="0"></a>
-	        <div class="header-text">Netflix Open Source Center</div>
+	        <div class="header-text">Netflix Open Source Software Center</div>
 	    </div>
+	    
 	</div>
-
 	<div id="sub-header">
 	</div>
+
+	
 </div>
 
 <div id="scrolling-section">
 
+
 <div id="tab-content-repo">
-	<div id="repo-hero"><a href="https://github.com/Netflix/Cloud-Prize/blob/master/README.rdoc"><img src="assets/950x250_BNR_CloudPrize_Attend_v3.jpg" width="950" height="250" alt="Netflix OSS Prize" border="0"></a></div>
-	<div id="repo-heading">
-	    <span><a href="https://github.com/Netflix">Our Repositories</a></span>
-		<a href="#" onclick="repoView(true);"><img src="assets/glyphicons_156_show_thumbnails.png" width="22" height="22" alt="Thumbnails" border="0"></a>
-		<a href="#" onclick="repoView(false);"><img src="assets/glyphicons_114_list.png" width="22" height="22" alt="List" border="0"></a>
-	    <span id="repstats"></span>
+	<div id="repo-hero">
+		<div class="hero-content">
+			<div class="img-placeholder">
+				<img src="assets/oss-team-small.jpg" />
+			</div>
+			<div class="hero-text">
+			<h2>Getting Started</h2>
+			<p>Welcome to the Netflix Open Source Software Center. To begin, we recommend working with our <a href="https://github.com/Netflix/recipes-rss">RSS Reader application</a>. See <a href="http://answersforaws.com/resources/netflixoss/cloudformation/">this walkthrough</a> to get up and running quickly.</p>
+			<p>After you've tackled that, check out the <a href="https://github.com/aspyker/acmeair-netflix/wiki/AMI-Based-Deployment">IBM ACME Air</a> and <a href="https://github.com/cfregly/fluxcapacitor">Flux Capacitor</a> apps.</p>
+			<p>
+			<p>Also, be sure to join our mailing lists and follow us on Twitter to stay up to date.</p>
+			</div>
+		</div>
+	
 	</div>
-	<div id="repo-content"></div><br clear="all">
-	<div id="repo-list-content"></div>
+	<div id="content-left">
+		<div id="repo-heading">
+		    <a href="https://github.com/Netflix"><h2>Our Repositories</h2></a>
+			<div class="repo-view"><a href="#" onclick="repoView(true);"><img src="assets/glyphicons_156_show_thumbnails.png" width="22" height="22" alt="Thumbnails" border="0"><span class="type">Thumbnail View</span></a>
+			<a href="#" onclick="repoView(false);"><img src="assets/glyphicons_114_list.png" width="22" height="22" alt="List" border="0"><span class="type">List View</span></a>
+			</div>
+			<div id="repstats"></div>
+			  
+		</div>
+		
+		<div id="repo-content"></div><br clear="all">
+		<div id="repo-list-content"></div>
+	</div>
+	<div id="sidebar-right">
+		<h2>Mailing Lists</h2>
+		<p>We maintain mailing lists for some of our open source projects. Click on the following links to subscribe and/or maintain your subscriptions.</p>
+			<ul>
+			<li><a href="http://groups.google.com/group/AsgardUsers">Asgard Mailing List</a></li>
+			<li><a href="http://groups.google.com/group/astyanax-cassandra-client">Astyanax Mailing List</a></li>
+			<li><a href="http://groups.google.com/group/curator-users">Curator Mailing List</a></li>
+			<li><a href="http://groups.google.com/group/exhibitor-users">Exhibitor Mailing List</a></li>
+			<li><a href="http://groups.google.com/group/simianarmy-users">SimianArmy Mailing List</a></li>
+			</ul>
+		<hr />
+			<h2>Stay in Touch</h2>
+			<ul>
+			<li><a href="http://techblog.netflix.com/">Netflix Tech Blog</a></li>
+			<li><a href="https://twitter.com/NetflixOSS">@NetflixOSS</a></li>
+			<li><a href="http://www.slideshare.net/netflix">Slideshare</a></li>
+			<li><a href="http://www.meetup.com/Netflix-Open-Source-Platform/">Netflix Meetup</a></li>
+			<li><a href="http://jobs.netflix.com">Jobs at Netflix</a></li>
+			</ul>
+	</div>
+	
 </div>
 
 <div id="tab-content-timeline">
@@ -80,6 +146,7 @@
     <script type="text/javascript" src="js/commits.js?v=201303071100"></script>
 </div>
 
+<!-- Tab removed
 <div id="tab-content-lists">
 	<div id="lists-content">
 		<div id="lists-content-heading">
@@ -97,12 +164,16 @@
 	</div>
 </div>
 
+-->
+
 <div id="tab-content-community">
     <div class="section-heading">Netflix OSS is popular! Here are some outside projects that utilize Netflix OSS:</div>
 
 	<div id="community-table-content" class="display-table-content">		
 	</div>
 </div>
+
+<!-- Tab removed
 
 <div id="tab-content-powered-by">
 	<div class="content-padding-light">
@@ -111,7 +182,7 @@
 		</div>
 	</div>
 </div>
-
+-->
 <div id="tab-content-web">
     <div class="section-heading">Articles and blogs about Netflix OSS</div>
 
@@ -160,7 +231,7 @@
         </div>
 
         <div class="info-box-content-item-header">
-            Communication
+            Stay in Touch
         </div>
 
         <div class="info-box-content-item-clear"></div>
