@@ -36,9 +36,9 @@ var tabs = [
 	new TabSpec('timeline', 'tab-content-timeline', 'Commit Timeline'),
 /*	new TabSpec('mail', 'tab-content-lists', 'Mailing Lists'), */
 	new TabSpec('community', 'tab-content-community', 'Community'),
-/*	new TabSpec('powered', 'tab-content-powered-by', 'Powered By NetflixOSS'), */
-	new TabSpec('web', 'tab-content-web', 'Around the Web'),
-	new TabSpec('amis', 'tab-content-amis', 'AMIs'),
+	new TabSpec('powered', 'tab-content-powered-by', 'Powered By NetflixOSS'),
+/*	new TabSpec('web', 'tab-content-web', 'Around the Web'),*/
+	new TabSpec('amis', 'tab-content-amis', 'AMIs'), 
 ];
 
 var poweredBy = [
