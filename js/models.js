@@ -42,6 +42,10 @@ var tabs = [
 ];
 
 var poweredBy = [
+	new PoweredBySpec("Yelp", "http://yelp.com", "assets/powered/yelp-sm.png", 150, 79),
+	new PoweredBySpec("Hotels", "https://github.com/neilbeveridge/Cloud-Prize/blob/master/Submission.md", "assets/powered/hotels-sm.jpg", 358, 277),
+	new PoweredBySpec("Mortar", "https://github.com/mortardata/Cloud-Prize/blob/master/Submission.md", "assets/powered/mortar-sm.png", 200, 56),
+	new PoweredBySpec("AWSAnswers", "https://github.com/pas256/Cloud-Prize/blob/master/Submission.md", "assets/powered/aws-answers.jpg", 225, 59),
 	new PoweredBySpec("Yahoo", "http://yahoo.com", "assets/powered/yahoo.png", 202, 50),
 	new PoweredBySpec("Eucalyptus", "http://www.eucalyptus.com", "assets/powered/eucalyptus2.png", 352, 84),
 	new PoweredBySpec("StumbleUpon", "http://www.stumbleupon.com/", "assets/powered/stumbleupon.png", 91, 91),
