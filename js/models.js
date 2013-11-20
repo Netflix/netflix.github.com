@@ -42,6 +42,7 @@ var tabs = [
 ];
 
 var poweredBy = [
+	new PoweredBySpec("Coursera", "https://www.coursera.org", "assets/powered/coursera.png", 225, 45),
 	new PoweredBySpec("Yelp", "http://yelp.com", "assets/powered/yelp-sm.png", 150, 79),
 	new PoweredBySpec("Hotels", "https://github.com/neilbeveridge/Cloud-Prize/blob/master/Submission.md", "assets/powered/hotels-sm.jpg", 358, 277),
 	new PoweredBySpec("Mortar", "https://github.com/mortardata/Cloud-Prize/blob/master/Submission.md", "assets/powered/mortar-sm.png", 200, 56),
