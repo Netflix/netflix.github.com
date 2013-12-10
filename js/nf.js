@@ -411,11 +411,18 @@ function getViewParam()
 }
 
 function categorize() {
+    categories.push({
+        "name": "Test",
+        "projects": [{
+            "name": "TestProject",
+            "full_name": "Netflix/TestProject"
+        }]
+    });
     $.each(categories, function(i, category) {
         $.each(category.projects, function(j, project) {
-            var id = project.id;
+            var full_name = project.full_name;
             $.each(reposTab, function(k, repo) {
-                if (repo.repo.id === id) {
+                if (repo.repo.full_name === full_name) {
                     project.repo = repo.repo;
                     project.repoIndex = k;
                 }
@@ -423,6 +430,9 @@ function categorize() {
             if (!project.repo) {
                 console.error('no repo found', project);
             }
+        });
+        category.projects = $.grep(category.projects, function(project) {
+            return !!project.repo;
         });
     });
 }
