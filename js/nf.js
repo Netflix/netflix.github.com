@@ -413,9 +413,9 @@ function getViewParam()
 function categorize() {
     $.each(categories, function(i, category) {
         $.each(category.projects, function(j, project) {
-            var full_name = project.full_name;
+            var name = project.name;
             $.each(reposTab, function(k, repo) {
-                if (repo.repo.full_name === full_name) {
+                if (repo.repo.name === name) {
                     project.repo = repo.repo;
                     project.repoIndex = k;
                 }
