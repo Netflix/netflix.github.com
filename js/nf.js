@@ -411,13 +411,6 @@ function getViewParam()
 }
 
 function categorize() {
-    categories.push({
-        "name": "Test",
-        "projects": [{
-            "name": "TestProject",
-            "full_name": "Netflix/TestProject"
-        }]
-    });
     $.each(categories, function(i, category) {
         $.each(category.projects, function(j, project) {
             var full_name = project.full_name;
