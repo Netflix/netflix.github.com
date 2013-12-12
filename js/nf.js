@@ -411,6 +411,18 @@ function getViewParam()
 }
 
 function categorize() {
+    if (!$.isArray(categories)) {
+        var cats = [];
+        $.each(categories, function(category, projects) {
+            cats.push({
+                name: category,
+                projects: $.map(projects, function(name) {
+                    return {name: name};
+                })
+            });
+        });
+        categories = cats;
+    }
     $.each(categories, function(i, category) {
         $.each(category.projects, function(j, project) {
             var name = project.name;
