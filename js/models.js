@@ -42,6 +42,7 @@ var tabs = [
 ];
 
 var poweredBy = [
+	new PoweredBySpec("Globus Genomics", "https://www.globus.org/genomics/", "assets/powered/globus-logo.png"),
 	new PoweredBySpec("Riot", "http://www.riotgames.com", "assets/powered/riot-logo-sm.png"),
 	new PoweredBySpec("Coursera", "https://www.coursera.org", "assets/powered/coursera.png", 225, 45),
 	new PoweredBySpec("Yelp", "http://yelp.com", "assets/powered/yelp-sm.png", 150, 79),
