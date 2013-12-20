@@ -42,6 +42,7 @@ var tabs = [
 ];
 
 var poweredBy = [
+	new PoweredBySpec("FullContact", "http://www.fullcontact.com/", "assets/powered/fullcontact.png"),
 	new PoweredBySpec("FlipKart", "http://www.flipkart.com/", "assets/powered/flipkart.png"),
 	new PoweredBySpec("Globus Genomics", "https://www.globus.org/genomics/", "assets/powered/globus-logo.png"),
 	new PoweredBySpec("Riot", "http://www.riotgames.com", "assets/powered/riot-logo-sm.png"),
