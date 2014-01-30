@@ -35,13 +35,14 @@ var tabs = [
 	new TabSpec('repo', 'tab-content-repo', 'Repositories'),
 	new TabSpec('timeline', 'tab-content-timeline', 'Commit Timeline'),
 /*	new TabSpec('mail', 'tab-content-lists', 'Mailing Lists'), */
-	new TabSpec('community', 'tab-content-community', 'Community'),
+/*	new TabSpec('community', 'tab-content-community', 'Community'), */
 	new TabSpec('powered', 'tab-content-powered-by', 'Powered By NetflixOSS'),
 /*	new TabSpec('web', 'tab-content-web', 'Around the Web'),*/
-	new TabSpec('amis', 'tab-content-amis', 'AMIs'), 
+/*	new TabSpec('amis', 'tab-content-amis', 'AMIs'),  */
 ];
 
 var poweredBy = [
+	new PoweredBySpec("Yammer", "https://www.yammer.com/", "assets/powered/yammer-logo.png"),
 	new PoweredBySpec("FullContact", "http://www.fullcontact.com/", "assets/powered/fullcontact.png"),
 	new PoweredBySpec("FlipKart", "http://www.flipkart.com/", "assets/powered/flipkart.png"),
 	new PoweredBySpec("Globus Genomics", "https://www.globus.org/genomics/", "assets/powered/globus-logo.png"),
