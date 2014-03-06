@@ -42,6 +42,7 @@ var tabs = [
 ];
 
 var poweredBy = [
+	new PoweredBySpec("Swrve", "http://swrve.com/", "assets/powered/swrve-logo.png"),
 	new PoweredBySpec("Kixeye", "https://www.kixeye.com/", "assets/powered/kixeye-logo.png"),
 	new PoweredBySpec("Yammer", "https://www.yammer.com/", "assets/powered/yammer-logo.png"),
 	new PoweredBySpec("FullContact", "http://www.fullcontact.com/", "assets/powered/fullcontact.png"),
