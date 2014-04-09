@@ -42,6 +42,7 @@ var tabs = [
 ];
 
 var poweredBy = [
+	new PoweredBySpec("Waze", "http://waze.com/", "assets/powered/waze.png"),
 	new PoweredBySpec("Nirmata", "http://www.nirmata.com/", "assets/powered/nirmata.png"),
 	new PoweredBySpec("IBM", "http://www.ibm.com/", "assets/powered/IBM-logo.png"),
 	new PoweredBySpec("Vennetics", "http://www.vennetics.com/", "assets/powered/vennetics.png"),
