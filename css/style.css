@@ -19,9 +19,8 @@ td a:hover
 	color: #b9090b;
 }
 
-#non-scrolling-section
+#page-header
 {
-	position: fixed;
 	padding-top: 10px;
 	width: 100%;
 	z-index: 500;
@@ -29,12 +28,11 @@ td a:hover
 	min-width: 950px;
 }
 
-#scrolling-section
+#page-body
 {
 	position: relative;
 	overflow: auto;
     width: 100%;
-    padding-top: 120px;
     bottom: 0;
     
 }
@@ -43,7 +41,7 @@ td a:hover
 {
     background-color: #b9090b;
     position: relative;
-    width: 98%;
+    width: 100%;
     height: 64px;
     margin-right: auto;
     margin-left: auto;
@@ -71,15 +69,15 @@ td a:hover
 
 #sub-header
 {
-    width: 96%;
+    width: 100%;
 	height: 42px;
 	position: relative;
 	overflow: hidden;
 	margin-right: auto;
 	margin-left: auto;
 
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+	/*border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;*/
 	box-shadow: 0px 0px 5px #222;
 	z-index: 100;
 	
