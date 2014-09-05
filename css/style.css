@@ -1,6 +1,6 @@
 body
 {
-    font-family: sans-serif;
+    font-family: 'Source Sans Pro';
     font-size: 14px;
 	background-color: #eee;
     margin: 0px;
@@ -41,7 +41,7 @@ td a:hover
 
 .header
 {
-    background-color: #b9090b;
+    background-color: #fff;
     position: relative;
     width: 98%;
     height: 64px;
@@ -55,17 +55,15 @@ td a:hover
 {
     padding-top: 12px;
 	padding-left: 12px;
-	height: 44px;
-    width: 100%;
 }
 
 .header-text
 {
     position: relative;
-    top: -37px;
-    font-size: 190%;
-    color: white;
-    text-shadow: 1px 2px #111;
+    font-weight: 200;
+    top: -40px;
+    font-size: 210%;
+    color: #666;
     left: 250px;
 }
 
