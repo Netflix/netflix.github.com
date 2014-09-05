@@ -47,7 +47,7 @@ td a:hover
     height: 64px;
     margin-right: auto;
     margin-left: auto;
-    box-shadow: 0px 0px 5px #000;
+    border: 1px solid #aaa;
     z-index: 500;
 }
 
@@ -60,8 +60,8 @@ td a:hover
 .header-text
 {
     position: relative;
-    font-weight: 200;
-    top: -40px;
+    font-weight: 300;
+    top: -39px;
     font-size: 210%;
     color: #666;
     left: 250px;
@@ -160,12 +160,14 @@ td a:hover
 	color: #666;
 	font-size: 140%;
 	margin-bottom: 7px;
+	font-weight: 400;
 }
 
 #repo-list-content .category h2 {
 	color: #666;
 	font-size: 140%;
 	margin-bottom: 14px;
+	font-weight: 400;
 }
 
 .img-placeholder {
@@ -186,6 +188,8 @@ td a:hover
 
 .hero-text h2 {
 	color: #eee;
+	font-size: 170%;
+	font-weight: 300;
 }
 
 #repo-heading
@@ -196,6 +200,11 @@ td a:hover
     margin-bottom: 10px;
     clear: both;
     overflow: auto;
+    
+}
+
+#repo-heading h2 {
+	font-weight: 600;
 }
 
 #repo-content,
@@ -241,6 +250,7 @@ td a:hover
 #sidebar-right h2 {
 	color: #000;
 	font-size: 140%;
+	font-weight: 400;
 	
 }
 
@@ -436,7 +446,7 @@ hr {
 .section-heading 
 {
     font-size: 21px;
-    font-weight: bold;
+    font-weight: 400;
     margin: 20px 0px 20px 10px;
 }
 
