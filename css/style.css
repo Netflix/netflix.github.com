@@ -334,9 +334,10 @@ hr {
     cursor: pointer;
     background-color: #FFF;
     color: #444;
-	background-repeat: no-repeat;
-	background-size: 140px 210px; 
-	background-position: center;
+		background-repeat: no-repeat;
+		background-size: 140px 210px; 
+		background-position: center;
+		background-size: contain;
 }
 
 .repo-item-name
