@@ -42,6 +42,7 @@ var tabs = [
 ];
 
 var poweredBy = [
+	new PoweredBySpec("Stitchfix", "https://www.stitchfix.com/", "assets/powered/stitchfix.png"),
 	new PoweredBySpec("kenzan", "http://www.kenzanmedia.com/", "assets/powered/kenzan.png"),
 	new PoweredBySpec("Schibsted", "http://www.schibsted.com/", "assets/powered/schibsted.png"),
 	new PoweredBySpec("Bitnet", "http://bitnet.io/", "assets/powered/bitnet.png"),
