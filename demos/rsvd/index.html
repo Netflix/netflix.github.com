@@ -6,14 +6,22 @@
 <script src="numeric.js" type="text/JavaScript"></script>
 </head>
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  button {
+    padding: 10px;
+    font-size: 12px;
+  }
   #viz, svg {
     height: 680px;
-    width: 650px;
+    width: 600px;
   }
 
 </style>
 <body onload="runViz('outlier_ts_periodic.csv');">
-<div>
+<div style="padding:20px 0 0 20px;">
 <button onclick="runViz('outlier_ts_periodic.csv');">Random Series</button>
 <button onclick="runViz('outlier_ts.csv');">Ozone</button>
 </div>
@@ -31,6 +39,12 @@
 <script>
 
 function runViz(filename) {
+  cancelDrawing = true;
+
+  perturb = false;
+  if (filename == "outlier_ts_periodic.csv") {
+    perturb = true;
+  }
   d3.select("svg").selectAll("*").remove();
   d3.csv(filename, viz);
 
@@ -102,9 +116,9 @@ function computeRSVD() {
 		objPrev = obj;
 		mu = computeDynamicMu();
 
-    console.log("Iteration:", iter)
+//    console.log("Iteration:", iter)
 //    console.log("ComputeL:", l1norm)
-    console.log("MU:", mu)
+//    console.log("MU:", mu)
 		
     L_Array.push(L);
     S_Array.push(S);
@@ -193,7 +207,7 @@ function computeE() {
 function computeL(_mu) {
 	LPenalty = lpenalty * _mu;
 
-  console.log("LPenalty:", LPenalty)
+//  console.log("LPenalty:", LPenalty)
 
 	svd = numeric.svd(numeric.sub(X,S));
 	
@@ -257,7 +271,18 @@ function l1norm(_data) {
 
 function viz(data) {
 origin = [0,0]
-//randomData = d3.range(100).map(function(d,i) {return {x:i * 10, y: (Math.random() * 80) + 600}})
+
+if (perturb == true) {
+  for (var x = 0; x<3;x++) {
+    var randomPoint = (parseInt(Math.random() * 300) + 10);
+    if (parseFloat(data[randomPoint].y) > 0) {
+      data[randomPoint].y = Math.min(2,parseFloat(data[randomPoint].y) + 0.75);
+    }
+    else {
+      data[randomPoint].y = Math.max(-2,parseFloat(data[randomPoint].y) - 0.75);      
+    }
+  }
+}
 
 arrayData = data.map(function(d) {return [d.x,d.y]})
 
@@ -281,7 +306,9 @@ while (a < arrayData.length) {
 
 rectArray = numeric.transpose(rectArray);
 
-b = RSVD(rectArray, 5.0, 3.5)
+b = RSVD(rectArray, 5.0, 3.5);
+
+  cancelDrawing = false;
 
 var errorLine = d3.svg.line().x(function(d) {return d.x}).y(function(d,i) {return i == 0 || i == 335 ? 0 : d.y}).interpolate("linear");
 var trendLine = d3.svg.line().x(function(d) {return d.x}).y(function(d) {return d.y}).interpolate("linear");
@@ -331,7 +358,7 @@ d3.selectAll("circle.X")
 
 d3.select("svg")
 .append("g")
-.attr("transform", function(d,i) {return "translate(20,200)"})
+.attr("transform", function(d,i) {return "translate(7,200)"})
 .attr("class", "stdev")
 
 d3.select("g.stdev")
@@ -357,7 +384,7 @@ d3.select("g.stdev")
 
 d3.select("svg")
 .append("g")
-.attr("transform", function(d,i) {return "translate(20,200)"})
+.attr("transform", function(d,i) {return "translate(7,200)"})
 .attr("class", "E")
 .append("path")
 .attr("d", errorLine(flattenArray(E_Array[0])))
@@ -370,7 +397,7 @@ d3.select("svg")
 
 d3.select("svg")
 .append("g")
-.attr("transform", function(d,i) {return "translate(20,200)"})
+.attr("transform", function(d,i) {return "translate(7,200)"})
 .attr("class", "L")
 .append("path")
 .attr("class", "L")
@@ -381,7 +408,7 @@ d3.select("svg")
 
 d3.select("svg")
 .append("g")
-.attr("transform", function(d,i) {return "translate(20,200)"})
+.attr("transform", function(d,i) {return "translate(7,200)"})
 .attr("class", "X")
 .append("path")
 .attr("class", "X")
@@ -423,7 +450,7 @@ d3.select("g.L").selectAll("circle.L")
 
 d3.select("svg")
 .append("g")
-.attr("transform", function(d,i) {return "translate(20,200)"})
+.attr("transform", function(d,i) {return "translate(7,200)"})
 .attr("class", "S")
 .selectAll("rect.S")
   .data(flattenArray(S_Array[0]))
@@ -442,13 +469,15 @@ d3.select("svg")
   animateRSVD();
 
   function animateRSVD() {
+    if (cancelDrawing) {
+      return;
+    }
     graphic_iters++;
     redrawRSVD();
     if ((graphic_iters + 1) < diff_Array.length) {
       setTimeout(animateRSVD, animationDelay + (animationDelay * 2))
     }
     else {
-      d3.select
     }
 
   }
