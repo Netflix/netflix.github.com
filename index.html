@@ -9,6 +9,7 @@
 
     <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="js/jquery.dateFormat-1.0.js"></script>
+    <script type="text/javascript" src="js/headroom.min.js"></script>
     <script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
 
     <script>
@@ -309,5 +310,9 @@
 <div id="balloon-arrow-left"><img src="assets/left-arrow.png" width="47" height="56" border="0" alt=""></div>
 <div id="balloon-arrow-right"><img src="assets/right-arrow.png" width="47" height="55" border="0" alt=""></div>
 
+<script>
+		var header = new Headroom(document.querySelector("#sub-header"));
+		header.init();
+</script>
 </body>
 </html>
