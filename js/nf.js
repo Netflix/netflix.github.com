@@ -224,7 +224,8 @@ function buildRepoListContent()
             var thisRepo = project.repo;
             var updatedAt = parseISO8601(thisRepo.updated_at);
             var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
-            var imageUrl = 'assets/repos/' + thisRepo.full_name.substr(7) + '.png' 
+            var imageName = thisRepo.full_name.substr(7);
+            var imageUrl = 'assets/repos/' + imageName + '.png' 
 
             repoListContent += '<div class="repo-list-item-container" onClick="location.href=\'' + thisRepo.html_url + '\'; return false;">';
             repoListContent += '<div><a class="repo-list-item-anchor" href="' + thisRepo.html_url + '">' + thisRepo.name + '</a></div>';

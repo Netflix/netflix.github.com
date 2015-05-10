@@ -631,6 +631,7 @@ hr {
 	width: 140px;
 	height: 210px;
 	float: left;
+	margin-right: 10px; 
 }
 
 .repo-list-item-image img {
