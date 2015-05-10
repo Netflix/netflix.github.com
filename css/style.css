@@ -608,6 +608,7 @@ hr {
 	padding: 15px 20px 20px;
 	cursor: pointer;
 	width: 92%;
+	height: 232px;
 }
 
 .repo-list-item-container:hover {
@@ -624,6 +625,18 @@ hr {
 	font-size: 1.25em;
 	margin-bottom: 3px;
 	line-height: 1.8em;
+}
+
+.repo-list-item-image {	
+	width: 140px;
+	height: 210px;
+	float: left;
+	margin-right: 15px; 
+}
+
+.repo-list-item-image img {
+	width: 100%;
+	height: 100%;
 }
 
 .repo-list-item-description

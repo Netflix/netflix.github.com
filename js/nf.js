@@ -224,9 +224,12 @@ function buildRepoListContent()
             var thisRepo = project.repo;
             var updatedAt = parseISO8601(thisRepo.updated_at);
             var updatedStr = $.format.date(updatedAt, "MM/dd/yy") + ' ' + $.format.date(updatedAt, "@HH:mm:ss");
+            
+            var imageUrl = 'assets/' + thisRepo.metadata.boxArt; 
 
             repoListContent += '<div class="repo-list-item-container" onClick="location.href=\'' + thisRepo.html_url + '\'; return false;">';
             repoListContent += '<div><a class="repo-list-item-anchor" href="' + thisRepo.html_url + '">' + thisRepo.name + '</a></div>';
+            repoListContent += '<div class="repo-list-item-image">' + '<img src="' + imageUrl + '"/> </div>'; 
             repoListContent += '<div class="repo-list-item-description">' + thisRepo.description + '</div>';
             // GitHub JSON data only reports counts of Stars, not Watchers, although the JSON data mislabels the numbers as "watchers"
             repoListContent += '<div><span class="repo-list-item-label">Stars: </span><span class="repo-list-item-value">' + thisRepo.watchers + '</span></div>';
