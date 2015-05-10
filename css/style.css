@@ -18,7 +18,10 @@ td a:hover
 	text-decoration: underline;
 	color: #b9090b;
 }
-
+.repo-list-item-image {
+	width: 140px;
+	height: 211px;
+}
 #non-scrolling-section
 {
 	position: fixed;
