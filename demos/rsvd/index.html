@@ -1,0 +1,743 @@
+<html>
+<head>
+  <title>Visualizing RSVD</title>
+  <meta charset="utf-8" />
+<script src="d3.v3.min.js" type="text/JavaScript"></script>
+<script src="numeric.js" type="text/JavaScript"></script>
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  button {
+    padding: 10px;
+    font-size: 12px;
+  }
+  #viz, svg {
+    height: 680px;
+    width: 600px;
+  }
+
+</style>
+<body onload="runViz('outlier_ts_periodic.csv');">
+<div style="padding:20px 0 0 20px;">
+<button onclick="runViz('outlier_ts_periodic.csv');">Random Series</button>
+<button onclick="runViz('outlier_ts.csv');">Ozone</button>
+</div>
+<div id="viz">
+  <svg id="sankeySVG">
+  </svg>
+</div>
+<div style="display:none;" id="controls">
+<span>L Penalty: </span><input type="text" id="lpenalty" value=1.0></input>
+<span>S Penalty: </span><input type="text" id="spenalty" value=0.2857738033247></input>
+</div>
+</body>
+  <footer>
+    
+<script>
+
+function runViz(filename) {
+  cancelDrawing = true;
+
+  perturb = false;
+  if (filename == "outlier_ts_periodic.csv") {
+    perturb = true;
+  }
+  d3.select("svg").selectAll("*").remove();
+  d3.csv(filename, viz);
+
+animationDelay = 1;
+pointPosition = [0,0];
+graphic_iters = 0;
+total_iterations = 0;
+
+X = [];
+L = [];
+S = [];
+E = [];
+lpenalty = 0;
+spenalty = 0;
+MAX_ITERS = 500;
+
+X_Array = [];
+L_Array = [];
+S_Array = [];
+E_Array = [];
+
+mu_Array = [];
+diff_Array = [];
+
+function RSVD(data,_lpenalty,_spenalty) {
+
+
+	thisModel = {};
+	thisModel.X = data;
+  
+	lpenalty = parseFloat(d3.select("#lpenalty").property("value"));
+	spenalty = parseFloat(d3.select("#spenalty").property("value"));
+	
+	//Added for form
+	X = data;
+	
+	initMatrices();
+	computeRSVD();
+}
+
+function initMatrices() {
+	L = X.map(function(d) {return d.map(function(d) {return 0})});
+	S = X.map(function(d) {return d.map(function(d) {return 0})});
+	E = X.map(function(d) {return d.map(function(d) {return 0})});
+
+}
+
+function computeRSVD() {
+	mu = X.length * X[0].length / (4 * l1norm(X));
+	objPrev = 0.5 * numeric.norm2Squared(X);
+	obj = objPrev;
+	tol = objPrev * 1e-8;
+	diff = 2 * tol;
+	
+	iter = 0;
+
+	while (diff > tol && iter < MAX_ITERS) {
+    total_iterations++;
+		
+    nuclearNorm = computeS(mu);
+
+		l1Norm = computeL(mu);
+
+		l2Norm = computeE();
+
+		obj = computeObjective(nuclearNorm, l1Norm, l2Norm);
+
+		diff = Math.abs(objPrev - obj);
+		objPrev = obj;
+		mu = computeDynamicMu();
+
+//    console.log("Iteration:", iter)
+//    console.log("ComputeL:", l1norm)
+//    console.log("MU:", mu)
+		
+    L_Array.push(L);
+    S_Array.push(S);
+    E_Array.push(E);
+
+    mu_Array.push(mu);
+    diff_Array.push(diff);
+
+		iter += 1;
+	}
+	
+}
+
+function computeDynamicMu() {
+
+  var _m = E.length;
+  var _n = E[0].length;
+  var E_sd = standardDeviationArray(E);
+
+  var _mu = E_sd * Math.sqrt(2 * Math.max(_m,_n));
+
+  return Math.max(.01,_mu);
+
+	// _MAD = MedianAbsoluteDeviation(E);
+	// return Math.max(.01, _MAD);
+}
+
+function standardDeviationArray(_array) {
+    var _flatArray = [];
+  for (var x = 0; x<_array.length;x++) {
+    for (var y = 0; y<_array[x].length;y++) {
+      _flatArray.push(_array[x][y])
+    }
+  }
+
+  return standardDeviation(_flatArray);
+}
+
+function MedianAbsoluteDeviation(_array) {
+	_values = [];
+	
+	for(var x = 0;x<_array.length;x++) {
+		for(var y = 0;y<_array[x].length;y++) {
+			_values.push(_array[x][y]);
+		}
+	}
+	_median = median(_values);
+	
+	_values_abs = [];
+	for(var x = 0;x<_array.length;x++) {
+		for(var y = 0;y<_array[x].length;y++) {
+			_values_abs.push(Math.abs(_array[x][y]) - _median);
+		}
+	}
+	
+	_AbsMedian = median(_values_abs);
+	
+	return _AbsMedian;
+
+	function median(values) {
+
+    values.sort( function(a,b) {return a - b;} );
+
+    var half = Math.floor(values.length/2);
+
+    if(values.length % 2)
+        return values[half];
+    else
+        return (values[half-1] + values[half]) / 2.0;
+	}
+
+}
+
+function computeObjective(_nuclearnorm, _l1norm, _l2norm) {
+	return 0.5 * _l2norm + _nuclearnorm + _l1norm;
+}
+
+
+function computeE() {
+
+//	E = numeric.sub(X,(numeric.sub(L,S)));
+    E = numeric.sub((numeric.sub(X,L)),S);
+	return numeric.norm2Squared(E);
+	}
+
+function computeL(_mu) {
+	LPenalty = lpenalty * _mu;
+
+//  console.log("LPenalty:", LPenalty)
+
+	svd = numeric.svd(numeric.sub(X,S));
+	
+	penalizedD = softThresholdSingle(svd.S, LPenalty);
+	D_matrix = numeric.diag(penalizedD);
+	L = numeric.dot(svd.U,numeric.dot(D_matrix,numeric.transpose(svd.V)))
+
+	return numeric.sum(penalizedD) * LPenalty;
+}
+
+function computeS(_mu) {
+	SPenalty = spenalty * _mu;
+
+	penalizedS = softThreshold(numeric.sub(X,L),SPenalty);
+	S = penalizedS;
+
+	return l1norm(penalizedS) * SPenalty;
+}
+
+function softThreshold(_array,_penalty) {
+	for(var x = 0;x<_array.length;x++) {
+		for(var y = 0;y<_array[x].length;y++) {
+			_array[x][y] = signum(_array[x][y]) * Math.max(Math.abs(_array[x][y]) - _penalty, 0);
+		}
+	}
+	return _array;
+}
+
+function softThresholdSingle(_array,_penalty) {
+	for(var x = 0;x<_array.length;x++) {
+			_array[x] = signum(_array[x]) * Math.max(Math.abs(_array[x]) - _penalty, 0);
+	}
+	return _array;
+}
+
+
+function signum(_x) {
+	return _x?_x<0?-1:1:0;
+}
+
+function arraySubtract(_array1,_array2) {
+	_resultArray = _array1.map(function(d) {return d.map(function(){return 0})})
+	for(var x = 0;x<_array1.length;x++) {
+		for(var y = 0;y<_array1[x].length;y++) {
+			_resultArray[x][y] = _array1[x][y] - _array2[x][y];
+		}
+	}
+	return _resultArray;
+}
+
+function l1norm(_data) {
+	var l1norm = 0;
+	for (var x = 0; x < _data.length;x++) {
+		for (var y = 0; y < _data[x].length;y++) {
+			l1norm += Math.abs(_data[x][y]);
+		}	
+	}
+
+	return l1norm;
+}
+
+function viz(data) {
+origin = [0,0]
+
+if (perturb == true) {
+  for (var x = 0; x<3;x++) {
+    var randomPoint = (parseInt(Math.random() * 300) + 10);
+    if (parseFloat(data[randomPoint].y) > 0) {
+      data[randomPoint].y = Math.min(2,parseFloat(data[randomPoint].y) + 0.75);
+    }
+    else {
+      data[randomPoint].y = Math.max(-2,parseFloat(data[randomPoint].y) - 0.75);      
+    }
+  }
+}
+
+arrayData = data.map(function(d) {return [d.x,d.y]})
+
+rectArray = [];
+
+var x = 0;
+var a = 0;
+
+while (a < arrayData.length) {
+  var y = 0;
+  rectArray.push([])
+
+  while (y < 24) {
+
+    rectArray[x][y] = parseFloat(arrayData[a][1])
+    y++;
+    a++;
+  }
+  x++;
+}
+
+rectArray = numeric.transpose(rectArray);
+
+b = RSVD(rectArray, 5.0, 3.5);
+
+  cancelDrawing = false;
+
+var errorLine = d3.svg.line().x(function(d) {return d.x}).y(function(d,i) {return i == 0 || i == 335 ? 0 : d.y}).interpolate("linear");
+var trendLine = d3.svg.line().x(function(d) {return d.x}).y(function(d) {return d.y}).interpolate("linear");
+var anomolyLine = d3.svg.line().x(function(d) {return d.x}).y(function(d) {return Math.abs(d.y) > 0 ? -125 : 0}).interpolate("linear");
+var pointDrag = d3.behavior.drag();
+  pointDrag.on("dragstart", circleDragstart)
+           .on("dragend", circleDragend)
+           .on("drag", circleDrag)
+
+function circleDragstart(d) {
+  graphic_iters = 999;
+
+  pointPosition = d3.mouse(this)
+}
+
+function circleDragend(d) {
+  L_Array = [];
+  S_Array = [];
+  E_Array = [];
+
+  mu_Array = [];
+  diff_Array = [];
+  total_iterations = 0;
+
+  b = RSVD(X, 5.0, 3.5)
+  graphic_iters = 0;
+
+  animateRSVD();
+}
+
+function circleDrag(d) {
+
+  curPosition = d3.mouse(this)
+
+  d.y = curPosition[1];
+
+  X[d.coords[1]][d.coords[0]] = d.y / 75;
+
+    d3.select("path.X")
+    .attr("d", trendLine(flattenArray(X)))
+
+d3.selectAll("circle.X")
+  .data(flattenArray(X))
+  .attr("cy", function(d) {return d.y})
+
+}
+
+d3.select("svg")
+.append("g")
+.attr("transform", function(d,i) {return "translate(7,200)"})
+.attr("class", "stdev")
+
+d3.select("g.stdev")
+.append("line")
+.attr("x1", 0)
+.attr("x2", 1000)
+.attr("y1", 150)
+.attr("y2", 150)
+.style("stroke-width", "1px")
+.style("stroke", "darkgray")
+.style("stroke-dasharray", "5 5")
+
+d3.select("g.stdev")
+.append("line")
+.attr("x1", 0)
+.attr("x2", 1000)
+.attr("y1", -150)
+.attr("y2", -150)
+.style("stroke-width", "1px")
+.style("stroke", "darkgray")
+.style("stroke-dasharray", "5 5")
+
+
+d3.select("svg")
+.append("g")
+.attr("transform", function(d,i) {return "translate(7,200)"})
+.attr("class", "E")
+.append("path")
+.attr("d", errorLine(flattenArray(E_Array[0])))
+.attr("class", "E")
+.style("fill", "#eb7974")
+.style("stroke", "#eb7974")
+.style("stroke-opacity", .9)
+.style("stroke-width", 0)
+.style("fill-opacity", .9)
+
+d3.select("svg")
+.append("g")
+.attr("transform", function(d,i) {return "translate(7,200)"})
+.attr("class", "L")
+.append("path")
+.attr("class", "L")
+.attr("d", trendLine(flattenArray(L_Array[0])))
+.style("stroke", "#59a092")
+.style("stroke-width", "2px")
+.style("fill", "none")
+
+d3.select("svg")
+.append("g")
+.attr("transform", function(d,i) {return "translate(7,200)"})
+.attr("class", "X")
+.append("path")
+.attr("class", "X")
+.attr("d", trendLine(flattenArray(X)))
+.style("stroke", "#2e2d29")
+.style("stroke-width", "1px")
+.style("fill", "none")
+
+
+d3.select("g.X").selectAll("circle.X")
+  .data(flattenArray(X))
+  .enter()
+  .append("circle")
+  .attr("class", "X")
+  .attr("r", 8)
+  .attr("cx", function(d) {return d.x})
+  .attr("cy", function(d) {return d.y})
+  .style("pointer-events", "all")
+  .style("fill-opacity", 0)
+  .style("stroke", "#2e2d29")
+  .call(pointDrag)
+  .on("mouseover", circleHover)
+  .on("mouseout", function(){d3.selectAll("circle.X").style("fill-opacity", 0)})
+  .style("cursor", "ns-resize")
+
+
+
+d3.select("g.L").selectAll("circle.L")
+  .data(flattenArray(L_Array[0]))
+  .enter()
+  .append("circle")
+  .attr("class", "L")
+  .style("fill", "#19587b")
+  .attr("r", 2)
+  .attr("cx", function(d) {return d.x})
+  .attr("cy", function(d) {return d.y})
+  .style("opacity", .5)
+  .style("display", "none")
+
+d3.select("svg")
+.append("g")
+.attr("transform", function(d,i) {return "translate(7,200)"})
+.attr("class", "S")
+.selectAll("rect.S")
+  .data(flattenArray(S_Array[0]))
+  .enter()
+  .append("rect")
+  .attr("class", "S")
+  .style("fill", "#90342f")
+  .attr("height", 9)
+  .attr("x", function(d) {return d.x - 1})
+  .attr("y", function(d) {return Math.abs(d.y) > 0 ? -130 : 0})
+  .on("mouseover", rectOver)
+  .on("mouseout", rectOut)
+
+
+  var graphic_iters = 0;
+  animateRSVD();
+
+  function animateRSVD() {
+    if (cancelDrawing) {
+      return;
+    }
+    graphic_iters++;
+    redrawRSVD();
+    if ((graphic_iters + 1) < diff_Array.length) {
+      setTimeout(animateRSVD, animationDelay + (animationDelay * 2))
+    }
+    else {
+    }
+
+  }
+  
+  function circleHover(d,i) {
+    d3.selectAll("circle.X").style("fill-opacity", 0);
+    d3.select(this).style("fill-opacity", .5).style("fill", "brown")
+
+  }
+
+  function rectOver(d,i) {
+    d3.selectAll("circle.X").style("stroke-width", function(p,q) {return i == q ? 3 : 0});
+    d3.selectAll("rect.S").style("opacity", function(p,q) {return i == q ? 1 : .25});
+  }
+
+  function rectOut(d,i) {
+    d3.selectAll("rect.S").style("opacity", 1);
+    d3.selectAll("circle.X").style("stroke-width", 1);
+  }
+
+  function redrawRSVD() {
+
+    d3.select("path.L")
+    .transition()
+    .duration(animationDelay)
+    .attr("d", trendLine(flattenArray(L_Array[graphic_iters])))
+
+d3.selectAll("circle.L")
+  .data(flattenArray(L_Array[graphic_iters]))
+    .transition()
+    .duration(animationDelay)
+  .attr("cy", function(d) {return d.y})
+
+    d3.select("path.S")
+    .transition()
+    .duration(animationDelay)
+    .attr("d", anomolyLine(flattenArray(S_Array[graphic_iters])))
+
+d3.selectAll("rect.S")
+  .data(flattenArray(S_Array[graphic_iters]))
+  .each(function(d,i) {
+    if(Math.abs(d.y) > 0) {
+      d3.selectAll("circle.X").filter(function(p,q) {return q == i ? 1 : 0})
+      .style("stroke-opacity", .5)
+    }
+    else {
+      d3.selectAll("circle.X").filter(function(p,q) {return q == i ? 1 : 0})
+      .style("stroke-opacity", 0);
+    }
+    d3.select(this)
+    .transition()
+    .duration(animationDelay)
+   .attr("width", function(d) {return Math.abs(d.y) > 0 ? 4 : 0})
+  .attr("y", function(d) {return Math.abs(d.y) > 0 ? -165 : 0})
+  })
+
+    d3.select("path.E")
+    .transition()
+    .duration(animationDelay)
+    .attr("d", errorLine(flattenArray(E_Array[graphic_iters])))
+
+  }
+
+
+}
+
+  function standardDeviation(values){
+  var avg = average(values);
+  
+  var squareDiffs = values.map(function(value){
+    var diff = value - avg;
+    var sqrDiff = diff * diff;
+    return sqrDiff;
+  });
+  
+  var avgSquareDiff = average(squareDiffs);
+ 
+  var stdDev = Math.sqrt(avgSquareDiff);
+  return stdDev;
+}
+ 
+function average(data){
+  var sum = data.reduce(function(sum, value){
+    return sum + value;
+  }, 0);
+ 
+  var avg = sum / data.length;
+  return avg;
+}
+
+function flattenArray(_array2) {
+  var _array = numeric.transpose(_array2);
+  var _flatArray = [];
+  for (var x = 0; x<_array.length;x++) {
+    for (var y = 0; y<_array[x].length;y++) {
+      _flatArray.push({coords: [x,y], x: ((x * 24) + y) * 1.75, y: _array[x][y] * 75})
+    }
+
+  }
+  return _flatArray;
+}
+
+d3.select("svg").append("g")
+.attr("class", "legend")
+.attr("transform", "translate(20,475)")
+.append("rect")
+.attr("width", 300)
+.attr("height", 180)
+.style("fill", "white")
+.style("stroke", "#2e2d29")
+.style("stroke-width", "2px")
+
+var legend = d3.select("g.legend");
+
+legend.append("rect")
+.attr("width", 270)
+.attr("height", 30)
+.attr("x", 10)
+.attr("y", 45)
+.style("opacity", 0)
+.on("mouseover", function() {
+  d3.select(this).style("opacity", .1);
+  d3.selectAll("circle").style("stroke-width", "3px");
+})
+.on("mouseout", function() {
+  d3.select(this).style("opacity", 0);
+  d3.selectAll("circle").style("stroke-width", "1px");
+})
+
+legend.append("text").text("Legend")
+.attr("x", 110)
+.attr("y", 30)
+.style("font-size", "26px")
+.style("pointer-events", "none")
+.style("fill", "#9b3e3c")
+.style("font-weight", 900)
+
+legend.append("circle")
+.style("fill", "none")
+.style("stroke", "#2e2d29")
+.style("stroke-width", "1px")
+.attr("r", 8)
+.attr("cx", 20)
+.attr("cy", 60)
+.style("pointer-events", "none")
+
+legend.append("rect")
+.attr("width", 270)
+.attr("height", 30)
+.attr("x", 10)
+.attr("y", 75)
+.style("opacity", 0)
+.on("mouseover", function() {
+  d3.selectAll("path.E,path.L").style("opacity", .5);
+  d3.select(this).style("opacity", .1);
+  d3.selectAll("path.X").style("stroke-width", "3px");
+})
+.on("mouseout", function() {
+  d3.selectAll("path.E,path.L").style("opacity", 1);
+  d3.select(this).style("opacity", 0);
+  d3.selectAll("path.X").style("stroke-width", "1px");
+})
+
+legend.append("text").text("Detected Anomoly")
+.attr("x", 35)
+.attr("y", 67)
+.style("font-size", "20px")
+.style("pointer-events", "none")
+
+legend.append("line")
+.style("stroke", "#2e2d29")
+.style("stroke-width", "2px")
+.attr("x1", 12)
+.attr("y1", 97)
+.attr("x2", 28)
+.attr("y2", 80)
+.style("pointer-events", "none")
+
+legend.append("text").text("Time Series")
+.attr("x", 35)
+.attr("y", 97)
+.style("font-size", "20px")
+.style("pointer-events", "none")
+
+legend.append("rect")
+.attr("width", 270)
+.attr("height", 30)
+.attr("x", 10)
+.attr("y", 105)
+.style("opacity", 0)
+.on("mouseover", function() {
+  d3.selectAll("path.X,path.E").style("opacity", .5);
+  d3.select(this).style("opacity", .1);
+  d3.selectAll("path.L").style("stroke-width", "4px");
+})
+.on("mouseout", function() {
+  d3.selectAll("path.X,path.E").style("opacity", 1);
+  d3.select(this).style("opacity", 0);
+  d3.selectAll("path.L").style("stroke-width", "2px");
+})
+
+
+legend.append("line")
+.style("stroke", "#19587b")
+.style("stroke-width", "2px")
+.attr("x1", 12)
+.attr("y1", 127)
+.attr("x2", 28)
+.attr("y2", 110)
+.style("pointer-events", "none")
+
+legend.append("text").text("Low Rank Approximation")
+.attr("x", 35)
+.attr("y", 127)
+.style("font-size", "20px")
+.style("pointer-events", "none")
+
+
+legend.append("rect")
+.attr("width", 270)
+.attr("height", 30)
+.attr("x", 10)
+.attr("y", 135)
+.style("opacity", 0)
+.on("mouseover", function() {
+  d3.selectAll("path.X,path.L").style("opacity", .5);
+  d3.select(this).style("opacity", .1);
+  d3.selectAll("path.E").style("stroke-width", "2px");
+})
+.on("mouseout", function() {
+  d3.selectAll("path.X,path.L").style("opacity", 1);
+  d3.select(this).style("opacity", 0);
+  d3.selectAll("path.E").style("stroke-width", "0px");
+})
+
+legend.append("path")
+.style("fill", "#eb7974")
+.style("stroke", "none")
+.attr("transform", "translate(10,157)")
+.attr("d", "m 0,0 1.96126079,-13.7288 4.2289686,0 1.3483667,8.6418 2.5128651,-4.9645 3.06447,1.4097 6.619256,8.5805 z")
+.style("pointer-events", "none")
+
+legend.append("text").text("Accepted Uncertainty")
+.attr("x", 35)
+.attr("y", 157)
+.style("font-size", "20px")
+.style("pointer-events", "none")
+/*
+
+low rank approximation: yellow
+original time series: black
+identified outliers: blue
+error: red
+remove the blue line leave the circles as points that highlight the outliers
+
+
+*/
+}
+
+</script>
+  </footer>
+
+</html>
