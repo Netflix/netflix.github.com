@@ -60,6 +60,9 @@ body {
   height: 409px;
 }
 
+.carousel-inner  {
+  -webkit-transform-style: preserve-3d;
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
