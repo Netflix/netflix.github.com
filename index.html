@@ -1,313 +1,378 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="shortcut icon" href="http://cdn-0.nflximg.com/en_US/icons/nficon.ico">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Netflix Open Source">
     <meta name="title" content="Netflix Open Source">
+    <link rel="shortcut icon" href="http://cdn-0.nflximg.com/en_US/icons/nficon2014.4.ico">
+
     <title>Netflix Open Source Software Center</title>
 
-    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery.dateFormat-1.0.js"></script>
-    <script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-      ga('create', 'UA-45515011-1', 'netflix.github.io');
-      ga('send', 'pageview');
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+  </head>
 
-    </script>
-
-    <link rel="stylesheet" type="text/css" href="css/style.css?v=201303081202">
-    <link rel="stylesheet" type="text/css" href="css/commits.css?v=201303081202">
-	<!--[if IE]>
-	<style>
-		.repo-item-cover, .repo-item-shadow, .repo-item-button
-		{
-		    width: 186px;
-			height: 256px;
-		}
-	</style>
-	<![endif]-->
-
-    <script type="text/javascript">
-        var reposTab = [];
-        var membersTab = [];
-
-        function repos(json)
-        {
-            if ( json.repos && $.isArray(json.repos) )
-            {
-				reposTab = json.repos;
-			}
-			if ( json.members && $.isArray(json.members) )
-			{
-				membersTab = json.members;
-			}
-        }
-
-        var categories = [];
-
-        function setCategories(json) {
-            categories = json.categories;
-        }
-    </script>
-    <script type="text/javascript" src="//osscategories.prod.netflix.net/repos"></script>
-    <script type="text/javascript" src="//osscategories.prod.netflix.net/categories"></script>
-    <script type="text/javascript" src="js/models.js?v=201303071100"></script>
-    <script type="text/javascript" src="js/nf.js?v=201303071100"></script>
-
-    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
-
-	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-	  ga('create', 'UA-45515011-1', 'netflix.github.io');
-	  ga('send', 'pageview');
-
-	</script>
-
-</head>
-
-<body>
-
-<div id="non-scrolling-section">
-	<div class="header">
-	    <div class="header-logo">
-	        <a href="http://www.netflix.com"><img src="assets/netflix-oss-logo-new.png" align="middle" alt="Netflix" border="0"></a>
-	        <div class="header-text">Netflix Open Source Software Center</div>
-	    </div>
-
-	</div>
-	<div id="sub-header">
-	</div>
-
-
-</div>
-
-<div id="scrolling-section">
-
-
-<div id="tab-content-repo">
-	<div id="repo-hero">
-		<div class="hero-content">
-			<div class="img-placeholder">
-				<a href="https://github.com/Netflix-Skunkworks/zerotodocker"><img src="assets/zero-to-docker-hero.png" /></a>
-				<!-- <a href="assets/oss-team.jpg"><img src="assets/oss-team-small.jpg" /></a> -->
-			</div>
-			<div class="hero-text">
-			<h2>Getting Started</h2>
-			<p>Welcome to the Netflix Open Source Software Center. To begin, we recommend working with our <a href="https://github.com/Netflix/recipes-rss">RSS Reader application</a>. See <a href="http://answersforaws.com/resources/netflixoss/cloudformation/">this walkthrough</a> on Answers For AWS to get up and running quickly.</p>
-			<p>For the simple approach, try out our <a href="https://github.com/Netflix-Skunkworks/zerotodocker">ZeroToDocker container images</a>. After downloading the images, you can be up and running NetflixOSS in just a few minutes.</p>
-			<p>After you've tackled that, check out the <a href="https://github.com/aspyker/acmeair-netflix/wiki/AMI-Based-Deployment">IBM ACME Air</a> and <a href="https://github.com/cfregly/fluxcapacitor">Flux Capacitor</a> apps, and the <a href="https://github.com/Netflix-Skunkworks/zerotocloud">Zero-to-Cloud</a> workshop.</p>
-			<p>
-			<p>Also, be sure to join our mailing lists and follow us <a href="https://twitter.com/NetflixOSS">@NetflixOSS</a> to stay up to date.</p>
-			</div>
-		</div>
-
-	</div>
-	<div id="content-left">
-		<div id="repo-heading">
-		    <a href="https://github.com/Netflix"><h2>Our Repositories</h2></a>
-			<div class="repo-view"><a href="#" onclick="repoView(true);"><img src="assets/glyphicons_156_show_thumbnails.png" width="22" height="22" alt="Thumbnails" border="0"><span class="type">Thumbnail View</span></a>
-			<a href="#" onclick="repoView(false);"><img src="assets/glyphicons_114_list.png" width="22" height="22" alt="List" border="0"><span class="type">List View</span></a>
-			</div>
-			<div id="repstats"></div>
-
-		</div>
-
-		<div id="repo-content"></div><br clear="all">
-		<div id="repo-list-content"></div>
-	</div>
-	<div id="sidebar-right">
-		<h2>Mailing Lists</h2>
-		<p>We maintain mailing lists for some of our open source projects. Click on the following links to subscribe and/or maintain your subscriptions.</p>
-			<ul>
-			<li><a href="http://groups.google.com/group/AsgardUsers">Asgard Mailing List</a></li>
-			<li><a href="http://groups.google.com/group/astyanax-cassandra-client">Astyanax Mailing List</a></li>
-			<li><a href="http://groups.google.com/group/curator-users">Curator Mailing List</a></li>
-			<li><a href="http://groups.google.com/group/exhibitor-users">Exhibitor Mailing List</a></li>
-			<li><a href="http://groups.google.com/group/simianarmy-users">SimianArmy Mailing List</a></li>
-			</ul>
-		<hr />
-			<h2>Stay in Touch</h2>
-			<ul>
-			<li><a href="http://techblog.netflix.com/">Netflix Tech Blog</a></li>
-			<li><a href="https://twitter.com/NetflixOSS">@NetflixOSS</a></li>
-			<li><a href="http://www.slideshare.net/netflix">Slideshare</a></li>
-			<li><a href="http://www.meetup.com/Netflix-Open-Source-Platform/">Netflix Meetup</a></li>
-			<li><a href="http://jobs.netflix.com">Jobs at Netflix</a></li>
-			</ul>
-	</div>
-
-</div>
-
-<!-- Tab removed
-<div id="tab-content-timeline">
-    <div class="section-heading">Netflix OSS GitHub Repositories</div>
-    <div id="commits" style="padding: 380px 40px; margin-right: 50px;"></div>
-    <div class="help">Scroll to expand or compress the timelines, drag to shift the timelines earlier or later, and mouse over a timeline to see the committers's names and commit messages.</div>
-    <script type="text/javascript" src="http://javaposseroundup.github.io/d3github/commitsbase.js"></script>
-    <script type="text/javascript" src="js/commits.js?v=201303071100"></script>
-</div>
-
--->
-
-<!-- Tab removed
-<div id="tab-content-lists">
-	<div id="lists-content">
-		<div id="lists-content-heading">
-			Mailing Lists
-		</div>
-
-		<div class="lists-content-item">
-			<p>
-			We maintain mailing lists for some of our open source projects. Click on the following
-			links to subscribe and/or maintain your subscriptions.
-			</p>
-
-			<p id="lists-repos"></p>
-		</div>
-	</div>
-</div>
-
--->
-<!-- Tab removed
-<div id="tab-content-community">
-    <div class="section-heading">Netflix OSS is popular! Here are some outside projects that utilize Netflix OSS:</div>
-
-	<div id="community-table-content" class="display-table-content">
-	</div>
-</div>
--->
-
-
-<div id="tab-content-powered-by">
-	<div class="content-padding-light">
-	    <div class="section-heading">These companies are using and contributing to Netflix OSS Components</div>
-	    <p style="margin-left: 10px;";>Email <a href="mailto:netflixoss@netflix.com">netflixoss@netflix.com</a> to have your logo here.</p>
-		<div id="content-powered-by">
-		</div>
-	</div>
-</div>
-<!-- Tab removed
-<div id="tab-content-web">
-    <div class="section-heading">Articles and blogs about Netflix OSS</div>
-
-	<div id="web-table-content" class="display-table-content">
-	</div>
-</div>
--->
-<!-- Tab removed
-<div id="tab-content-amis">
-    <div class="section-heading">Pre-built AMIs for Netflix OSS Components</div>
-
-	<div id="amis-table-content" class="display-table-content">
-		<table id="web-table" class="display-table">
-			<tr class="display-table-item-row">
-				<td class="display-table-item-row-cell-0">
-					<p style="font-size: 125%; font-weight: bold">
-					Asgard AMI<br>
-					<a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-1889f771">https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-1889f771</a>
-					</p>
-
-					<p>
-					<strong>Components and relevant licences:</strong><br>
-
-					<ul>
-					<li>Ubuntu - <a href="http://www.ubuntu.com/about/about-ubuntu/licensing">http://www.ubuntu.com/about/about-ubuntu/licensing</a></li>
-					<li>Java - <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">http://www.oracle.com/technetwork/java/javase/terms/license/index.html</a></li>
-					<li>Tomcat - <a href="http://tomcat.apache.org/legal.html">http://tomcat.apache.org/legal.html</a></li>
-					<li>Grails - <a href="http://grails.org/License">http://grails.org/License</a></li>
-					<li>Groovy - <a href="http://groovy.codehaus.org/License+Information">http://groovy.codehaus.org/License+Information</a></li>
-					<li>The licenses for all the Javascript used in Asgard is available at: <a href="https://github.com/Netflix/asgard/blob/master/NOTICE.txt">https://github.com/Netflix/asgard/blob/master/NOTICE.txt</a></li>
-					</ul>
-					</p>
-				</td>
-			</tr>
-		</table>
-	</div>
-</div>
--->
-<div id="info-box">
-    <div id="info-box-content">
-        <div class="info-box-content-item-header">
-            A Netflix Original Production
+  <body>
+  
+    <div class="masthead">
+      <div class="container">
+        <div class="logo col-xs-6">
+          <a href="/"><img src="images/Netflix-OSS-Logo.png" /></a>
         </div>
-
-        <div class="info-box-content-item-header">
-            Open Source
+        <div class="powered col-xs-6">
+          <a href="/powered-by-netflix-oss.html"><img src="images/Powered-By-Logo-Small.png" /><p>POWERED BY</p></a>
         </div>
-
-        <div class="info-box-content-item-header">
-            Stay in Touch
-        </div>
-
-        <div class="info-box-content-item-clear"></div>
-
-        <div>
-            <div class="info-box-content-item">
-                <div class="info-box-content-item-line">&copy; 2012-<span id="year"></span> Netflix, Inc. All rights reserved.</div>
-            </div>
-
-            <div class="info-box-content-item">
-                <div class="info-box-content-item-line"><a href="http://netflix.github.com/">Netflix Open Source</a></div>
-                <div class="info-box-content-item-line"><a href="https://github.com/Netflix/">Netflix GitHub</a></div>
-                <div class="info-box-content-item-line">Get in on the fun: <a href="http://www.netflix.com/jobs">Join Us!</a></div>
-            </div>
-
-            <div class="info-box-content-item">
-                <div class="info-box-content-item-line"><a href="http://techblog.netflix.com">Our Tech Blog</a></div>
-                <div class="info-box-content-item-line"><a href="http://twitter.com/NetflixOSS">@NetflixOSS</a></div>
-                <div class="info-box-content-item-line"><a href="http://www.slideshare.net/netflix">Slideshare</a></div>
-                <div class="info-box-content-item-line"><a href="http://www.meetup.com/Netflix-Open-Source-Platform/">Netflix Meetup</a></div>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
 
-</div>
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img class="first-slide" src="images/slider-bg-2.jpg" alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <div class="col-md-8">      
+                <h2>JAX 2015 Award</h2>
+                <h3>Industry Awards!</h3>
+                <hr/>
+                <p>Netflix is honored to receive the Jury's choice award for Innovation at
+                  <a href="http://jaxenter.com/jax-awards-winners-announced-at-jax-2015-conference-116358.html">JAX 2015 conference</a>.<p>
+                <p>We would like to thank all of those who contribute to the Netflix open source community including our Netflix developers, all external contributors,
+                  and our active user base.</p>
+                <p>Netflix Open Source won the JAX Special Jury Award.  Jury member Neal Ford was quoted as saying "that architecture is
+                  cool again, that it can be used as a business differentiator, and when done right it is a huge advantage. Netflix showed the power of internalizing
+                  DevOps into their architecture; all architectures will do this in the future.</p>
+              </div>
+              <div class="col-md-4">
+                <div class="carousel-image">
+                  <img src="images/carousel/JAXawards_PostImage_398x298.jpg" alt="First Slide Image" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="second-slide" src="images/slider-bg-2.jpg" alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <div class="col-md-8">      
+                <h2>Getting Started</h2>
+                <h3>How can you get started quickly?</h3>
+                <hr/>
+                <p>For the simple approach, try out our <a href="http://techblog.netflix.com/2014/11/zerotodocker-easy-way-to-evaluate.html">ZeroToDocker</a>
+                  container images. After downloading the images, you can be up and running NetflixOSS in just a few minutes.</p>
+                <p>After you've tackled that, check out the <a href="https://github.com/aspyker/acmeair-netflix">IBM ACME Air</a>
+                  and <a href="https://github.com/cfregly/fluxcapacitor/wiki">Flux Capacitor</a> apps, and the
+                  <a href="https://github.com/Netflix-Skunkworks/zerotocloud">Zero-to-Cloud workshop.</a></p>
+                <p>See these <a href="http://answersforaws.com/resources/netflixoss/cloudformation/">CloudFormation templates</a>
+                  on Answers For AWS for use of NetflixOSS through CloudFormation.</p>
+              </div>
+              <div class="col-md-4">
+                <div class="carousel-image">
+                  <img src="images/carousel/zero-to-docker-hero.png" alt="Second Slide Image" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="third-slide" src="images/slider-bg-2.jpg" alt="Third slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <div class="col-md-8">      
+                <h2>Our Team</h2>
+                <h3>Want to work on this technology?</h3>
+                <hr/>
+                <p>If you are looking to have a large impact at a growing company and work with a high performance team - start here. Work with talented colleagues on hard problems that affect millions of customers.</p>
+    	        <p>At Netflix we value high performance, freedom and responsibility. We don't focus on rules, processes or procedures. We are candid and transparent and seek excellence in everything that we do.</p>
+	            <p>We tackle problems others have not been able to solve. We license great content, build systems at scale and use data to push the business forward. We connect people with movies and television globally.</p>
+                <p>Check out our <a href="https://jobs.netflix.com/">jobs</a> page for current openings.</p>
+              </div>
+              <div class="col-md-4">
+                <div class="carousel-image">
+                  <img src="images/carousel/OpenSourceTeamMembersFountain-20150520.JPG" alt="Third Slide Image" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div><!-- /.carousel -->
 
-<div id="balloon-container">
-	<div class="balloon-frame">
-		<div id="balloon-heading"></div>
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
 
-		<div id="balloon-content">
-			<div id="balloon-description"></div>
-			<div class="baloon-field">
-				<!-- GitHub JSON data only reports counts of Stars, not Watchers, although the JSON data mislabels the numbers as "watchers" -->
-				<span class="balloon-label">Stars: </span>
-				<span id="balloon-watchers"></span>
-			</div>
-			<div class="baloon-field">
-				<span class="balloon-label">Forks: </span>
-				<span id="balloon-forks"></span>
-			</div>
-			<div class="baloon-field">
-				<span class="balloon-label">Language: </span>
-				<span id="balloon-language"></span>
-			</div>
-			<div class="baloon-field">
-				<span class="balloon-label">Open Issues: </span>
-				<span id="balloon-issues"></span>
-			</div>
-			<div class="baloon-field">
-				<span class="balloon-label">Updated: </span>
-				<span id="balloon-updated"></span>
-			</div>
-		</div>
-	</div>
-</div>
+    <div class="callout row">
+      <div class="container">
+          <div class="col-xs-14">
+            <h1><span style="color:#ea2a2e;">Netflix</span> Open Source Software Center</h1>
+            <hr/>
+            <p><span style="color:#000000;">
+              Netflix is committed to open source.  Netflix both leverages and provides open source technology focused on providing the leading Internet television
+              network.  Our technology focuses on providing immersive experiences across all internet-connected screens.  Netflix's deployment technology allows for continuous
+              build and integration into our worldwide deployments serving members in over 50 countries.  Our focus on reliability defined the
+              bar for cloud based elastic deployments with several layers of failover.  Netflix also provides the technology to operate services responsibility with operational
+              insight, peak performance, and security.  We provide technologies for data (persistent & semi-persistent) that serve the real-time load to our 62 million members,
+              as well as power the big data analytics that allow us to make informed decisions on how to improve our service.  If you want to learn more, jump
+              into any of the functional areas below to learn more.
+            </span></p>
+          </div>
+      </div>
+    </div>
 
-<div id="balloon-arrow-left"><img src="assets/left-arrow.png" width="47" height="56" border="0" alt=""></div>
-<div id="balloon-arrow-right"><img src="assets/right-arrow.png" width="47" height="55" border="0" alt=""></div>
+    <div class="container marketing">
 
-</body>
+     <!-- START THE FEATURETTES -->
+
+    <div class="col-sm-12">
+
+
+      <div class="row featurette">
+        <div class="col-sm-4">
+          <img class="featurette-image img-responsive center-block" src="images/front-icons/big-data.png" alt="Generic placeholder image 1">
+        </div>
+        <div class="col-sm-8">
+          <h2 class="featurette-heading">Big Data</h2>
+          <h3>Tools and services to get the most out of your (big) data</h3>
+          <p class="lead">Data is invaluable in making Netflix such an exceptional service for our customers. Behind the scenes, we have a
+            rich ecosystem of (big) data technologies facilitating our algorithms and analytics. We use and contribute to broadly-adopted open
+            source technologies including Hadoop, Hive, Pig, Parquet, Presto, and Spark. In addition, we’ve developed and contributed some additional
+            tools and services, which have further elevated our data platform. <a href="https://github.com/Netflix/genie">Genie</a> is a powerful, REST-based abstraction to our various
+            data processing frameworks, notably Hadoop. <a href="https://github.com/Netflix/inviso">Inviso</a> provides detailed insights into the performance of our Hadoop jobs and
+            clusters. <a href="https://github.com/Netflix/lipstick">Lipstick</a> shows the workflow of Pig jobs in a clear, visual fashion. And
+            <a href="https://github.com/Netflix/aegisthus">Aegisthus</a> enables the bulk abstraction of data out of Cassandra for downstream analytic processing.</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-sm-4">
+          <img class="featurette-image img-responsive center-block" src="images/front-icons/build-delivery.png" alt="Generic placeholder image 1">
+        </div>
+        <div class="col-sm-8">
+          <h2 class="featurette-heading">Build and Delivery Tools</h2>
+          <h3>Taking code from desktop to the cloud</h3>
+          <p class="lead">Netflix has open sourced many of our Gradle plugins under the name <a href="https://nebula-plugins.github.io/">Nebula</a>. Nebula started off as
+            a set of strong opinions to make Gradle simple to use for our developers. But we quickly learned that we could use the same assumptions on our open source projects and
+            on other Gradle plugins to make them easy to build, test and deploy. By standardizing plugin development, we've lowered the barrier to generating
+            them, allowing us to keep our build modular and composable.</p>
+          <p class="lead">We require additional tools to take these builds from the developers' desks to AWS. There are tens of thousands of instances
+            running Netflix. Every one of these runs on top of an image created by our open source tool <a href="https://github.com/Netflix/aminator">Aminator</a>. Once packaged,
+            these AMIs are deployed to AWS using our cloud deployment and management tool, <a href="https://github.com/Netflix/asgard">Asgard</a>. Asgard is well recognized outside
+            of Netflix, and was even used by President Obama's team in the 2012 election.</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-sm-4">
+          <img class="featurette-image img-responsive center-block" src="images/front-icons/cloud-platform.png" alt="Generic placeholder image 1">
+        </div>
+        <div class="col-sm-8">
+          <h2 class="featurette-heading">Common Runtime Services & Libraries</h2>
+          <h3>Runtime containers, libraries and services that power microservices</h3>
+          <p class="lead">The cloud platform is the foundation and technology stack for the majority of the services within Netflix. The cloud platform consists
+            of cloud services, application libraries and application containers. Specifically, the platform provides service discovery through
+            <a href="https://github.com/Netflix/eureka">Eureka</a>, distributed configuration through <a href="https://github.com/Netflix/archaius">Archaius</a>,
+            resilent and intelligent inter-process and service communication through <a href="https://github.com/Netflix/ribbon">Ribbon</a>.  To provide reliability
+            beyond single service calls, <a href="https://github.com/Netflix/hystrix">Hystrix</a> is provided to isolate latency and fault tolerance at runtime. The previous
+            libraries and services can be used with any JVM based container.</p>
+          <p class="lead">The platform provides JVM container services through
+            <a href="https://github.com/Netflix/karyon">Karyon</a> and <a href="https://github.com/Netflix/governator">Governator</a> and support for non-JVM runtimes
+            via the <a href="https://github.com/Netflix/prana">Prana</a> sidecar.  While Prana provides proxy capabilities within an instance,
+            <a href="https://github.com/Netflix/zuul">Zuul</a> (which integrates Hystrix, Eureka, and Ribbon as part of it's IPC capabilities) provides dyamically
+            scriptable proxying at the edge of the cloud deployment.</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-sm-4">
+          <img class="featurette-image img-responsive center-block" src="images/front-icons/data-persistence.png" alt="Generic placeholder image 1">
+        </div>
+        <div class="col-sm-8">
+          <h2 class="featurette-heading">Data Persistence</h2>
+          <h3>Storing and Server data in the Cloud.</h3>
+          <p class="lead">Handling over a trillion data operations per day requires an interesting mix of “off the shelf OSS” and in house projects. No single data
+            technology can meet every use case or satisfy every latency requirement. Our needs range from non-durable in-memory stores like Memcached and Redis,
+            to searchable datastores such as Elastic and durable must-never-go-down datastores like Cassandra and MySQL.</p>
+          <p class="lead">Our Cloud usage and the scale at which we consume these technologies, has required us to build tools and services that enhance the
+            datastores we use. We’ve created the sidecars Raigad and Priam to help with the deployment, management and backup/recovery of our hundreds of Elastic and
+            Cassandra clusters. We’ve created <a href="https://github.com/Netflix/EVCache">EVCache</a> and <a href="https://github.com/Netflix/dynomite">Dynomite</a> to use
+            Memcached and Redis at scale. We’ve even developed the <a href="https://github.com/Netflix/astyanax">Astyanax</a> and <a href="https://github.com/Netflix/dyno">Dyno</a>
+            client libraries to better consume datastores in the Cloud.</p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-sm-4">
+          <img class="featurette-image img-responsive center-block" src="images/front-icons/insight-performance.png" alt="Generic placeholder image 1">
+        </div>
+        <div class="col-sm-8">
+          <h2 class="featurette-heading">Insight, Reliability and Performance</h2>
+          <h3>Providing Actionable Insight at Massive Scale</h3>
+          <p class="lead">Telemetry and metrics play a critical role in the operations of any company, and at more than a billion metrics per minute flowing into
+            <a href="https://github.com/Netflix/atlas">Atlas</a>, our time-series telemetry platform, they play a critical role at Netflix.  However, Operational
+            Insight is considered a higher-order family of products at Netflix, including the ability to understand the current components of our cloud ecosystem
+            via <a href="https://github.com/Netflix/edda">Edda</a>, and the easy integration of Java application code with Atlas via the
+            <a href="https://github.com/Netflix/spectator">Spectator</a> library.</p>
+          <p class="lead">Effective performance instrumentation allows engineers to drill quickly on a massive volume of metrics, making critical decisions quickly
+            and efficiently.  <a href="https://github.com/Netflix/vector">Vector</a> exposes high-resolution host-level metrics with minimal overhead.
+          <p class="lead">Outside of the operational domain, cost management and visibility into where our resources are used in the cloud is a multi-million question
+            to be answered; we've built <a href="https://github.com/Netflix/ice">Ice</a> as a way to expose ongoing cost and and cloud utilization trends to
+            engineers so they can have a better understanding of the footprint of their applications in our environment.</p>
+          <p class="lead">Finally to validate reliability, we have the <a href="https://github.com/Netflix/SimianArmy">Simian Army</a> which tests our instances
+            for random failures.</p>
+          </p>
+          </p>
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-sm-4">
+          <img class="featurette-image img-responsive center-block" src="images/front-icons/security.png" alt="Generic placeholder image 1">
+        </div>      
+        <div class="col-sm-8">
+          <h2 class="featurette-heading">Security</h2>
+          <h3>Security for Dynamic and Distributed Environments</h3>
+          <p class="lead">Security is an increasingly important area for organizations of all types and sizes, and Netflix is happy to contribute
+            a variety of security tools and solutions to the open source community. Our security-related open source efforts generally fall into
+            one of two categories - operational tools and systems to make security teams more efficient and effective when securing large and
+            dynamic environments and security infrastructure components that provide critical security services for modern distributed systems.
+          <p class="lead">On the operational side, <a href="https://github.com/Netflix/security_monkey">Security Monkey</a> helps monitor and secure large AWS-based environments and
+          <a href="https://github.com/Netflix/scumblr">Scumblr</a> leverages Internet-wide targeted searches to surface specific security issues for investigation. On the security
+            infrastructure side, <a href="https://github.com/Netflix/MSL">MSL</a> is an extensible and flexible secure messaging protocol that addresses a number of
+            secure communications use cases and requirements.</p>
+          </p>
+        </div>
+      </div>
+
+      <!--
+      <hr class="featurette-divider">
+
+      <div class="row featurette">
+        <div class="col-sm-4">
+          <img class="featurette-image img-responsive center-block" src="images/front-icons/user-interface.png" alt="Generic placeholder image 1">
+        </div>
+        <div class="col-sm-8">
+          <h2 class="featurette-heading">User Interface</h2>
+          <h3>Powerful libraries to help you build rich client applications</h3>
+          <p class="lead">Every month, Netflix members around the world discover and watch more than ten billion hours of movies and shows on their
+            TV, mobile and desktop devices. Using modern UI technologies, like Node.js, React and RxJS, our engineers build rich client applications
+            that run across thousands of devices. We strive to create cinematic, immersive experiences that delight our members, exhibit exceptional
+            performance and work flawlessly. We’re continuously improving the product through data-driven A/B testing that enables us to experiment
+            with novel concepts and understand the value of every feature we ship.
+          </p>
+          </p>
+        </div>
+      </div>
+      -->
+
+    </div>
+    <!-- /END THE FEATURETTES -->
+
+     <!-- START SIDEBAR -->
+
+      <!--
+     <div class="col-sm-4 sidebar">
+     
+     <a class="twitter-timeline" href="https://twitter.com/NetflixOSS" data-theme="dark" data-widget-id="586596093502205952">Tweets by @NetflixOSS</a>
+     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+     
+     <p class="sidebar-sub"><strong>Open Source</strong></p>
+     <ul class="sidebar-list">
+       <li><a href="http://netflix.github.io/" target="_blank">NETFLIX OPEN SOURCE</a></li>
+       <li><a href="http://netflix.github.io/" target="_blank">NETFLIX GITHUB</a></li>
+       <li><a href="https://jobs.netflix.com/" target="_blank">GET IN ON THE FUN: JOIN US!</a></li>
+     </ul> 
+
+     <p class="sidebar-sub"><strong>Stay in Touch</strong></p>
+     <ul>
+       <li><a href="http://techblog.netflix.com/" target="_blank">OUR TECH BLOG</a></li>
+       <li><a href="https://twitter.com/NetflixOSS" target="_blank">@NetflixOSS</a></li>
+       <li><a href="http://www.slideshare.net/netflix" target="_blank">SLIDESHARE</a></li>
+       <li><a href="http://www.meetup.com/Netflix-Open-Source-Platform/" target="_blank">NETFLIX MEETUP</a></li>              
+     </ul>  
+     
+     </div>
+           -->
+           
+     <!-- /END SIDEBAR -->
+      
+
+    </div><!-- /.container -->
+
+    <!-- FOOTER -->
+
+    <footer>
+      <div class="footer">
+        <div class="container">
+          <div class="col-md-4">
+            <p class="footer-sub"><strong>Open Source</strong></p>
+            <ul>
+              <li><a href="https://www.github.com/netflix" target="_blank">NETFLIX OPEN SOURCE</a></li>
+              <li><a href="https://jobs.netflix.com/" target="_blank">GET IN ON THE FUN: JOIN US!</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <p class="footer-sub"><strong>Stay in Touch</strong></p>
+            <ul>
+              <li><a href="http://techblog.netflix.com/" target="_blank">OUR TECH BLOG</a></li>
+              <li><a href="https://twitter.com/NetflixOSS" target="_blank">@NetflixOSS</a></li>
+              <li><a href="http://www.slideshare.net/netflix" target="_blank">SLIDESHARE</a></li>
+              <li><a href="http://www.meetup.com/Netflix-Open-Source-Platform/" target="_blank">NETFLIX MEETUP</a></li>
+            </ul>
+          </div>
+          <div class="powered-by-copyright col-md-4">
+            <a href="/"><img src="images/Netflix-OSS-Logo-Small.png" /></a>
+            <p style="clear:both;">&copy; 2012-2015 NETFLIX, INC. ALL RIGHTS RESERVED</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>

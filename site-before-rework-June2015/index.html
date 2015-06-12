@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="http://cdn-0.nflximg.com/en_US/icons/nficon.ico">
+    <meta name="description" content="Netflix Open Source">
+    <meta name="title" content="Netflix Open Source">
+    <title>Netflix Open Source Software Center</title>
+
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery.dateFormat-1.0.js"></script>
+    <script type="text/javascript" src="http://d3js.org/d3.v2.min.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45515011-1', 'netflix.github.io');
+      ga('send', 'pageview');
+
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css?v=201303081202">
+    <link rel="stylesheet" type="text/css" href="css/commits.css?v=201303081202">
+	<!--[if IE]>
+	<style>
+		.repo-item-cover, .repo-item-shadow, .repo-item-button
+		{
+		    width: 186px;
+			height: 256px;
+		}
+	</style>
+	<![endif]-->
+
+    <script type="text/javascript">
+        var reposTab = [];
+        var membersTab = [];
+
+        function repos(json)
+        {
+            if ( json.repos && $.isArray(json.repos) )
+            {
+				reposTab = json.repos;
+			}
+			if ( json.members && $.isArray(json.members) )
+			{
+				membersTab = json.members;
+			}
+        }
+
+        var categories = [];
+
+        function setCategories(json) {
+            categories = json.categories;
+        }
+    </script>
+    <script type="text/javascript" src="//osscategories.prod.netflix.net/repos"></script>
+    <script type="text/javascript" src="//osscategories.prod.netflix.net/categories"></script>
+    <script type="text/javascript" src="js/models.js?v=201303071100"></script>
+    <script type="text/javascript" src="js/nf.js?v=201303071100"></script>
+
+    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-45515011-1', 'netflix.github.io');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+
+<body>
+
+<div id="non-scrolling-section">
+	<div class="header">
+	    <div class="header-logo">
+	        <a href="http://www.netflix.com"><img src="assets/netflix-oss-logo-new.png" align="middle" alt="Netflix" border="0"></a>
+	        <div class="header-text">Netflix Open Source Software Center</div>
+	    </div>
+
+	</div>
+	<div id="sub-header">
+	</div>
+
+
+</div>
+
+<div id="scrolling-section">
+
+
+<div id="tab-content-repo">
+	<div id="repo-hero">
+		<div class="hero-content">
+			<div class="img-placeholder">
+				<a href="https://github.com/Netflix-Skunkworks/zerotodocker"><img src="assets/zero-to-docker-hero.png" /></a>
+				<!-- <a href="assets/oss-team.jpg"><img src="assets/oss-team-small.jpg" /></a> -->
+			</div>
+			<div class="hero-text">
+			<h2>Getting Started</h2>
+			<p>Welcome to the Netflix Open Source Software Center. To begin, we recommend working with our <a href="https://github.com/Netflix/recipes-rss">RSS Reader application</a>. See <a href="http://answersforaws.com/resources/netflixoss/cloudformation/">this walkthrough</a> on Answers For AWS to get up and running quickly.</p>
+			<p>For the simple approach, try out our <a href="https://github.com/Netflix-Skunkworks/zerotodocker">ZeroToDocker container images</a>. After downloading the images, you can be up and running NetflixOSS in just a few minutes.</p>
+			<p>After you've tackled that, check out the <a href="https://github.com/aspyker/acmeair-netflix/wiki/AMI-Based-Deployment">IBM ACME Air</a> and <a href="https://github.com/cfregly/fluxcapacitor">Flux Capacitor</a> apps, and the <a href="https://github.com/Netflix-Skunkworks/zerotocloud">Zero-to-Cloud</a> workshop.</p>
+			<p>
+			<p>Also, be sure to join our mailing lists and follow us <a href="https://twitter.com/NetflixOSS">@NetflixOSS</a> to stay up to date.</p>
+			</div>
+		</div>
+
+	</div>
+	<div id="content-left">
+		<div id="repo-heading">
+		    <a href="https://github.com/Netflix"><h2>Our Repositories</h2></a>
+			<div class="repo-view"><a href="#" onclick="repoView(true);"><img src="assets/glyphicons_156_show_thumbnails.png" width="22" height="22" alt="Thumbnails" border="0"><span class="type">Thumbnail View</span></a>
+			<a href="#" onclick="repoView(false);"><img src="assets/glyphicons_114_list.png" width="22" height="22" alt="List" border="0"><span class="type">List View</span></a>
+			</div>
+			<div id="repstats"></div>
+
+		</div>
+
+		<div id="repo-content"></div><br clear="all">
+		<div id="repo-list-content"></div>
+	</div>
+	<div id="sidebar-right">
+		<h2>Mailing Lists</h2>
+		<p>We maintain mailing lists for some of our open source projects. Click on the following links to subscribe and/or maintain your subscriptions.</p>
+			<ul>
+			<li><a href="http://groups.google.com/group/AsgardUsers">Asgard Mailing List</a></li>
+			<li><a href="http://groups.google.com/group/astyanax-cassandra-client">Astyanax Mailing List</a></li>
+			<li><a href="http://groups.google.com/group/curator-users">Curator Mailing List</a></li>
+			<li><a href="http://groups.google.com/group/exhibitor-users">Exhibitor Mailing List</a></li>
+			<li><a href="http://groups.google.com/group/simianarmy-users">SimianArmy Mailing List</a></li>
+			</ul>
+		<hr />
+			<h2>Stay in Touch</h2>
+			<ul>
+			<li><a href="http://techblog.netflix.com/">Netflix Tech Blog</a></li>
+			<li><a href="https://twitter.com/NetflixOSS">@NetflixOSS</a></li>
+			<li><a href="http://www.slideshare.net/netflix">Slideshare</a></li>
+			<li><a href="http://www.meetup.com/Netflix-Open-Source-Platform/">Netflix Meetup</a></li>
+			<li><a href="http://jobs.netflix.com">Jobs at Netflix</a></li>
+			</ul>
+	</div>
+
+</div>
+
+<!-- Tab removed
+<div id="tab-content-timeline">
+    <div class="section-heading">Netflix OSS GitHub Repositories</div>
+    <div id="commits" style="padding: 380px 40px; margin-right: 50px;"></div>
+    <div class="help">Scroll to expand or compress the timelines, drag to shift the timelines earlier or later, and mouse over a timeline to see the committers's names and commit messages.</div>
+    <script type="text/javascript" src="http://javaposseroundup.github.io/d3github/commitsbase.js"></script>
+    <script type="text/javascript" src="js/commits.js?v=201303071100"></script>
+</div>
+
+-->
+
+<!-- Tab removed
+<div id="tab-content-lists">
+	<div id="lists-content">
+		<div id="lists-content-heading">
+			Mailing Lists
+		</div>
+
+		<div class="lists-content-item">
+			<p>
+			We maintain mailing lists for some of our open source projects. Click on the following
+			links to subscribe and/or maintain your subscriptions.
+			</p>
+
+			<p id="lists-repos"></p>
+		</div>
+	</div>
+</div>
+
+-->
+<!-- Tab removed
+<div id="tab-content-community">
+    <div class="section-heading">Netflix OSS is popular! Here are some outside projects that utilize Netflix OSS:</div>
+
+	<div id="community-table-content" class="display-table-content">
+	</div>
+</div>
+-->
+
+
+<div id="tab-content-powered-by">
+	<div class="content-padding-light">
+	    <div class="section-heading">These companies are using and contributing to Netflix OSS Components</div>
+	    <p style="margin-left: 10px;";>Email <a href="mailto:netflixoss@netflix.com">netflixoss@netflix.com</a> to have your logo here.</p>
+		<div id="content-powered-by">
+		</div>
+	</div>
+</div>
+<!-- Tab removed
+<div id="tab-content-web">
+    <div class="section-heading">Articles and blogs about Netflix OSS</div>
+
+	<div id="web-table-content" class="display-table-content">
+	</div>
+</div>
+-->
+<!-- Tab removed
+<div id="tab-content-amis">
+    <div class="section-heading">Pre-built AMIs for Netflix OSS Components</div>
+
+	<div id="amis-table-content" class="display-table-content">
+		<table id="web-table" class="display-table">
+			<tr class="display-table-item-row">
+				<td class="display-table-item-row-cell-0">
+					<p style="font-size: 125%; font-weight: bold">
+					Asgard AMI<br>
+					<a href="https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-1889f771">https://console.aws.amazon.com/ec2/home?region=us-east-1#launchAmi=ami-1889f771</a>
+					</p>
+
+					<p>
+					<strong>Components and relevant licences:</strong><br>
+
+					<ul>
+					<li>Ubuntu - <a href="http://www.ubuntu.com/about/about-ubuntu/licensing">http://www.ubuntu.com/about/about-ubuntu/licensing</a></li>
+					<li>Java - <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">http://www.oracle.com/technetwork/java/javase/terms/license/index.html</a></li>
+					<li>Tomcat - <a href="http://tomcat.apache.org/legal.html">http://tomcat.apache.org/legal.html</a></li>
+					<li>Grails - <a href="http://grails.org/License">http://grails.org/License</a></li>
+					<li>Groovy - <a href="http://groovy.codehaus.org/License+Information">http://groovy.codehaus.org/License+Information</a></li>
+					<li>The licenses for all the Javascript used in Asgard is available at: <a href="https://github.com/Netflix/asgard/blob/master/NOTICE.txt">https://github.com/Netflix/asgard/blob/master/NOTICE.txt</a></li>
+					</ul>
+					</p>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+-->
+<div id="info-box">
+    <div id="info-box-content">
+        <div class="info-box-content-item-header">
+            A Netflix Original Production
+        </div>
+
+        <div class="info-box-content-item-header">
+            Open Source
+        </div>
+
+        <div class="info-box-content-item-header">
+            Stay in Touch
+        </div>
+
+        <div class="info-box-content-item-clear"></div>
+
+        <div>
+            <div class="info-box-content-item">
+                <div class="info-box-content-item-line">&copy; 2012-<span id="year"></span> Netflix, Inc. All rights reserved.</div>
+            </div>
+
+            <div class="info-box-content-item">
+                <div class="info-box-content-item-line"><a href="http://netflix.github.com/">Netflix Open Source</a></div>
+                <div class="info-box-content-item-line"><a href="https://github.com/Netflix/">Netflix GitHub</a></div>
+                <div class="info-box-content-item-line">Get in on the fun: <a href="http://www.netflix.com/jobs">Join Us!</a></div>
+            </div>
+
+            <div class="info-box-content-item">
+                <div class="info-box-content-item-line"><a href="http://techblog.netflix.com">Our Tech Blog</a></div>
+                <div class="info-box-content-item-line"><a href="http://twitter.com/NetflixOSS">@NetflixOSS</a></div>
+                <div class="info-box-content-item-line"><a href="http://www.slideshare.net/netflix">Slideshare</a></div>
+                <div class="info-box-content-item-line"><a href="http://www.meetup.com/Netflix-Open-Source-Platform/">Netflix Meetup</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div id="balloon-container">
+	<div class="balloon-frame">
+		<div id="balloon-heading"></div>
+
+		<div id="balloon-content">
+			<div id="balloon-description"></div>
+			<div class="baloon-field">
+				<!-- GitHub JSON data only reports counts of Stars, not Watchers, although the JSON data mislabels the numbers as "watchers" -->
+				<span class="balloon-label">Stars: </span>
+				<span id="balloon-watchers"></span>
+			</div>
+			<div class="baloon-field">
+				<span class="balloon-label">Forks: </span>
+				<span id="balloon-forks"></span>
+			</div>
+			<div class="baloon-field">
+				<span class="balloon-label">Language: </span>
+				<span id="balloon-language"></span>
+			</div>
+			<div class="baloon-field">
+				<span class="balloon-label">Open Issues: </span>
+				<span id="balloon-issues"></span>
+			</div>
+			<div class="baloon-field">
+				<span class="balloon-label">Updated: </span>
+				<span id="balloon-updated"></span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="balloon-arrow-left"><img src="assets/left-arrow.png" width="47" height="56" border="0" alt=""></div>
+<div id="balloon-arrow-right"><img src="assets/right-arrow.png" width="47" height="55" border="0" alt=""></div>
+
+</body>
+</html>
