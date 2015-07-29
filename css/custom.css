@@ -48,6 +48,7 @@ background-color: #9ea3a9;
 text-align: center;
 padding: 25px 0 75px 0;
 color: #fff;
+width: 100%;
 }
 
 .callout .col-xs-12 {
@@ -242,7 +243,7 @@ padding-top: 40px;
     height: 633px;
     background: #060607;
   }
-  
+
   .carousel .item {
     height: 633px;
     background-color: #060607;
@@ -256,11 +257,11 @@ padding-top: 40px;
     line-height: 1.4;
     margin-bottom: 10px;
   }
-  
+
   .carousel-caption h2 {
     margin: 0;
   }
-  
+
   .carousel-caption hr {
     margin: 6px 0;
   }
@@ -268,46 +269,46 @@ padding-top: 40px;
   .callout .col-xs-12 {
     padding: 0 23px;
   }
-  
+
   .carousel-image img {
     max-width: 100%;
     min-width: 100%;
   }
- 
+
  .featurette-image {
     margin-bottom: 15px;
-  } 
-    
+  }
+
   .powered-logo {
     margin-bottom: 15px;
   }
-   
+
   .carousel {
     height: 703px;
     background: #060607;
   }
-  
+
   .carousel .item {
     height: 703px;
     background-color: #060607;
   }
-  
+
   .carousel-caption .col-md-8, .carousel-caption .col-md-4 {
     padding-right: 0px;
   }
-  
+
   .copyright {
     padding-top: 0px;
   }
-  
+
   .featurette img {
     min-width: 100%;
   }
-  
+
   .marketing {
     padding: 40px 20px 75px 20px;
   }
-  
+
   .sidebar {
     margin-top: 15px;
   }
