@@ -213,6 +213,9 @@
             via the <a href="https://github.com/Netflix/prana">Prana</a> sidecar.  While Prana provides proxy capabilities within an instance,
             <a href="https://github.com/Netflix/zuul">Zuul</a> (which integrates Hystrix, Eureka, and Ribbon as part of its IPC capabilities) provides dyamically
             scriptable proxying at the edge of the cloud deployment.</p>
+          <p class="lead">The platform works well within the EC2 cloud utilizing the Amazon autoscaler.  For container applications and batch jobs running on Apache Mesos,
+            <a href="https://github.com/Netflix/Fenzo">Fenzo</a> is a scheduler that provides advanced scheduling and resource management for cloud native frameworks.  Fenzo
+            provides plugin implementations for bin packing, cluster autoscaling, and custom scheduling optimizations can be implemented through user-defined plugins.</p>
         </div>
       </div>
 
