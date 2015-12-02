@@ -64,6 +64,21 @@ body {
   -webkit-transform-style: preserve-3d;
 }
 
+.carousel-control {
+  -webkit-transition: opacity 200ms;
+  -moz-transition: opacity 200ms;
+  -o-transition: opacity 200ms;
+  transition: opacity 200ms;
+}
+
+.carousel-control:focus {
+  opacity: .5;
+}
+
+.carousel-control:hover {
+  opacity: .9;
+}
+
 /* MARKETING CONTENT
 -------------------------------------------------- */
 
