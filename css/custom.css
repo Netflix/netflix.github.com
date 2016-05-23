@@ -93,6 +93,17 @@ text-decoration: underline;
 color: #44B8FF;
 }
 
+/* fixing carousel control bug
+ ---------------------------------------------*/
+a.carousel-control:visited{
+	color:grey;
+}
+a.carousel-control:hover{
+	color:white;
+}
+
+
+
 .callout a {
 color: #fff;
 font-weight: bold;
