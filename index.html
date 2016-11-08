@@ -188,7 +188,9 @@
             them, allowing us to keep our build modular and composable.</p>
           <p class="lead">We require additional tools to take these builds from the developers' desks to AWS. There are tens of thousands of instances
             running Netflix. Every one of these runs on top of an image created by our open source tool <a href="https://github.com/Netflix/aminator">Aminator</a>. Once packaged,
-            these AMIs are deployed to AWS using our cloud deployment and management tool, <a href="http://spinnaker.io">Spinnaker</a>.</p>
+            these AMIs are deployed to AWS using our Continuous Delivery Platform, <a href="http://spinnaker.io">Spinnaker</a>. Spinnaker facilitates releasing software changes with high velocity and confidence.
+
+</p>
         </div>
       </div>
 
@@ -275,11 +277,14 @@
             and efficiently.  <a href="https://github.com/Netflix/vector">Vector</a> exposes high-resolution host-level metrics with minimal overhead.
           <p class="lead">Being able to understand the current state of our complex microservice architecture at a glance is crucial when making remediation decisions.
             <a href="https://github.com/Netflix/vizceral">Vizceral</a> helps provide this at-a-glance intuition without needing to first build up a mental model of the system.</p>
+
           <p class="lead">Outside of the operational domain, cost management and visibility into where our resources are used in the cloud is a multi-million question
             to be answered; we've built <a href="https://github.com/Netflix/ice">Ice</a> as a way to expose ongoing cost and and cloud utilization trends to
             engineers so they can have a better understanding of the footprint of their applications in our environment.</p>
-          <p class="lead">Finally to validate reliability, we have <a href="https://github.com/Netflix/chaosmonkey">Chaos Monkey</a> which tests our instances
+          
+             <p class="lead">Finally to validate reliability, we have <a href="https://github.com/Netflix/chaosmonkey">Chaos Monkey</a> which tests our instances
             for random failures, along with the <a href="https://github.com/Netflix/SimianArmy">Simian Army</a>.</p>
+            </p>
           </p>
           </p>
         </div>
