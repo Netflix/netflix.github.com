@@ -62,7 +62,7 @@
                   and our active user base.</p>
                 <p>Netflix Open Source won the JAX Special Jury Award.  Jury member Neal Ford was quoted as saying "that architecture is
                   cool again, that it can be used as a business differentiator, and when done right it is a huge advantage. Netflix showed the power of internalizing
-                  DevOps into their architecture; all architectures will do this in the future.</p>
+                  DevOps into their architecture; all architectures will do this in the future."</p>
               </div>
               <div class="col-md-4">
                 <div class="carousel-image">
@@ -140,7 +140,7 @@
               Netflix is committed to open source.  Netflix both leverages and provides open source technology focused on providing the leading Internet television
               network.  Our technology focuses on providing immersive experiences across all internet-connected screens.  Netflix's deployment technology allows for continuous
               build and integration into our worldwide deployments serving members in over 50 countries.  Our focus on reliability defined the
-              bar for cloud based elastic deployments with several layers of failover.  Netflix also provides the technology to operate services responsibility with operational
+              bar for cloud based elastic deployments with several layers of failover.  Netflix also provides the technology to operate services responsibly with operational
               insight, peak performance, and security.  We provide technologies for data (persistent & semi-persistent) that serve the real-time load to our 62 million members,
               as well as power the big data analytics that allow us to make informed decisions on how to improve our service.  If you want to learn more, jump
               into any of the functional areas below to learn more.
@@ -188,7 +188,9 @@
             them, allowing us to keep our build modular and composable.</p>
           <p class="lead">We require additional tools to take these builds from the developers' desks to AWS. There are tens of thousands of instances
             running Netflix. Every one of these runs on top of an image created by our open source tool <a href="https://github.com/Netflix/aminator">Aminator</a>. Once packaged,
-            these AMIs are deployed to AWS using our cloud deployment and management tool, <a href="http://spinnaker.io">Spinnaker</a>.</p>
+            these AMIs are deployed to AWS using our Continuous Delivery Platform, <a href="http://spinnaker.io">Spinnaker</a>. Spinnaker facilitates releasing software changes with high velocity and confidence.
+
+</p>
         </div>
       </div>
 
@@ -247,7 +249,7 @@
           <h2 class="featurette-heading">Data Persistence</h2>
           <h3>Storing and Serving data in the Cloud.</h3>
           <p class="lead">Handling over a trillion data operations per day requires an interesting mix of “off the shelf OSS” and in house projects. No single data
-            technology can meet every use case or satisfy every latency requirement. Our needs range from non-durable in-memory stores like Memcached and Redis,
+            technology can meet every use case or satisfy every latency requirement. Our needs range from non-durable in-memory stores like Memcached, Redis, and <a href="http://hollow.how">Hollow</a>,
             to searchable datastores such as Elastic and durable must-never-go-down datastores like Cassandra and MySQL.</p>
           <p class="lead">Our Cloud usage and the scale at which we consume these technologies, has required us to build tools and services that enhance the
             datastores we use. We’ve created the sidecars <a href="https://github.com/Netflix/Raigad">Raigad</a> and <a href="https://github.com/Netflix/Priam">Priam</a> to help with the deployment, management and backup/recovery of our hundreds of Elastic and
@@ -273,11 +275,12 @@
             <a href="https://github.com/Netflix/spectator">Spectator</a> library.</p>
           <p class="lead">Effective performance instrumentation allows engineers to drill quickly on a massive volume of metrics, making critical decisions quickly
             and efficiently.  <a href="https://github.com/Netflix/vector">Vector</a> exposes high-resolution host-level metrics with minimal overhead.
-          <p class="lead">Outside of the operational domain, cost management and visibility into where our resources are used in the cloud is a multi-million question
-            to be answered; we've built <a href="https://github.com/Netflix/ice">Ice</a> as a way to expose ongoing cost and and cloud utilization trends to
-            engineers so they can have a better understanding of the footprint of their applications in our environment.</p>
-          <p class="lead">Finally to validate reliability, we have the <a href="https://github.com/Netflix/SimianArmy">Simian Army</a> which tests our instances
-            for random failures.</p>
+          <p class="lead">Being able to understand the current state of our complex microservice architecture at a glance is crucial when making remediation decisions.
+            <a href="https://github.com/Netflix/vizceral">Vizceral</a> helps provide this at-a-glance intuition without needing to first build up a mental model of the system.</p>
+ 
+             <p class="lead">Finally to validate reliability, we have <a href="https://github.com/Netflix/chaosmonkey">Chaos Monkey</a> which tests our instances
+            for random failures, along with the <a href="https://github.com/Netflix/SimianArmy">Simian Army</a>.</p>
+            </p>
           </p>
           </p>
         </div>
@@ -297,9 +300,9 @@
             to make security teams more efficient and effective when securing large and dynamic environments.</p>
           <p class="lead"><a href="https://github.com/Netflix/security_monkey">Security Monkey</a> helps monitor and secure large AWS-based environments, allowing
             security teams to identify potential security weaknesses. <a href="https://github.com/Netflix/scumblr">Scumblr</a> is an intelligence gathering tool that
-            leverages Internet-wide targeted searches to surface specific security issues for investigation. <a href="https://github.com/Netflix/Fido">FIDO</a>
-            (not a part of or service of the <a href="https://fidoalliance.org/">FIDO Alliance</a>) is a security orchestration framework for analyzing events and
-            automating incident response.</p>
+            leverages Internet-wide targeted searches to surface specific security issues for investigation.
+	    <a href="https://github.com/Netflix/stethoscope">Stethoscope</a> is a web application that collects information from existing systems management tools 
+	    (e.g., JAMF or LANDESK) on a given employee’s devices and gives them clear and specific recommendations for securing their systems.</p> 
           </p>
         </div>
       </div>
@@ -381,8 +384,6 @@
             </ul>
           </div>
           <div class="powered-by-copyright col-md-4">
-            <a href="/"><img src="images/Netflix-OSS-Logo-Small.png"></a>
-            <p style="clear:both;">&copy; 2012-2015 NETFLIX, INC. ALL RIGHTS RESERVED</p>
           </div>
         </div>
       </div>
