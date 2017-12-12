@@ -237,7 +237,9 @@ text-align:right;
 .powered-by-copyright {
 font-size: 10px;
 text-align:right;
-padding-top: 40px;
+}
+.other-links{
+  padding-top: 6px;
 }
 
 /* RESPONSIVE STYLES
