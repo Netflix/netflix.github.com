@@ -6,7 +6,15 @@ body {
   color: #5a5a5a;
 }
 
+/* CUSTOMIZE THE CAROUSEL CONTROLLS
+-------------------------------------------------- */
+.carousel-control:focus {
+  opacity: .5;
+}
 
+.carousel-control:hover {
+  opacity: .9;
+}
 /* CUSTOMIZE THE NAVBAR
 -------------------------------------------------- */
 
