@@ -7,6 +7,7 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 html {
   font-family: sans-serif;
+  font-size: 40
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
