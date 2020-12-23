@@ -41,7 +41,7 @@ color: #989da4
 }
 
 .powered a:hover {
-text decoration: underline;
+text-decoration: underline;
 }
 
 .powered a:visited {
@@ -237,7 +237,6 @@ text-align:right;
 .powered-by-copyright {
 font-size: 10px;
 text-align:right;
-padding-top: 40px;
 }
 
 /* RESPONSIVE STYLES
@@ -318,4 +317,5 @@ padding-top: 40px;
   .sidebar {
     margin-top: 15px;
   }
+}
 }
