@@ -206,16 +206,16 @@
           <p class="lead">The cloud platform is the foundation and technology stack for the majority of the services within Netflix. The cloud platform consists
             of cloud services, application libraries and application containers. Specifically, the platform provides service discovery through
             <a href="https://github.com/Netflix/eureka">Eureka</a>, distributed configuration through <a href="https://github.com/Netflix/archaius">Archaius</a>,
-            resilent and intelligent inter-process and service communication through <a href="https://github.com/Netflix/ribbon">Ribbon</a>.  To provide reliability
+            resilient and intelligent inter-process and service communication through <a href="https://github.com/Netflix/ribbon">Ribbon</a>.  To provide reliability
             beyond single service calls, <a href="https://github.com/Netflix/hystrix">Hystrix</a> is provided to isolate latency and fault tolerance at runtime. The previous
-            libraries and services can be used with any JVM based container.</p>
+            libraries and services can be used with any JVM-based container.</p>
           <p class="lead">The platform provides JVM container services through
             <a href="https://github.com/Netflix/karyon">Karyon</a> and <a href="https://github.com/Netflix/governator">Governator</a> and support for non-JVM runtimes
             via the <a href="https://github.com/Netflix/prana">Prana</a> sidecar.  While Prana provides proxy capabilities within an instance,
-            <a href="https://github.com/Netflix/zuul">Zuul</a> (which integrates Hystrix, Eureka, and Ribbon as part of its IPC capabilities) provides dyamically
+            <a href="https://github.com/Netflix/zuul">Zuul</a> (which integrates Hystrix, Eureka, and Ribbon as part of its IPC capabilities) provides dynamically
             scriptable proxying at the edge of the cloud deployment.</p>
           <p class="lead">The platform works well within the EC2 cloud utilizing the Amazon autoscaler.  For container applications and batch jobs running on Apache Mesos,
-            <a href="https://github.com/Netflix/Fenzo">Fenzo</a> is a scheduler that provides advanced scheduling and resource management for cloud native frameworks.  Fenzo
+            <a href="https://github.com/Netflix/Fenzo">Fenzo</a> is a scheduler that provides advanced scheduling and resource management for cloud-native frameworks.  Fenzo
             provides plugin implementations for bin packing, cluster autoscaling, and custom scheduling optimizations can be implemented through user-defined plugins.</p>
         </div>
       </div>
