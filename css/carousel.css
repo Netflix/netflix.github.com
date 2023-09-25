@@ -20,14 +20,16 @@ body {
 }
 
 /* Flip around the padding for proper display in narrow viewports */
-.navbar-wrapper > .container {
+.navbar-wrapper>.container {
   padding-right: 0;
   padding-left: 0;
 }
+
 .navbar-wrapper .navbar {
   padding-right: 15px;
   padding-left: 15px;
 }
+
 .navbar-wrapper .navbar .container {
   width: auto;
 }
@@ -41,6 +43,7 @@ body {
   height: 409px;
   margin-bottom: 0px;
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
@@ -52,16 +55,13 @@ body {
   height: 409px;
   background-color: #060607;
 }
-.carousel-inner > .item > img {
+
+.carousel-inner>.item>img {
   position: absolute;
   top: 0;
   left: 0;
   min-width: 100%;
   height: 409px;
-}
-
-.carousel-inner  {
-  -webkit-transform-style: preserve-3d;
 }
 
 /* MARKETING CONTENT
@@ -72,9 +72,11 @@ body {
   margin-bottom: 20px;
   text-align: center;
 }
+
 .marketing h2 {
   font-weight: normal;
 }
+
 .marketing .col-lg-4 p {
   margin-right: 10px;
   margin-left: 10px;
@@ -85,7 +87,8 @@ body {
 ------------------------- */
 
 .featurette-divider {
-  margin: 40px 0; /* Space out the Bootstrap <hr> more */
+  margin: 40px 0;
+  /* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
@@ -100,14 +103,17 @@ body {
 -------------------------------------------------- */
 
 @media (min-width: 768px) {
+
   /* Navbar positioning foo */
   .navbar-wrapper {
     margin-top: 20px;
   }
+
   .navbar-wrapper .container {
     padding-right: 15px;
     padding-left: 15px;
   }
+
   .navbar-wrapper .navbar {
     padding-right: 0;
     padding-left: 0;
