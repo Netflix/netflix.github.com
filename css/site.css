@@ -10,6 +10,7 @@ body {
   height: 350px;
   margin-bottom: 60px;
 }
+
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
@@ -21,7 +22,8 @@ body {
   height: 350px;
   background-color: #777;
 }
-.carousel-inner > .item > img {
+
+.carousel-inner>.item>img {
   position: absolute;
   top: 0;
   left: 0;
@@ -29,18 +31,16 @@ body {
   height: 350px;
 }
 
-.nossheader-logo
-{
-    padding-top: 12px;
-	padding-left: 12px;
+.nossheader-logo {
+  padding-top: 12px;
+  padding-left: 12px;
 }
 
-.nossheader-text
-{
-    position: relative;
-    font-weight: 300;
-    top: -39px;
-    font-size: 210%;
-    color: #666;
-    left: 250px;
+.nossheader-text {
+  position: relative;
+  font-weight: 300;
+  top: -39px;
+  font-size: 210%;
+  color: #666;
+  left: 250px;
 }
