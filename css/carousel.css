@@ -137,3 +137,7 @@ body {
     margin-top: 120px;
   }
 }
+.carousel-control:focus {
+  outline: none; /* Removes the outline on focus */
+  background-color: transparent; /* Ensures no background remains */
+}
