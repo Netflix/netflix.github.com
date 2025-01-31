@@ -333,29 +333,32 @@
 
      <!-- START SIDEBAR -->
 
-      <!--
-     <div class="col-sm-4 sidebar">
+      
+      <div class="sidebar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰ Menu</button>
+        <div class="sidebar-content">
+          <p class="sidebar-sub"><strong>Open Source</strong></p>
+          <ul class="sidebar-list">
+            <li><a href="http://netflix.github.io/" target="_blank">NETFLIX OPEN SOURCE</a></li>
+            <li><a href="https://www.github.com/netflix" target="_blank">NETFLIX GITHUB</a></li>
+            <li><a href="https://jobs.netflix.com/" target="_blank">GET IN ON THE FUN: JOIN US!</a></li>
+          </ul>
 
-     <a class="twitter-timeline" href="https://twitter.com/NetflixOSS" data-theme="dark" data-widget-id="586596093502205952">Tweets by @NetflixOSS</a>
-     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          <p class="sidebar-sub"><strong>Stay in Touch</strong></p>
+          <ul>
+            <li><a href="http://techblog.netflix.com/" target="_blank">OUR TECH BLOG</a></li>
+            <li><a href="https://twitter.com/NetflixOSS" target="_blank">@NetflixOSS</a></li>
+            <li><a href="http://www.slideshare.net/netflix" target="_blank">SLIDESHARE</a></li>
+            <li><a href="http://www.meetup.com/Netflix-Open-Source-Platform/" target="_blank">NETFLIX MEETUP</a></li>
+          </ul>
 
-     <p class="sidebar-sub"><strong>Open Source</strong></p>
-     <ul class="sidebar-list">
-       <li><a href="http://netflix.github.io/" target="_blank">NETFLIX OPEN SOURCE</a></li>
-       <li><a href="http://netflix.github.io/" target="_blank">NETFLIX GITHUB</a></li>
-       <li><a href="https://jobs.netflix.com/" target="_blank">GET IN ON THE FUN: JOIN US!</a></li>
-     </ul>
+          <!-- Twitter Widget -->
+          <p class="sidebar-sub"><strong>Latest Tweet</strong></p>
+          <a class="twitter-timeline" data-width="250" data-height="400" data-theme="dark" href="https://twitter.com/NetflixOSS?ref_src=twsrc%5Etfw">Tweets by NetflixOSS</a>
+        </div>
+      </div>
 
-     <p class="sidebar-sub"><strong>Stay in Touch</strong></p>
-     <ul>
-       <li><a href="http://techblog.netflix.com/" target="_blank">OUR TECH BLOG</a></li>
-       <li><a href="https://twitter.com/NetflixOSS" target="_blank">@NetflixOSS</a></li>
-       <li><a href="http://www.slideshare.net/netflix" target="_blank">SLIDESHARE</a></li>
-       <li><a href="http://www.meetup.com/Netflix-Open-Source-Platform/" target="_blank">NETFLIX MEETUP</a></li>
-     </ul>
 
-     </div>
-           -->
 
      <!-- /END SIDEBAR -->
 
@@ -398,5 +401,7 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   </body>
 </html>
