@@ -41,7 +41,7 @@ color: #989da4
 }
 
 .powered a:hover {
-text decoration: underline;
+text-decoration: underline;
 }
 
 .powered a:visited {
@@ -163,6 +163,8 @@ margin-bottom: 30px;
 text-align: right;
 }
 
+
+
 .sidebar a {
 color: #ccc;
 }
@@ -255,6 +257,7 @@ padding-top: 40px;
     background-color: #060607;
   }
 
+}
 
 @media (max-width: 767px) {
   .carousel-caption p {
@@ -317,5 +320,40 @@ padding-top: 40px;
 
   .sidebar {
     margin-top: 15px;
+  }
+
+  
+}
+
+
+@media (max-width: 768px) {
+  .powered-container-two {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .powered-container-two::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .powered-container-two::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+  }
+
+  .powered-container-two .col-sm-3 {
+    flex: 0 0 auto;
+    width: 220px;
+  }
+
+  .powered-logo {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0;
   }
 }
